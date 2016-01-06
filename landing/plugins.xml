@@ -1,7 +1,7 @@
   <XML>
   <plugins type="string vector">
-    imu-reader
     exit-on-contact
+    imu-reader
   </plugins>
   
   <!--
@@ -18,14 +18,6 @@
    -->
   
   <!-- =================== PLUGIN DESCRIPTIONS ==================== -->
-  <imu-reader>
-    <priority type="double">0</priority>
-    <real-time-factor type="double">1</real-time-factor>
-    <baud-rate type="int">115200</baud-rate>
-    <rate type="double">10</rate>
-    <file type="string">imu/libimu-reader.so</file>
-    <port type="string">/dev/tty.usbmodemfd121</port>
-  </imu-reader>
   <viz-jump>
     <priority type="double">0</priority>
     <real-time-factor type="double">1</real-time-factor>

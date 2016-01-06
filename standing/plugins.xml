@@ -1,12 +1,10 @@
   <XML>
   <plugins type="string vector">
-      error-check
       center-of-mass
       end-effectors
       stand-trajectory
-      ik-feet
+      imu-reader
       eef-PID-controller
-      idyn-controller
   </plugins>
   
   <!--
@@ -22,6 +20,14 @@
    -->
   
   <!-- =================== PLUGIN DESCRIPTIONS ==================== -->
+  <imu-reader>
+    <priority type="double">0</priority>
+    <real-time-factor type="double">1</real-time-factor>
+    <baud-rate type="int">115200</baud-rate>
+    <rate type="double">500</rate>
+    <file type="string">imu/libimu-reader.so</file>
+    <port type="string">/dev/tty.usbmodemfd131</port>
+  </imu-reader>
   <error-check>
     <file type="string">liberror-check.so</file>
     <real-time-factor type="double">1</real-time-factor>
