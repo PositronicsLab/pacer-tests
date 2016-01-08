@@ -14,17 +14,17 @@
   <DynamicBody dynamic-body-id="GROUND" />
   <ContactParameters object1-id="LINKS" object2-id="GROUND" mu-coulomb="1" mu-viscous="0" epsilon="0.0"  penalty-kv="100" penalty-kp="100000"  />
   <!-- setup a planar joint -->
-<!--
-  <ImplicitConstraint joint-id="planar" /> 
--->
+  <ImplicitConstraint joint-id="fixed-base" /> 
 </TimeSteppingSimulator>
 
  <SDF filename="@@PACER_MODEL_PATH@@/@@TESTING_ROBOT@@/model.sdf"/> 
 
   <!-- setup a planar joint -->
-<!--
-  <PlanarJoint id="planar" inboard-link-id="GROUND" outboard-link-id="BODY0" normal="1 0 0" location="0 0 0" />
--->
+  <!-- setup fixed base joint -->
+  <PlanarJoint id="planarX" inboard-link-id="GROUND" outboard-link-id="BODY0" normal="1 0 0" location="0 0 0" />
+  <PlanarJoint id="planarY" inboard-link-id="GROUND" outboard-link-id="BODY0" normal="0 1 0" location="0 0 0" />
+  <PlanarJoint id="planarZ" inboard-link-id="GROUND" outboard-link-id="BODY0" normal="0 0 1" location="0 0 0" />
+  <FixedJoint id="fixed-base" inboard-link-id="GROUND" outboard-link-id="BODY0" location="0 0 0" />
 
   <!-- setup the platform rigid body; it is not active -->
      <Box id="ground-primitive-viz" rpy="1.5708 0.0 0"  xlen="8" ylen="0.001" zlen="8" />
