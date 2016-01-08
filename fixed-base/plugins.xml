@@ -1,6 +1,7 @@
   <XML>
   <plugins type="string vector">
-    end-effectors
+    sinusoid-trajectory
+    joint-PID-controller
   </plugins>
   
   <!--
@@ -140,6 +141,13 @@
      <real-time-factor type="double">1</real-time-factor>
      <priority type="double">1</priority>
   </stand-trajectory>
+
+  <sinusoid-trajectory>
+    <file type="string">libsinusoid.so</file>
+     <real-time-factor type="double">1</real-time-factor>
+     <priority type="double">1</priority>
+  </sinusoid-trajectory>
+  
   
   <gait-planner>
     <file type="string">libgait-planner.so</file>

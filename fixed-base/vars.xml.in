@@ -6,9 +6,12 @@
   
   <init>
     <base>
-      <x type="double"> 0 0 0.6 0 0 0 </x> 
-      <xd type="double"> 1 0 1 0 0 0 </xd> 
+      <x type="double"> 0 0 0.3 0 0 0 </x> 
+      <xd type="double"> 0 0 0 0 0 0 </xd> 
     </base>
+    <joints>
+      <q type="double">  0.1 0.8 1.2           -0.1 -0.8 -1.2         -0.1 -0.8 -1.2          1.5709 1.5709 0 </q>
+    </joints>
   </init>
   
   <task-file type="file">plugins.xml</task-file>
