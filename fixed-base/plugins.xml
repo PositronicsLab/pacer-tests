@@ -1,10 +1,16 @@
   <XML>
   <plugins type="string vector">
+    end-effectors
     sinusoid-trajectory
     joint-PID-controller
+    imu-reader
   </plugins>
   
   <!--
+    end-effectors
+    sinusoid-trajectory
+    joint-PID-controller
+    imu-reader
    OTHER PLUGINS:
    
    joint-PID-controller
@@ -17,6 +23,16 @@
    -->
   
   <!-- =================== PLUGIN DESCRIPTIONS ==================== -->
+  <imu-reader>
+    <priority type="double">0</priority>
+    <real-time-factor type="double">1</real-time-factor>
+    <baud-rate type="int">115200</baud-rate>
+    <rate type="int">1000</rate>
+    <pose type="double">0 0 0 0 0 0</pose>
+    <file type="string">imu/libimu-reader.so</file>
+    <!-- port type="string">/dev/tty.usbmodemfd131</port -->
+    <port type="string">/dev/ttyACM0</port>
+  </imu-reader>
   <viz-jump>
     <priority type="double">0</priority>
     <real-time-factor type="double">1</real-time-factor>
