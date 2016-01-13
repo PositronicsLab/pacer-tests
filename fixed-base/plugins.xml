@@ -1,9 +1,9 @@
   <XML>
   <plugins type="string vector">
-    end-effectors
-    sinusoid-trajectory
+    monte-carlo-simulation
+    stay
     joint-PID-controller
-    imu-reader
+   idyn-controller
   </plugins>
   
   <!--
@@ -23,6 +23,11 @@
    -->
   
   <!-- =================== PLUGIN DESCRIPTIONS ==================== -->
+  <stay>
+    <file type="string">libstay.so</file>
+     <real-time-factor type="double">1</real-time-factor>
+     <priority type="double">1</priority>
+  </stay>
   <imu-reader>
     <priority type="double">0</priority>
     <real-time-factor type="double">1</real-time-factor>
@@ -33,6 +38,13 @@
     <!-- port type="string">/dev/tty.usbmodemfd131</port -->
     <port type="string">/dev/ttyACM0</port>
   </imu-reader>
+  <arduino-controller>
+    <file type="string">arduino/libarduino.so</file>
+    <priority type="double">10</priority>
+    <real-time-factor type="double">10</real-time-factor>
+    <baud-rate type="int">115200</baud-rate>
+    <port type="string">/dev/ttyUSB0</port>
+  </arduino-controller>
   <viz-jump>
     <priority type="double">0</priority>
     <real-time-factor type="double">1</real-time-factor>
@@ -69,13 +81,14 @@
     <file type="string">monte-carlo-simulation/libmonte-carlo-simulation.so</file>
     <real-time-factor type="double">1</real-time-factor>
     <priority type="double">0</priority>
-    <duration type="double">2</duration>
+    <duration type="double">10</duration>
     <dt type="double">0.001</dt>
     <display type="bool">false</display>
-    <max-samples type="int">1</max-samples>
-    <max-threads type="int">1</max-threads>
+    <output-model type="bool">false</output-model>
+    <max-samples type="int">100</max-samples>
+    <max-threads type="int">4</max-threads>
     <executable type="string">monte-carlo-simulation/sample.bin</executable>
-    <task-directory type="string">../landing</task-directory>
+    <task-directory type="string">../fixed-base-sample</task-directory>
   </monte-carlo-simulation>
   
   <center-of-mass>
@@ -162,6 +175,9 @@
     <file type="string">libsinusoid.so</file>
      <real-time-factor type="double">1</real-time-factor>
      <priority type="double">1</priority>
+     <frequency type="double">16</frequency>
+     <amplitude type="double">0.2</amplitude>
+     <realtime type="bool">false</realtime>
   </sinusoid-trajectory>
   
   

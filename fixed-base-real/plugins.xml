@@ -1,13 +1,15 @@
   <XML>
   <plugins type="string vector">
-      center-of-mass
-      end-effectors
-      stand-trajectory
-      eef-PID-controller
-      monte-carlo-simulation
-    </plugins>
+    sinusoid-trajectory
+    joint-PID-controller
+    imu-reader
+  </plugins>
   
   <!--
+    end-effectors
+    sinusoid-trajectory
+    joint-PID-controller
+    imu-reader
    OTHER PLUGINS:
    
    joint-PID-controller
@@ -20,19 +22,6 @@
    -->
   
   <!-- =================== PLUGIN DESCRIPTIONS ==================== -->
-  <monte-carlo-simulation>
-    <file type="string">monte-carlo-simulation/libmonte-carlo-simulation.so</file>
-    <real-time-factor type="double">1</real-time-factor>
-    <priority type="double">0</priority>
-    <duration type="double">0</duration>
-    <dt type="double">0.001</dt>
-    <display type="bool">false</display>
-    <output-model type="bool">true</output-model>
-    <max-samples type="int">10</max-samples>
-    <max-threads type="int">4</max-threads>
-    <executable type="string">monte-carlo-simulation/sample.bin</executable>
-    <task-directory type="string">.</task-directory>
-  </monte-carlo-simulation>
   <imu-reader>
     <priority type="double">0</priority>
     <real-time-factor type="double">1</real-time-factor>
@@ -43,11 +32,57 @@
     <!-- port type="string">/dev/tty.usbmodemfd131</port -->
     <port type="string">/dev/ttyACM0</port>
   </imu-reader>
+  <arduino-controller>
+    <file type="string">arduino/libarduino.so</file>
+    <priority type="double">10</priority>
+    <real-time-factor type="double">10</real-time-factor>
+    <baud-rate type="int">115200</baud-rate>
+    <port type="string">/dev/ttyUSB0</port>
+  </arduino-controller>
+  <viz-jump>
+    <priority type="double">0</priority>
+    <real-time-factor type="double">1</real-time-factor>
+    <file type="string">libvisualize-ballistic-moton.so</file>
+  </viz-jump>
+  <exit-on-contact>
+    <file type="string">libexit-contact.so</file>
+    <real-time-factor type="double">1</real-time-factor>
+    <priority type="double">0</priority>
+  </exit-on-contact>
+  <plugin-scheduler>
+    <file type="string">libplugin-scheduler.so</file>
+    <real-time-factor type="double">1</real-time-factor>
+    <priority type="double">0</priority>
+    <relative-start-time type="bool">true</relative-start-time>
+    <events type="string vector">init</events>
+    <!--  PERSISTENT    -->
+    <init>
+      <time type="double">0.02</time>
+      <close type="string vector">
+      </close>
+      <open type="string vector">
+        monte-carlo-simulation
+      </open>
+    </init>
+  </plugin-scheduler>
   <error-check>
     <file type="string">liberror-check.so</file>
     <real-time-factor type="double">1</real-time-factor>
     <priority type="double">0</priority>
   </error-check>
+  
+  <monte-carlo-simulation>
+    <file type="string">monte-carlo-simulation/libmonte-carlo-simulation.so</file>
+    <real-time-factor type="double">1</real-time-factor>
+    <priority type="double">0</priority>
+    <duration type="double">2</duration>
+    <dt type="double">0.001</dt>
+    <display type="bool">false</display>
+    <max-samples type="int">1</max-samples>
+    <max-threads type="int">1</max-threads>
+    <executable type="string">monte-carlo-simulation/sample.bin</executable>
+    <task-directory type="string">../landing</task-directory>
+  </monte-carlo-simulation>
   
   <center-of-mass>
     <file type="string">libcenter-of-mass.so</file>
@@ -128,6 +163,16 @@
      <real-time-factor type="double">1</real-time-factor>
      <priority type="double">1</priority>
   </stand-trajectory>
+
+  <sinusoid-trajectory>
+    <file type="string">libsinusoid.so</file>
+     <real-time-factor type="double">1</real-time-factor>
+     <priority type="double">1</priority>
+     <frequency type="double">16</frequency>
+     <amplitude type="double">0.2</amplitude>
+     <realtime type="bool">true</realtime>
+  </sinusoid-trajectory>
+  
   
   <gait-planner>
     <file type="string">libgait-planner.so</file>

@@ -15,6 +15,6 @@
   </init>
   
   <task-file type="file">plugins.xml</task-file>
-  <uncertainty-file type="file">uncertainty.xml</uncertainty-file>
+  <uncertainty-file type="file">@@PACER_MODEL_PATH@@/@@TESTING_ROBOT@@/uncertainty.xml</uncertainty-file>
 
 </XML>
