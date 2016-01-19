@@ -4,10 +4,8 @@
       center-of-mass
       end-effectors
       gait-planner
-      limits
       ik-feet
-   joint-PID-controller
-   idyn-controller
+      joint-PID-controller
   </plugins>
   
   <!--

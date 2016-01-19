@@ -8,7 +8,6 @@
   </plugins>
   
   <!--
-      limits
       ik-feet
    joint-PID-controller
    idyn-controller
@@ -171,11 +170,8 @@
     <stance-on-contact type="bool">false</stance-on-contact>
     <redirect-swing-interval type="double">0.75</redirect-swing-interval>
     <holonomic type="bool">false</holonomic>
-    <step-height type="double">0.03</step-height>
+    <step-height type="double">0.015</step-height>
     <gait-duration type="double">0.3</gait-duration>
-    <length type="double">0.309926</length>
-    <width type="double">0.1344496</width>
-    <height type="double">0.161853</height>
     <!--troting gait-->
 <!--    <gait type="double">0  0.5  0.5  0</gait>-->
     <gait type="double">0.25  0.75  0.75  0.25</gait>
@@ -251,8 +247,8 @@
     <real-time-factor type="double">1</real-time-factor>
     <id type="string">LF_FOOT           RF_FOOT             LH_FOOT             RH_FOOT</id>
     <gains>
-      <kp type="double">1e3 1e3 1e3   1e3 1e3 1e3   1e3 1e3 1e3   1e3 1e3 1e3</kp>
-      <kv type="double">3e1 3e1 3e1     3e1 3e1 3e1     3e1 3e1 3e1     3e1 3e1 3e1     </kv>
+      <kp type="double">5e2 5e2 5e2   5e2 5e2 5e2   5e2 5e2 5e2   5e2 5e2 5e2</kp>
+      <kv type="double">6e0 6e0 6e0     6e0 6e0 6e0     6e0 6e0 6e0     6e0 6e0 6e0     </kv>
       <ki type="double">0 0 0     0 0 0     0 0 0     0 0 0</ki>
     </gains>
   </eef-PID-controller>
@@ -276,13 +272,13 @@
     <file type="string">inverse-dynamics/libinverse-dynamics.so</file>
     <priority type="double">4</priority>
     <real-time-factor type="double">1</real-time-factor>
-    <dt type="double">0</dt>
+    <dt type="double">0.005</dt>
     <alpha type="double">1</alpha>
     <last-cfs type="bool">false</last-cfs>
     <last-cfs-filter type="bool">false</last-cfs-filter>
     <des-contact type="bool">true</des-contact>
     <max-contacts-per-foot type="double">1</max-contacts-per-foot>
-    <type type="string vector">CFLCP</type> <!-- CFQP (BEST: Clawar), CFLCP (EXPERIMENTAL: Anitesciu-Potra), NSQP (EXPERIMENTAL: No-slip CLAWAR), NSLCP (BEST: No-slip LCP) -->
+    <type type="string vector">CFQP</type> <!-- CFQP (BEST: Clawar), CFLCP (EXPERIMENTAL: Anitesciu-Potra), NSQP (EXPERIMENTAL: No-slip CLAWAR), NSLCP (BEST: No-slip LCP) -->
 <!--CFQP CFLCP NSQP NSLCP-->
   </idyn-controller>
 </XML>

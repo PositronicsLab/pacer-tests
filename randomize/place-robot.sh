@@ -9,4 +9,5 @@ do
   sed -i.bak 's#<XML >##g' $NAME-sim.xml
   sed -i.bak 's#<Moby >##g' $NAME-sim.xml
   sed -i.bak 's#</Moby>#</MOBY>#g' $NAME-sim.xml
+  cp -f $NAME-sim.xml model.xml
 done

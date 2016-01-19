@@ -9,7 +9,7 @@ cd ${DIR}
 git clean -dfx .
 
 # re-parse '.in' files
-./setup-tests.sh *.in
+../setup-tests.sh *.in
 
 #combine sim and robot files
 ../randomize/place-robot.sh $1
