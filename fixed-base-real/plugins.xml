@@ -1,7 +1,6 @@
   <XML>
   <plugins type="string vector">
     sinusoid-trajectory
-    joint-PID-controller
     imu-reader
   </plugins>
   
