@@ -1,9 +1,6 @@
   <XML>
   <plugins type="string vector">
     monte-carlo-simulation
-    stay
-    joint-PID-controller
-   idyn-controller
   </plugins>
   
   <!--
@@ -81,12 +78,12 @@
     <file type="string">monte-carlo-simulation/libmonte-carlo-simulation.so</file>
     <real-time-factor type="double">1</real-time-factor>
     <priority type="double">0</priority>
-    <duration type="double">10</duration>
+    <duration type="double">1</duration>
     <dt type="double">0.001</dt>
     <display type="bool">false</display>
-    <output-model type="bool">false</output-model>
-    <max-samples type="int">100</max-samples>
-    <max-threads type="int">4</max-threads>
+    <output-model type="bool">true</output-model>
+    <max-samples type="int">20</max-samples>
+    <max-threads type="int">1</max-threads>
     <executable type="string">monte-carlo-simulation/sample.bin</executable>
     <task-directory type="string">../fixed-base-sample</task-directory>
   </monte-carlo-simulation>

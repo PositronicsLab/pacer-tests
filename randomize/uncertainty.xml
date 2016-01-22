@@ -27,23 +27,23 @@
           <length>
             <distribution type="string">uniform</distribution>
             <unit   type="string vector">absolute</unit>
-            <min    type="double vector">-0.05</min>
-            <max    type="double vector">0.05</max>
+            <min    type="double vector">0.03</min>
+            <max    type="double vector">0.2</max>
           </length>
           <radius>
             <distribution type="string">uniform</distribution>
-            <unit   type="string vector">proportional</unit>
-            <min    type="double vector">-0.05</min>
-            <max    type="double vector">0.05</max>
+            <unit   type="string vector">absolute</unit>
+            <min    type="double vector">0.001</min>
+            <max    type="double vector">0.02</max>
           </radius>
         
         <foot>
           <density type="double vector">1200</density>
           <radius>
             <distribution type="string">uniform</distribution>
-            <unit   type="string vector">proportional</unit>
-            <min    type="double vector">-0.05</min>
-            <max    type="double vector">0.05</max>
+            <unit   type="string vector">absolute</unit>
+            <min    type="double vector">0.001</min>
+            <max    type="double vector">0.02</max>
           </radius>
         </foot>
       </LF_FOOT>
@@ -57,23 +57,23 @@
           <length>
             <distribution type="string">uniform</distribution>
             <unit   type="string vector">absolute</unit>
-            <min    type="double vector">-0.05</min>
-            <max    type="double vector">0.05</max>
+            <min    type="double vector">0.03</min>
+            <max    type="double vector">0.2</max>
           </length>
           <radius>
             <distribution type="string">uniform</distribution>
-            <unit   type="string vector">proportional</unit>
-            <min    type="double vector">-0.05</min>
-            <max    type="double vector">0.05</max>
+            <unit   type="string vector">absolute</unit>
+            <min    type="double vector">0.001</min>
+            <max    type="double vector">0.02</max>
           </radius>
         
         <foot>
           <density type="double vector">1200</density>
           <radius>
             <distribution type="string">uniform</distribution>
-            <unit   type="string vector">proportional</unit>
-            <min    type="double vector">-0.05</min>
-            <max    type="double vector">0.05</max>
+            <unit   type="string vector">absolute</unit>
+            <min    type="double vector">0.001</min>
+            <max    type="double vector">0.02</max>
           </radius>
         </foot>
       </RF_FOOT>
@@ -87,23 +87,23 @@
           <length>
             <distribution type="string">uniform</distribution>
             <unit   type="string vector">absolute</unit>
-            <min    type="double vector">-0.05</min>
-            <max    type="double vector">0.05</max>
+            <min    type="double vector">0.03</min>
+            <max    type="double vector">0.2</max>
           </length>
           <radius>
             <distribution type="string">uniform</distribution>
-            <unit   type="string vector">proportional</unit>
-            <min    type="double vector">-0.05</min>
-            <max    type="double vector">0.05</max>
+            <unit   type="string vector">absolute</unit>
+            <min    type="double vector">0.001</min>
+            <max    type="double vector">0.02</max>
           </radius>
         
         <foot>
           <density type="double vector">1200</density>
           <radius>
             <distribution type="string">uniform</distribution>
-            <unit   type="string vector">proportional</unit>
-            <min    type="double vector">-0.05</min>
-            <max    type="double vector">0.05</max>
+            <unit   type="string vector">absolute</unit>
+            <min    type="double vector">0.001</min>
+            <max    type="double vector">0.02</max>
           </radius>
         </foot>
       </LH_FOOT>
@@ -116,23 +116,23 @@
           <length>
             <distribution type="string">uniform</distribution>
             <unit   type="string vector">absolute</unit>
-            <min    type="double vector">-0.05</min>
-            <max    type="double vector">0.05</max>
+            <min    type="double vector">0.03</min>
+            <max    type="double vector">0.2</max>
           </length>
           <radius>
             <distribution type="string">uniform</distribution>
-            <unit   type="string vector">proportional</unit>
-            <min    type="double vector">-0.05</min>
-            <max    type="double vector">0.05</max>
+            <unit   type="string vector">absolute</unit>
+            <min    type="double vector">0.001</min>
+            <max    type="double vector">0.02</max>
           </radius>
         
         <foot> 
           <density type="double vector">1200</density>
           <radius>
             <distribution type="string">uniform</distribution>
-            <unit   type="string vector">proportional</unit>
-            <min    type="double vector">-0.05</min>
-            <max    type="double vector">0.05</max>
+            <unit   type="string vector">absolute</unit>
+            <min    type="double vector">0.001</min>
+            <max    type="double vector">0.02</max>
           </radius>
         </foot>
       </RH_FOOT>
@@ -149,14 +149,14 @@
           <length>
             <distribution type="string">uniform</distribution>
             <unit   type="string vector">absolute</unit>
-            <min    type="double vector">0.05</min>
-            <max    type="double vector">0.05</max>
+            <min    type="double vector">0.03</min>
+            <max    type="double vector">0.2</max>
           </length>
           <radius>
             <distribution type="string">uniform</distribution>
-            <unit   type="string vector">proportional</unit>
-            <min    type="double vector">-0.05</min>
-            <max    type="double vector">0.05</max>
+            <unit   type="string vector">absolute</unit>
+            <min    type="double vector">0.001</min>
+            <max    type="double vector">0.02</max>
           </radius>
         
       </LF_LEG_2>
@@ -170,14 +170,14 @@
           <length>
             <distribution type="string">uniform</distribution>
             <unit   type="string vector">absolute</unit>
-            <min    type="double vector">-0.05</min>
-            <max    type="double vector">-0.05</max>
+            <min    type="double vector">0.03</min>
+            <max    type="double vector">0.2</max>
           </length>
           <radius>
             <distribution type="string">uniform</distribution>
-            <unit   type="string vector">proportional</unit>
-            <min    type="double vector">-0.05</min>
-            <max    type="double vector">0.05</max>
+            <unit   type="string vector">absolute</unit>
+            <min    type="double vector">0.001</min>
+            <max    type="double vector">0.02</max>
           </radius>
         
       </RF_LEG_2>
@@ -191,14 +191,14 @@
           <length>
             <distribution type="string">uniform</distribution>
             <unit   type="string vector">absolute</unit>
-            <min    type="double vector">-0.05</min>
-            <max    type="double vector">0.05</max>
+            <min    type="double vector">0.03</min>
+            <max    type="double vector">0.2</max>
           </length>
           <radius>
             <distribution type="string">uniform</distribution>
-            <unit   type="string vector">proportional</unit>
-            <min    type="double vector">-0.05</min>
-            <max    type="double vector">0.05</max>
+            <unit   type="string vector">absolute</unit>
+            <min    type="double vector">0.001</min>
+            <max    type="double vector">0.02</max>
           </radius>
         
       </LH_LEG_2>
@@ -212,14 +212,14 @@
           <length>
             <distribution type="string">uniform</distribution>
             <unit   type="string vector">absolute</unit>
-            <min    type="double vector">-0.05</min>
-            <max    type="double vector">0.05</max>
+            <min    type="double vector">0.03</min>
+            <max    type="double vector">0.2</max>
           </length>
           <radius>
             <distribution type="string">uniform</distribution>
-            <unit   type="string vector">proportional</unit>
-            <min    type="double vector">-0.05</min>
-            <max    type="double vector">0.05</max>
+            <unit   type="string vector">absolute</unit>
+            <min    type="double vector">0.001</min>
+            <max    type="double vector">0.02</max>
           </radius>
         
       </RH_LEG_2>

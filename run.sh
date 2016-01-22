@@ -1,14 +1,9 @@
 #!/bin/bash
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-pushd .
-
-# set up workspace
-cd ${DIR}
   # clean up worksapce
-  git clean -dfx .
+  git clean -dfx ${DIR}
   # re-parse '.in' files
-  ./setup-tests.sh */*.in
-popd
+  ${DIR}/setup-tests.sh ${DIR}/*/*.in
 
 ${PACER_INTERFACE_PATH}/pacer-driver $@ 
 

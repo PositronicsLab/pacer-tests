@@ -2,7 +2,8 @@
   <plugins type="string vector">
     end-effectors
     sinusoid-trajectory
-    joint-PID-controller
+   idyn-controller
+    joint-PID-controller-accel
   </plugins>
   
   <!--
@@ -245,7 +246,7 @@
 
 <joint-PID-controller-accel>
   <file type="string">libjoint-PID-controller.so</file>
-  <priority type="double">3</priority>
+  <priority type="double">4</priority>
   <real-time-factor type="double">1</real-time-factor>
   <acceleration type="bool">true</acceleration>
   <!-- Gains are for the q of joint ids respectively -->

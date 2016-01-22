@@ -4,11 +4,12 @@
       end-effectors
       stand-trajectory
       eef-PID-controller
-      monte-carlo-simulation
-    </plugins>
+  </plugins>
   
   <!--
    OTHER PLUGINS:
+      monte-carlo-simulation
+      monte-carlo-simulation
    
    joint-PID-controller
    idyn-controller
@@ -20,19 +21,6 @@
    -->
   
   <!-- =================== PLUGIN DESCRIPTIONS ==================== -->
-  <monte-carlo-simulation>
-    <file type="string">monte-carlo-simulation/libmonte-carlo-simulation.so</file>
-    <real-time-factor type="double">1</real-time-factor>
-    <priority type="double">0</priority>
-    <duration type="double">0</duration>
-    <dt type="double">0.001</dt>
-    <display type="bool">false</display>
-    <output-model type="bool">true</output-model>
-    <max-samples type="int">10</max-samples>
-    <max-threads type="int">4</max-threads>
-    <executable type="string">monte-carlo-simulation/sample.bin</executable>
-    <task-directory type="string">.</task-directory>
-  </monte-carlo-simulation>
   <imu-reader>
     <priority type="double">0</priority>
     <real-time-factor type="double">1</real-time-factor>

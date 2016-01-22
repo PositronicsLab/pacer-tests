@@ -3,6 +3,7 @@
   <real-time-factor type="double">1</real-time-factor>
   
   <init-file type="file">@@PACER_MODEL_PATH@@/@@TESTING_ROBOT@@/init.xml</init-file>
+  <robot-model type="string">@@PWD@@/model.xml</robot-model>
   
   <init>
     <base>
@@ -15,6 +16,6 @@
   </init>
   
   <task-file type="file">plugins.xml</task-file>
-  <uncertainty-file type="file">uncertainty.xml</uncertainty-file>
+  <uncertainty-file type="file">@@PACER_MODEL_PATH@@/@@TESTING_ROBOT@@/uncertainty.xml</uncertainty-file>
 
 </XML>
