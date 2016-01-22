@@ -28,8 +28,7 @@
     <rate type="int">1000</rate>
     <pose type="double">0 0 0 0 0 0</pose>
     <file type="string">imu/libimu-reader.so</file>
-    <!-- port type="string">/dev/tty.usbmodemfd131</port -->
-    <port type="string">/dev/ttyACM0</port>
+  <port type="string">/dev/tty.usbmodemfd121</port>
   </imu-reader>
   <arduino-controller>
     <file type="string">arduino/libarduino.so</file>

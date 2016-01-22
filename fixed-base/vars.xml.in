@@ -10,9 +10,6 @@
       <x type="double"> 0 0 0 0 0 0 </x> 
       <xd type="double"> 0 0 0 0 0 0 </xd> 
     </base>
-    <joint>
-      <q type="double">  0.1 0.8 1.2           -0.1 -0.8 -1.2         -0.1 -0.8 -1.2          1.5709 1.5709 0 </q>
-    </joint>
   </init>
   
   <task-file type="file">plugins.xml</task-file>

@@ -1,12 +1,14 @@
   <XML>
   <plugins type="string vector">
-    end-effectors
+    eef-data
     sinusoid-trajectory
-   idyn-controller
-    joint-PID-controller-accel
+    delay-kinematic-command
+    joint-PID-controller
+    limits
   </plugins>
   
   <!--
+    delay-dynamic-command
     end-effectors
     sinusoid-trajectory
     joint-PID-controller
@@ -23,6 +25,49 @@
    -->
   
   <!-- =================== PLUGIN DESCRIPTIONS ==================== -->
+  <eef-data>
+    <file type="string">libeef-data.so</file>
+    <real-time-factor type="double">1</real-time-factor>
+    <priority type="double">0</priority>
+  </eef-data>
+  <sinusoid-trajectory>
+    <file type="string">libsinusoid.so</file>
+     <real-time-factor type="double">1</real-time-factor>
+     <priority type="double">1</priority>
+     <frequency type="double">16</frequency>
+     <amplitude type="double">0.2</amplitude>
+     <realtime type="bool">false</realtime>
+  </sinusoid-trajectory>
+  <delay-kinematic-command>
+    <file type="string">libdelay.so</file>
+    <real-time-factor type="double">1</real-time-factor>
+    <priority type="double">2</priority>
+    <parameters type="string vector">kinematic</parameters>
+  </delay-kinematic-command>
+  <joint-PID-controller>
+    <file type="string">libjoint-PID-controller.so</file>
+    <priority type="double">3</priority>
+    <real-time-factor type="double">1</real-time-factor>
+    <acceleration type="bool">false</acceleration>
+    <!-- Gains are for the q of joint ids respectively -->
+    <gains>
+      <kp type="double">4e1 4e1 4e1       4e1 4e1 4e1       4e1 4e1 4e1       4e1 4e1 4e1   </kp>
+      <kv type="double">1e-1 1e-1 1e-1    1e-1 1e-1 1e-1    1e-1 1e-1 1e-1    1e-1 1e-1 1e-1    </kv>
+      <ki type="double">0     0     0       0   0   0       0     0     0     0   0   0</ki>
+    </gains>
+  </joint-PID-controller>
+  <delay-dynamic-command>
+    <file type="string">libdelay.so</file>
+    <real-time-factor type="double">1</real-time-factor>
+    <priority type="double">4</priority>
+    <parameters type="string vector">dynamic</parameters>
+  </delay-dynamic-command>
+  <limits>
+    <file type="string">liblimits.so</file>
+    <real-time-factor type="double">1</real-time-factor>
+    <priority type="double">10</priority>
+  </limits>
+
   <imu-reader>
     <priority type="double">0</priority>
     <real-time-factor type="double">1</real-time-factor>
@@ -165,14 +210,6 @@
      <priority type="double">1</priority>
   </stand-trajectory>
 
-  <sinusoid-trajectory>
-    <file type="string">libsinusoid.so</file>
-     <real-time-factor type="double">1</real-time-factor>
-     <priority type="double">1</priority>
-     <frequency type="double">16</frequency>
-     <amplitude type="double">0.2</amplitude>
-     <realtime type="bool">false</realtime>
-  </sinusoid-trajectory>
   
   
   <gait-planner>
@@ -230,19 +267,12 @@
     <real-time-factor type="double">1</real-time-factor>
     <abs-err-tolerance type="double">1.5e-3</abs-err-tolerance>
   </ik-feet>
-  
-  <joint-PID-controller>
-    <file type="string">libjoint-PID-controller.so</file>
-    <priority type="double">4</priority>
+  <fk-feet>
+    <file type="string">libforward-kinematics.so</file>
+    <priority type="double">2</priority>
     <real-time-factor type="double">1</real-time-factor>
-    <acceleration type="bool">false</acceleration>
-    <!-- Gains are for the q of joint ids respectively -->
-    <gains>
-      <kp type="double">2e1 2e1 2e1      2e1 2e1 2e1     2e1 2e1 2e1    2e1 2e1 2e1   </kp>
-      <kv type="double">1e-1 1e-1 1e-1  1e-1 1e-1 1e-1  1e-1 1e-1 1e-1  1e-1 1e-1 1e-1</kv>
-      <ki type="double">0     0     0       0   0   0     0     0     0     0   0   0</ki>
-    </gains>
-  </joint-PID-controller>
+  </fk-feet>
+  
 
 <joint-PID-controller-accel>
   <file type="string">libjoint-PID-controller.so</file>
@@ -252,19 +282,18 @@
   <!-- Gains are for the q of joint ids respectively -->
   <gains>
     <kp type="double">5e4 5e4 5e4      5e4 5e4 5e4      5e4 5e4 5e4     5e4 5e4 5e4</kp>
-    <kv type="double">1e2 1e2 1e2 1e2 1e2 1e2 1e2 1e2 1e2 1e2 1e2 1e2 </kv>
+    <kv type="double">1e2 1e2 1e2      1e2 1e2 1e2      1e2 1e2 1e2     1e2 1e2 1e2 </kv>
     <ki type="double">1e-2 1e-2 1e-2      1e-2 1e-2 1e-2      1e-2 1e-2 1e-2     1e-2 1e-2 1e-2</ki>
   </gains>
 </joint-PID-controller-accel>
-
   <eef-PID-controller>
     <file type="string">libeef-PID-controller.so</file>
     <priority type="double">4</priority>
     <real-time-factor type="double">1</real-time-factor>
     <id type="string">LF_FOOT           RF_FOOT             LH_FOOT             RH_FOOT</id>
     <gains>
-      <kp type="double">1e3 1e3 1e3   1e3 1e3 1e3   1e3 1e3 1e3   1e3 1e3 1e3</kp>
-      <kv type="double">3e1 3e1 3e1     3e1 3e1 3e1     3e1 3e1 3e1     3e1 3e1 3e1     </kv>
+      <kp type="double">5e2 5e2 5e2   5e2 5e2 5e2   5e2 5e2 5e2   5e2 5e2 5e2</kp>
+      <kv type="double">6e0 6e0 6e0     6e0 6e0 6e0     6e0 6e0 6e0     6e0 6e0 6e0     </kv>
       <ki type="double">0 0 0     0 0 0     0 0 0     0 0 0</ki>
     </gains>
   </eef-PID-controller>
