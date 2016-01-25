@@ -86,7 +86,7 @@
     <max-samples type="int">100</max-samples>
     <max-threads type="int">16</max-threads>
     <executable type="string">monte-carlo-simulation/sample.bin</executable>
-    <task-directory type="string">../fixed-base-sample</task-directory>
+    <task-directory type="string">../sample</task-directory>
   </monte-carlo-simulation>
   
   <center-of-mass>
