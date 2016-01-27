@@ -2,6 +2,7 @@
   <plugins type="string vector">
     plugin-scheduler
     freeze
+    error-check
     joint-PID-controller
   </plugins>
   
@@ -48,7 +49,7 @@
     <redirect-swing-interval type="double">0</redirect-swing-interval>
     <holonomic type="bool">false</holonomic>
     <step-height type="double">0.02</step-height>
-    <gait-duration type="double">0.6</gait-duration>
+    <gait-duration type="double">1.0</gait-duration>
     <length type="double">0.309926</length>
     <width type="double">0.1344496</width>
     <height type="double">0.161853</height>
@@ -87,17 +88,18 @@
     <events type="string vector">walk</events>
     <!--  PERSISTENT    -->
     <walk>
-      <time type="double">3.0</time>
+      <time type="double">1.0</time>
       <close type="string vector">
         freeze
         plugin-scheduler
+        joint-PID-controller
       </close>
       <open type="string vector">
         center-of-mass
         end-effectors
         gait-planner
         delay-kinematic-command
-        ik-feet
+        eef-PID-controller
       </open>
     </walk>
   </plugin-scheduler>

@@ -4,10 +4,10 @@ pushd .
 cd ${DIR}
 
 # clean up worksapce
-git clean -dfx ../start ../sample
+#git clean -dfx ../start ../sample
 
 # re-parse '.in' files
-../../setup-tests.sh ../start/*.in ../sample/*.in
+#../../setup-tests.sh ../start/*.in ../sample/*.in
 
 ${PACER_INTERFACE_PATH}/pacer-driver --stepsize 0.000000000001 $@
 
