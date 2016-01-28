@@ -49,7 +49,7 @@
     <redirect-swing-interval type="double">0</redirect-swing-interval>
     <holonomic type="bool">false</holonomic>
     <step-height type="double">0.02</step-height>
-    <gait-duration type="double">1.0</gait-duration>
+    <gait-duration type="double">0.8</gait-duration>
     <length type="double">0.309926</length>
     <width type="double">0.1344496</width>
     <height type="double">0.161853</height>
