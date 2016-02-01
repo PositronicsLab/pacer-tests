@@ -48,7 +48,7 @@
     <stance-on-contact type="bool">false</stance-on-contact>
     <redirect-swing-interval type="double">0</redirect-swing-interval>
     <holonomic type="bool">false</holonomic>
-    <step-height type="double">0.04</step-height>
+    <step-height type="double">0.03</step-height>
     <gait-duration type="double">0.6</gait-duration>
     <length type="double">0.309926</length>
     <width type="double">0.1344496</width>

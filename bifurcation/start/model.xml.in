@@ -10,9 +10,7 @@
 <TimeSteppingSimulator min-step-size="0.0005">
   <DisabledPair object1-id="LINKS" object2-id="LINKS"/>
   <DynamicBody dynamic-body-id="LINKS" />
-  <ImplicitConstraint joint-id="fixed-base" /> 
 </TimeSteppingSimulator>
-  <FixedJoint id="fixed-base" inboard-link-id="GROUND" outboard-link-id="BODY0" location="0 0 0" />
 
   <SDF filename="@@PACER_MODEL_PATH@@/@@TESTING_ROBOT@@/model.sdf"/> 
 </MOBY>

@@ -87,7 +87,7 @@
     <events type="string vector">walk</events>
     <!--  PERSISTENT    -->
     <walk>
-      <time type="double">0.0</time>
+      <time type="double">0.5</time>
       <close type="string vector">
         freeze
         plugin-scheduler

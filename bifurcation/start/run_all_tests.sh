@@ -4,10 +4,10 @@ pushd .
 cd ${DIR}
 
 # clean up worksapce
-git clean -dfx ../start ../sample*
+#git clean -dfx ../start $@
 
 # re-parse '.in' files
-../../setup-tests.sh ../start/*.in ../sample*/*.in
+../../setup-tests.sh ../*/*.in
 
 for i in $@
 do
