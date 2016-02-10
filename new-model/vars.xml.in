@@ -9,6 +9,9 @@
       <x type="double">0 0 0.15 0 0 0</x>
     </base>
   </init>
+  <moby>
+    <display-moby-skeleton type="bool">true</display-moby-skeleton>
+  </moby>
   
   <task-file type="file">plugins.xml</task-file>
 
