@@ -3,7 +3,14 @@
   <real-time-factor type="double">1</real-time-factor>
   
   <init-file type="file">@@PACER_MODEL_PATH@@/@@TESTING_ROBOT@@/init.xml</init-file>
-  
+
+  <init>
+    <base>
+      <xd type="double vector">1.0 0 0 0 0 0 </xd>
+      <x type="double vector">0 0 0.2 0 0 0 </x>
+    </base>
+  </init>
+
   <task-file type="file">plugins.xml</task-file>
 
 </XML>

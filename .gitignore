@@ -6,6 +6,7 @@
 *.mat
 *.dat
 *.osg
+*.png
 driver.out*
 build/**/* 
 debug/**/* 

@@ -30,7 +30,7 @@
     <dt type="double">0.001</dt>
     <display type="bool">true</display>
     <output-model type="bool">true</output-model>
-    <max-samples type="int">2</max-samples>
+    <max-samples type="int">24</max-samples>
     <max-threads type="int">1</max-threads>
     <executable type="string">monte-carlo-simulation/sample.bin</executable>
     <task-directory type="string">../standing</task-directory>
