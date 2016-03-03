@@ -8,8 +8,9 @@
 *.osg
 *.png
 driver.out*
-build/**/* 
-debug/**/* 
-release/**/* 
+vars.xml
+model.xml
+model-*.xml
 CMakeFiles
 CMakeCache.txt
+*.mp4

@@ -26,7 +26,7 @@
   <!-- =================== PLUGIN DESCRIPTIONS ==================== -->
   <imu-reader>
     <priority type="double">0</priority>
-    <real-time-factor type="double">1</real-time-factor>
+    <real-time-factor type="int">1</real-time-factor>
     <baud-rate type="int">115200</baud-rate>
     <rate type="int">1000</rate>
     <pose type="double">0 0 0 0 0 0</pose>
@@ -35,7 +35,7 @@
   </imu-reader>
   <gait-planner>
     <file type="string">libgait-planner.so</file>
-    <real-time-factor type="double">1</real-time-factor>
+    <real-time-factor type="int">1</real-time-factor>
     <command type="double vector">0.1 0 0 0 0 -0.5</command>
     <priority type="double">1</priority>
     <pose type="double">0.0 0 0 0 0 0</pose>
@@ -61,23 +61,23 @@
   <arduino-controller>
     <file type="string">arduino/libarduino.so</file>
     <priority type="double">10</priority>
-    <real-time-factor type="double">10</real-time-factor>
+    <real-time-factor type="int">10</real-time-factor>
     <baud-rate type="int">115200</baud-rate>
     <port type="string">/dev/ttyUSB0</port>
   </arduino-controller>
   <viz-jump>
     <priority type="double">0</priority>
-    <real-time-factor type="double">1</real-time-factor>
+    <real-time-factor type="int">1</real-time-factor>
     <file type="string">libvisualize-ballistic-moton.so</file>
   </viz-jump>
   <exit-on-contact>
     <file type="string">libexit-contact.so</file>
-    <real-time-factor type="double">1</real-time-factor>
+    <real-time-factor type="int">1</real-time-factor>
     <priority type="double">0</priority>
   </exit-on-contact>
   <plugin-scheduler>
     <file type="string">libplugin-scheduler.so</file>
-    <real-time-factor type="double">1</real-time-factor>
+    <real-time-factor type="int">1</real-time-factor>
     <priority type="double">0</priority>
     <relative-start-time type="bool">true</relative-start-time>
     <events type="string vector">init</events>
@@ -93,13 +93,13 @@
   </plugin-scheduler>
   <error-check>
     <file type="string">liberror-check.so</file>
-    <real-time-factor type="double">1</real-time-factor>
+    <real-time-factor type="int">1</real-time-factor>
     <priority type="double">0</priority>
   </error-check>
   
   <monte-carlo-simulation>
     <file type="string">monte-carlo-simulation/libmonte-carlo-simulation.so</file>
-    <real-time-factor type="double">1</real-time-factor>
+    <real-time-factor type="int">1</real-time-factor>
     <priority type="double">0</priority>
     <duration type="double">2</duration>
     <dt type="double">0.001</dt>
@@ -112,19 +112,19 @@
   
   <center-of-mass>
     <file type="string">libcenter-of-mass.so</file>
-    <real-time-factor type="double">1</real-time-factor>
+    <real-time-factor type="int">1</real-time-factor>
     <priority type="double">0</priority>
   </center-of-mass>
   
   <end-effectors>
     <file type="string">libend-effectors.so</file>
-    <real-time-factor type="double">1</real-time-factor>
+    <real-time-factor type="int">1</real-time-factor>
     <priority type="double">0</priority>
   </end-effectors>
   
   <output>
     <file type="string">output/liboutput.so</file>
-    <real-time-factor type="double">10</real-time-factor>
+    <real-time-factor type="int">10</real-time-factor>
     <priority type="double">10</priority>
     <print-data>
       <vec3 type="string vector">
@@ -155,7 +155,7 @@
 
   <stabilization>
     <file type="string">libstabilization.so</file>
-    <real-time-factor type="double">1</real-time-factor>
+    <real-time-factor type="int">1</real-time-factor>
     <priority type="double">2</priority>
     <des-contact type="bool">true</des-contact>
     <min-allowed-friction type="double">0</min-allowed-friction>
@@ -174,7 +174,7 @@
   
   <gamepad>
     <file type="string">libgamepad.so</file>
-     <real-time-factor type="double">1</real-time-factor>
+     <real-time-factor type="int">1</real-time-factor>
      <max-forward-speed type="double">0.3</max-forward-speed>
      <max-strafe-speed type="double">0.2</max-strafe-speed>
      <max-turn-speed type="double">1</max-turn-speed>
@@ -186,13 +186,13 @@
 
   <stand-trajectory>
     <file type="string">libstand.so</file>
-     <real-time-factor type="double">1</real-time-factor>
+     <real-time-factor type="int">1</real-time-factor>
      <priority type="double">1</priority>
   </stand-trajectory>
 
   <sinusoid-trajectory>
     <file type="string">libsinusoid.so</file>
-     <real-time-factor type="double">1</real-time-factor>
+     <real-time-factor type="int">1</real-time-factor>
      <priority type="double">1</priority>
      <frequency type="double">16</frequency>
      <amplitude type="double">0.2</amplitude>
@@ -203,14 +203,14 @@
   <ik-feet>
     <file type="string">libinverse-kinematics.so</file>
     <priority type="double">2</priority>
-    <real-time-factor type="double">1</real-time-factor>
+    <real-time-factor type="int">1</real-time-factor>
     <abs-err-tolerance type="double">1.5e-3</abs-err-tolerance>
   </ik-feet>
   
   <joint-PID-controller>
     <file type="string">libjoint-PID-controller.so</file>
     <priority type="double">4</priority>
-    <real-time-factor type="double">1</real-time-factor>
+    <real-time-factor type="int">1</real-time-factor>
     <acceleration type="bool">false</acceleration>
     <!-- Gains are for the q of joint ids respectively -->
     <gains>
@@ -223,7 +223,7 @@
 <joint-PID-controller-accel>
   <file type="string">libjoint-PID-controller.so</file>
   <priority type="double">3</priority>
-  <real-time-factor type="double">1</real-time-factor>
+  <real-time-factor type="int">1</real-time-factor>
   <acceleration type="bool">true</acceleration>
   <!-- Gains are for the q of joint ids respectively -->
   <gains>
@@ -236,7 +236,7 @@
   <eef-PID-controller>
     <file type="string">libeef-PID-controller.so</file>
     <priority type="double">4</priority>
-    <real-time-factor type="double">1</real-time-factor>
+    <real-time-factor type="int">1</real-time-factor>
     <id type="string">LF_FOOT           RF_FOOT             LH_FOOT             RH_FOOT</id>
     <gains>
       <kp type="double">1e3 1e3 1e3   1e3 1e3 1e3   1e3 1e3 1e3   1e3 1e3 1e3</kp>
@@ -248,7 +248,7 @@
   <eef-PID-controller-accel>
     <file type="string">libeef-PID-controller.so</file>
     <priority type="double">4</priority>
-    <real-time-factor type="double">1</real-time-factor>
+    <real-time-factor type="int">1</real-time-factor>
     <acceleration type="bool">true</acceleration>
     <id type="string">LF_FOOT           RF_FOOT             LH_FOOT             RH_FOOT</id>
     <!-- Gains are for the q of joint ids respectively -->
@@ -263,7 +263,7 @@
   <idyn-controller>
     <file type="string">inverse-dynamics/libinverse-dynamics.so</file>
     <priority type="double">5</priority>
-    <real-time-factor type="double">1</real-time-factor>
+    <real-time-factor type="int">1</real-time-factor>
     <dt type="double">0</dt>
     <alpha type="double">1</alpha>
     <last-cfs type="bool">false</last-cfs>

@@ -6,7 +6,6 @@
       gait-planner
       ik-feet
       joint-PID-controller-accel
-      gamepad
    idyn-controller
   </plugins>
   

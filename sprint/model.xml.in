@@ -1,0 +1,121 @@
+<XML>
+  <DRIVER>
+    <camera position="-1 0 1" target="5 0 0" up="0 0 1" />
+    <window location="0 0" size="640 480" />
+  </DRIVER>
+  <MOBY>
+    <!-- multiple servo rigid bodies -->
+    <ODEPACKIntegrator id="odepack" abs-err-tol="1e-3" rel-err-tol="1e-3" />
+    <EulerIntegrator id="euler" />
+    <RungeKuttaIntegrator id="rk4" />
+    <RungeKuttaFehlbergIntegrator id="rkf" abs-err-tol="1e-1" rel-err-tol="1e-1" />
+    <BulirschStoerIntegrator id="bs" abs-err-tol="1e-1" rel-err-tol="1e-1" />
+
+    <GravityForce id="gravity" accel="0 0 -9.81" />
+    <StokesDragForce id="drag" drag-b=".01" drag-b-ang=".01" />
+    <ExponentialDissipation id="exp-dissipator">
+      <Body id="LINKS" lambda="1" />
+    </ExponentialDissipation>
+    <RayleighDissipation id="dissipator">
+      <Body id="LINKS" lambda="0" />
+    </RayleighDissipation>
+
+<TimeSteppingSimulator min-step-size="0.001">
+  <RecurrentForce recurrent-force-id="gravity" />
+  <DisabledPair object1-id="LINKS" object2-id="LINKS"/>
+  <DynamicBody dynamic-body-id="LINKS" />
+  <DynamicBody dynamic-body-id="GROUND" />
+  <ContactParameters object1-id="LINKS" object2-id="GROUND" mu-coulomb="1" mu-viscous="0" epsilon="0.0" compliant="true" penalty-kv="100" penalty-kp="100000"  alpha="100" />
+  <!-- setup a planar joint -->
+<!--
+  <ImplicitConstraint joint-id="planar" /> 
+-->
+  <DynamicBody dynamic-body-id="marker0" />
+  <DynamicBody dynamic-body-id="marker1" />
+  <DynamicBody dynamic-body-id="marker2" />
+  <DynamicBody dynamic-body-id="marker3" />
+  <DynamicBody dynamic-body-id="marker4" />
+  <DynamicBody dynamic-body-id="marker5" />
+  <DynamicBody dynamic-body-id="marker6" />
+  <DynamicBody dynamic-body-id="marker7" />
+  <DynamicBody dynamic-body-id="marker8" />
+  <DynamicBody dynamic-body-id="marker9" />
+  <DynamicBody dynamic-body-id="marker10" />
+</TimeSteppingSimulator>
+  <!-- setup a planar joint -->
+<!--
+  <PlanarJoint id="planar" inboard-link-id="GROUND" outboard-link-id="BODY0" normal="1 0 0" location="0 0 0" />
+-->
+
+<SDF filename="@@PACER_MODEL_PATH@@/@@TESTING_ROBOT@@/model.sdf"/>
+
+  <!-- setup the platform rigid body; it is not active -->
+     <Box id="ground-primitive-viz" rpy="1.5708 0.0 0"  xlen="1000" ylen="0.001" zlen="1000" />
+     <Plane id="ground-primitive" rpy="1.5708 0 0" />
+<!--<Heightmap id="ground-primitive" filename="heightmap.mat" width="1" depth="1" rpy="1.5708 0 0" />-->
+<RigidBody id="GROUND" color="0.6 0.6 0.6 0" enabled="false"
+  position="0 0 0.0"
+  visualization-id="ground-primitive-viz"
+  compliant="false">
+    <CollisionGeometry primitive-id="ground-primitive" />
+  </RigidBody>
+  
+  <Box id="block" rpy="0 0.0 0"  xlen="0.01" ylen="0.1" zlen="0.1" />
+  <RigidBody id="marker0" color="0.6 0.6 0.6 0" enabled="false"
+  position="0 -0.3 0.0"
+  visualization-id="block"
+  compliant="false">
+  </RigidBody>
+  <RigidBody id="marker1" color="0.6 0.6 0.6 0" enabled="false"
+  position="1 -0.3 0.0"
+  visualization-id="block"
+  compliant="false">
+  </RigidBody>
+  <RigidBody id="marker2" color="0.6 0.6 0.6 0" enabled="false"
+  position="2 -0.3 0.0"
+  visualization-id="block"
+  compliant="false">
+  </RigidBody>
+  <RigidBody id="marker3" color="0.6 0.6 0.6 0" enabled="false"
+  position="3 -0.3 0.0"
+  visualization-id="block"
+  compliant="false">
+  </RigidBody>
+  <RigidBody id="marker4" color="0.6 0.6 0.6 0" enabled="false"
+  position="4 -0.3 0.0"
+  visualization-id="block"
+  compliant="false">
+  </RigidBody>
+  <RigidBody id="marker5" color="0.6 0.6 0.6 0" enabled="false"
+  position="5 -0.3 0.0"
+  visualization-id="block"
+  compliant="false">
+  </RigidBody>
+  <RigidBody id="marker6" color="0.6 0.6 0.6 0" enabled="false"
+  position="6 -0.3 0.0"
+  visualization-id="block"
+  compliant="false">
+  </RigidBody>
+  <RigidBody id="marker7" color="0.6 0.6 0.6 0" enabled="false"
+  position="7 -0.3 0.0"
+  visualization-id="block"
+  compliant="false">
+  </RigidBody>
+  <RigidBody id="marker8" color="0.6 0.6 0.6 0" enabled="false"
+  position="8 -0.3 0.0"
+  visualization-id="block"
+  compliant="false">
+  </RigidBody>
+  <RigidBody id="marker9" color="0.6 0.6 0.6 0" enabled="false"
+  position="9 -0.3 0.0"
+  visualization-id="block"
+  compliant="false">
+  </RigidBody>
+  <RigidBody id="marker10" color="0.6 0.6 0.6 0" enabled="false"
+  position="10 -0.3 0.0"
+  visualization-id="block"
+  compliant="false">
+  </RigidBody>
+
+  </MOBY>
+</XML>
