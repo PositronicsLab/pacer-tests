@@ -1,6 +1,6 @@
 <XML>
   <DRIVER>
-    <camera position="-1 0 1" target="5 0 0" up="0 0 1" />
+    <camera position="-1 1 1" target="0 0 0" up="0 0 1" />
     <window location="0 0" size="640 480" />
   </DRIVER>
   <MOBY>
@@ -26,26 +26,7 @@
   <DynamicBody dynamic-body-id="LINKS" />
   <DynamicBody dynamic-body-id="GROUND" />
   <ContactParameters object1-id="LINKS" object2-id="GROUND" mu-coulomb="1" mu-viscous="0" epsilon="0.0" compliant="true" penalty-kv="100" penalty-kp="100000"  alpha="100" />
-  <!-- setup a planar joint -->
-<!--
-  <ImplicitConstraint joint-id="planar" /> 
--->
-  <DynamicBody dynamic-body-id="marker0" />
-  <DynamicBody dynamic-body-id="marker1" />
-  <DynamicBody dynamic-body-id="marker2" />
-  <DynamicBody dynamic-body-id="marker3" />
-  <DynamicBody dynamic-body-id="marker4" />
-  <DynamicBody dynamic-body-id="marker5" />
-  <DynamicBody dynamic-body-id="marker6" />
-  <DynamicBody dynamic-body-id="marker7" />
-  <DynamicBody dynamic-body-id="marker8" />
-  <DynamicBody dynamic-body-id="marker9" />
-  <DynamicBody dynamic-body-id="marker10" />
 </TimeSteppingSimulator>
-  <!-- setup a planar joint -->
-<!--
-  <PlanarJoint id="planar" inboard-link-id="GROUND" outboard-link-id="BODY0" normal="1 0 0" location="0 0 0" />
--->
 
 <SDF filename="@@PACER_MODEL_PATH@@/@@TESTING_ROBOT@@/model.sdf"/>
 
@@ -60,62 +41,5 @@
     <CollisionGeometry primitive-id="ground-primitive" />
   </RigidBody>
   
-  <Box id="block" rpy="0 0.0 0"  xlen="0.01" ylen="0.1" zlen="0.1" />
-  <RigidBody id="marker0" color="0.6 0.6 0.6 0" enabled="false"
-  position="0 -0.3 0.0"
-  visualization-id="block"
-  compliant="false">
-  </RigidBody>
-  <RigidBody id="marker1" color="0.6 0.6 0.6 0" enabled="false"
-  position="1 -0.3 0.0"
-  visualization-id="block"
-  compliant="false">
-  </RigidBody>
-  <RigidBody id="marker2" color="0.6 0.6 0.6 0" enabled="false"
-  position="2 -0.3 0.0"
-  visualization-id="block"
-  compliant="false">
-  </RigidBody>
-  <RigidBody id="marker3" color="0.6 0.6 0.6 0" enabled="false"
-  position="3 -0.3 0.0"
-  visualization-id="block"
-  compliant="false">
-  </RigidBody>
-  <RigidBody id="marker4" color="0.6 0.6 0.6 0" enabled="false"
-  position="4 -0.3 0.0"
-  visualization-id="block"
-  compliant="false">
-  </RigidBody>
-  <RigidBody id="marker5" color="0.6 0.6 0.6 0" enabled="false"
-  position="5 -0.3 0.0"
-  visualization-id="block"
-  compliant="false">
-  </RigidBody>
-  <RigidBody id="marker6" color="0.6 0.6 0.6 0" enabled="false"
-  position="6 -0.3 0.0"
-  visualization-id="block"
-  compliant="false">
-  </RigidBody>
-  <RigidBody id="marker7" color="0.6 0.6 0.6 0" enabled="false"
-  position="7 -0.3 0.0"
-  visualization-id="block"
-  compliant="false">
-  </RigidBody>
-  <RigidBody id="marker8" color="0.6 0.6 0.6 0" enabled="false"
-  position="8 -0.3 0.0"
-  visualization-id="block"
-  compliant="false">
-  </RigidBody>
-  <RigidBody id="marker9" color="0.6 0.6 0.6 0" enabled="false"
-  position="9 -0.3 0.0"
-  visualization-id="block"
-  compliant="false">
-  </RigidBody>
-  <RigidBody id="marker10" color="0.6 0.6 0.6 0" enabled="false"
-  position="10 -0.3 0.0"
-  visualization-id="block"
-  compliant="false">
-  </RigidBody>
-
   </MOBY>
 </XML>

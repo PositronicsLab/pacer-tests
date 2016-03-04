@@ -1,7 +1,7 @@
 git clean -dxf . ;
 ../setup-tests.sh *.in ;
 
-RANGE=0
+RANGE=1
 DECRANGE=100
 frontFootRad1=$RANDOM
 let "frontFootRad1=$RANGE*$frontFootRad1/32768"
