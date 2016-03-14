@@ -3,7 +3,8 @@
       error-check
       end-effectors
       freeze
-      idyn-controller
+      joint-PID-controller-accel
+   idyn-controller
     </plugins>
   
   <!--
@@ -45,9 +46,9 @@
     <acceleration type="bool">false</acceleration>
     <!-- Gains are for the q of joint ids respectively -->
     <gains>
-      <kp type="double">2e1 2e1 2e1      2e1 2e1 2e1     2e1 </kp>
-      <kv type="double">1e-1 1e-1 1e-1  1e-1 1e-1 1e-1  1e-1 </kv>
-      <ki type="double">0     0     0       0   0   0     0  </ki>
+      <kp type="double">2e1 2e1 2e1      2e1 2e1 2e1     2e1 2e1 2e1 2e1 2e1</kp>
+      <kv type="double">1e-1 1e-1 1e-1  1e-1 1e-1 1e-1  1e-1 1e-1 1e-1 1e-1 1e-1</kv>
+      <ki type="double">0     0     0       0   0   0     0  0 0 0 0 </ki>
     </gains>
   </joint-PID-controller>
 
@@ -99,8 +100,8 @@
     <last-cfs type="bool">false</last-cfs>
     <last-cfs-filter type="bool">false</last-cfs-filter>
     <des-contact type="bool">true</des-contact>
-    <max-contacts-per-foot type="double">1</max-contacts-per-foot>
-    <type type="string vector">CFLCP</type> <!-- CFQP (BEST: Clawar), CFLCP (EXPERIMENTAL: Anitesciu-Potra), NSQP (EXPERIMENTAL: No-slip CLAWAR), NSLCP (BEST: No-slip LCP) -->
+    <max-contacts-per-foot type="double">0</max-contacts-per-foot>
+    <type type="string vector">NOCP</type> <!-- CFQP (BEST: Clawar), CFLCP (EXPERIMENTAL: Anitesciu-Potra), NSQP (EXPERIMENTAL: No-slip CLAWAR), NSLCP (BEST: No-slip LCP) -->
 <!--CFQP CFLCP NSQP NSLCP-->
   </idyn-controller>
 </XML>

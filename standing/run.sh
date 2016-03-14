@@ -5,7 +5,5 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
   # re-parse '.in' files
   ../setup-tests.sh *.in
 
-  moby-driver -p=${PACER_BINARY_PATH}/Plugin/Component/inverse-dynamics/libTestPlugin.so -s=0.001 -r -mt=3 -vcp model.xml
-
-
+  moby-driver -p=${PACER_SIMULATOR_PATH}/libPacerMobyPlugin.so -r -s=0.001 -oi -mt=10 model.xml > out.log
 
