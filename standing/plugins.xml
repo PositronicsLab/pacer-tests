@@ -3,7 +3,8 @@
       center-of-mass
       end-effectors
       stand-trajectory
-      eef-PID-controller
+      joint-PID-controller-accel
+      idyn-controller
   </plugins>
   
   <!--
