@@ -13,7 +13,7 @@ legHMult=$(echo "scale=2;$legHMult" | bc)
 denseMult=$(python -c "import random;print(random.uniform(1, 6))")
 denseMult=$(echo "scale=2;$denseMult" | bc)
 
-lenTotal=.388
+lenTotal=.194
 lenFTot=$(echo "scale=2;$lenTotal*$legMult" | bc)
 lenHTot=$(echo "scale=2;$lenTotal-$lenFTot" | bc)
 
