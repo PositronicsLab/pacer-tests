@@ -45,6 +45,10 @@ ${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --duration 0 --xml --n
   --RF_LEG_2.density $density --RF_LEG_2.length $lenF2 --RF_LEG_2.radius 0.01 \
   --RH_FOOT.density $density --RH_FOOT.foot.radius 0.01 --RH_FOOT.length 0.1 --RH_FOOT.radius 0.01 \
   --RH_LEG_1.density $density --RH_LEG_1.length $lenH1 --RH_LEG_1.radius 0.01 \
-  --RH_LEG_2.density $density --RH_LEG_2.length $lenH2 --RH_LEG_2.radius 0.01 
+  --RH_LEG_2.density $density --RH_LEG_2.length $lenH2 --RH_LEG_2.radius 0.01 \
+  --LF_X_1.axis  1 0 0 --LF_Y_2.axis 0  1 0 --LF_Y_3.axis 0  1 0 \
+  --RF_X_1.axis -1 0 0 --RF_Y_2.axis 0 -1 0 --RF_Y_3.axis 0 -1 0 \
+  --LH_X_1.axis -1 0 0 --LH_Y_2.axis 0  1 0 --LH_Y_3.axis 0  1 0 \
+  --RH_X_1.axis  1 0 0 --RH_Y_2.axis 0 -1 0 --RH_Y_3.axis 0 -1 0
 
 ./use-model.sh model-*.xml
