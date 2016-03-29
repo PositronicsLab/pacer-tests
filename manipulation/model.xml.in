@@ -22,7 +22,7 @@
 <!-- ideal mox size: 0.050710678 -->
 <Box id="block" rpy="0 0.0 0"  xlen="0.05071" ylen="0.05071" zlen="0.05071" density="6000"/>
   <RigidBody id="BLOCK" color="0.6 0.6 0.6 0" enabled="true"
-  position="0.30 0 0.2"
+  position="0.31 0 0.2"
   visualization-id="block"
   compliant="false">
     <InertiaFromPrimitive primitive-id="block" />

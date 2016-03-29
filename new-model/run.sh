@@ -23,14 +23,17 @@ lenF2=$(echo "scale=2;$lenFTot-$lenF1" | bc)
 lenH1=$(echo "scale=2;$lenHTot*$legHMult" | bc)
 lenH2=$(echo "scale=2;$lenHTot-$lenH1" | bc)
 
-density=$(echo "scale=2;1000*$denseMult" | bc)
+base_size_length=$(python -c "import random;print(random.uniform(0.05, 0.3))")
+base_size_width=$(python -c "import random;print(random.uniform(0.01, 0.2))")
+base_size_height=$(python -c "import random;print(random.uniform(0.01, 0.05))")
 
+density=$(echo "scale=2;1000*$denseMult" | bc)
 
 echo "$lenF1 $lenF2 $lenH1 $lenH2 $density"  >> matlabData.txt;
 echo " "  >> matlabData.txt;
 
 ${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --duration 0 --xml --no-pipe --sample 1 \
-   --BODY0.density $density \
+   --BODY0.density $density --BODY0.size $base_size_length $base_size_width $base_size_height \
   --LF_FOOT.density $density --LF_FOOT.foot.radius 0.01 --LF_FOOT.length 0.1 --LF_FOOT.radius 0.01 \
   --LF_LEG_1.density $density --LF_LEG_1.length $lenF1 --LF_LEG_1.radius 0.01 \
   --LF_LEG_2.density $density --LF_LEG_2.length $lenF2 --LF_LEG_2.radius 0.01 \
@@ -42,6 +45,6 @@ ${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --duration 0 --xml --n
   --RF_LEG_2.density $density --RF_LEG_2.length $lenF2 --RF_LEG_2.radius 0.01 \
   --RH_FOOT.density $density --RH_FOOT.foot.radius 0.01 --RH_FOOT.length 0.1 --RH_FOOT.radius 0.01 \
   --RH_LEG_1.density $density --RH_LEG_1.length $lenH1 --RH_LEG_1.radius 0.01 \
-  --RH_LEG_2.density $density --RH_LEG_2.length $lenH2 --RH_LEG_2.radius 0.01 --RH_X_1.x 1.5709 
+  --RH_LEG_2.density $density --RH_LEG_2.length $lenH2 --RH_LEG_2.radius 0.01 
 
 ./use-model.sh model-*.xml
