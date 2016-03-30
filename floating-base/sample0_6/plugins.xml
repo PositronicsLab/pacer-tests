@@ -98,6 +98,7 @@
         center-of-mass
         end-effectors
         gait-planner
+        delay-sensor-data
         delay-kinematic-command
         eef-PID-controller
       </open>

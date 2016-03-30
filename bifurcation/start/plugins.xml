@@ -31,11 +31,11 @@
     <dt type="double">0.0005</dt>
     <display type="bool">false</display>
     <output-model type="bool">false</output-model>
-    <get-data-online type="bool">true</get-data-online>
+    <get-data-online type="bool">false</get-data-online>
     <max-samples type="int">24</max-samples>
     <max-threads type="int">4</max-threads>
     <executable type="string">monte-carlo-simulation/sample.bin</executable>
-    <task-directory type="string">../sample-maybe</task-directory>
+    <task-directory type="string">../sample-maybe/</task-directory>
   </monte-carlo-simulation>
   <freeze>
     <file type="string">libstay.so</file>

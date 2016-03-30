@@ -12,7 +12,7 @@ cd ${DIR}
 for i in $@
 do
   sed -i.bak "s#>.*</task-directory>#>$i</task-directory>#g" plugins.xml
-  screen -d -m ${PACER_INTERFACE_PATH}/pacer-driver --stepsize 0.000000000001
+  screen -d -m moby-driver -p=${PACER_SIMULATOR_PATH}/libPacerMobyPlugin.so -s=0.0005 -r -oi model.xml
   sleep 10s
 done
 
