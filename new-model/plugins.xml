@@ -7,6 +7,7 @@
       eef-PID-controller-accel
       ik-feet
       idyn-controller
+      error-check
   </plugins>
   
   <!--
@@ -129,7 +130,8 @@
      <max-turn-speed type="double">0.1</max-turn-speed>
      <tolerance type="double">0.1</tolerance>
      <waypoints type="double vector">
-       100.00000  -0.00000
+       .5 .5
+       
      </waypoints>
   </waypoints>
   

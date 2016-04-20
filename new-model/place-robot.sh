@@ -10,3 +10,4 @@ sed -i.bak 's#</Moby>#</MOBY>#g' $1
 cat $1 >> $NAME-sim.xml
 
 cat $NAME-sim.xml > model.xml
+mkdir /home/brad/Desktop/$NAME-sim

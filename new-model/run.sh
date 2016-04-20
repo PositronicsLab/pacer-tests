@@ -1,4 +1,4 @@
-git clean -dxf . ;
+
 ../setup-tests.sh *.in ;
 
 legMult=$(python -c "import random;print(random.uniform(0.1, .9))")
@@ -29,7 +29,7 @@ base_size_height=$(python -c "import random;print(random.uniform(0.01, 0.05))")
 
 density=$(echo "scale=2;1000*$denseMult" | bc)
 
-echo "$lenF1 $lenF2 $lenH1 $lenH2 $density"  >> matlabData.txt;
+echo "$lenF1 $lenF2 $lenH1 $lenH2 $density $base_size_length $base_size_width $base_size_height"  >> matlabData.txt;
 echo " "  >> matlabData.txt;
 
 ${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --duration 0 --xml --no-pipe --sample 1 \
@@ -52,3 +52,4 @@ ${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --duration 0 --xml --n
   --RH_X_1.axis  1 0 0 --RH_Y_2.axis 0 -1 0 --RH_Y_3.axis 0 -1 0
 
 ./use-model.sh model-*.xml
+exit $?
