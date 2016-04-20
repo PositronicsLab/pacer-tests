@@ -10,12 +10,10 @@ do
 			done
 	if [$? == 0]
 		then
-		source</home/brad/Desktop/Tests/pacer-tests/new-model/Testing2.txt>
-		read line
-		var = $line
-		source</home/brad/Desktop/Tests/pacer-tests/new-model/Testing4.txt>
-		read line2
-		var2 = $line2
+		
+		var = cat /home/brad/Desktop/Tests/pacer-tests/new-model/Testing2.txt
+		
+		var2 = cat /home/brad/Desktop/Tests/pacer-tests/new-model/Testing4.txt
 		./move-files.sh
 		
 		else
