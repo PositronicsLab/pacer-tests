@@ -1,6 +1,6 @@
   <XML>
     <plugins type="string vector">
-    freeze
+      freeze
     plugin-scheduler
     error-check
     joint-PID-controller
@@ -27,13 +27,13 @@
     <file type="string">monte-carlo-simulation/libmonte-carlo-simulation.so</file>
     <real-time-factor type="int">1</real-time-factor>
     <priority type="double">0</priority>
-    <duration type="double">2.0</duration>
-    <dt type="double">0.0005</dt>
+    <duration type="double">0</duration>
+    <dt type="double">0.001</dt>
     <display type="bool">false</display>
-    <output-model type="bool">false</output-model>
-    <get-data-online type="bool">false</get-data-online>
-    <max-samples type="int">24</max-samples>
+    <output-model type="bool">true</output-model>
+    <get-data-online type="bool">true</get-data-online>
     <max-threads type="int">4</max-threads>
+    <max-samples type="int">1</max-samples>
     <executable type="string">monte-carlo-simulation/sample.bin</executable>
     <task-directory type="string">../sample-maybe/</task-directory>
   </monte-carlo-simulation>

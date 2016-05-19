@@ -1,8 +1,9 @@
 <XML>
-  <logging type="string">ERROR</logging>
+  <logging type="string">INFO</logging>
   <real-time-factor type="double">1</real-time-factor>
   
   <init-file type="file">@@PACER_MODEL_PATH@@/@@TESTING_ROBOT@@/init.xml</init-file>
+  <robot-model type="string">avg-model/model.xml</robot-model>
   
   <init>
     <base>

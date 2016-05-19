@@ -6,7 +6,7 @@
   <robot-model type="string">@@PWD@@/model.xml</robot-model>
   <init>
     <base>
-      <x type="double">0 0 0.15 0 0 0</x>
+      <x type="double">0 0 0 0 0 0</x>
     </base>
   </init>
   <moby>

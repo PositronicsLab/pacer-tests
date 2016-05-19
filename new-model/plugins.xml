@@ -230,8 +230,8 @@
     <last-cfs type="bool">false</last-cfs>
     <last-cfs-filter type="bool">false</last-cfs-filter>
     <des-contact type="bool">true</des-contact>
-    <max-contacts-per-foot type="double">0</max-contacts-per-foot>
-    <type type="string vector">SNSQP</type> <!-- CFQP (BEST: Clawar), CFLCP (EXPERIMENTAL: Anitesciu-Potra), NSQP (EXPERIMENTAL: No-slip CLAWAR), NSLCP (BEST: No-slip LCP) -->
+    <max-contacts-per-foot type="double">1</max-contacts-per-foot>
+    <type type="string vector">CFQP</type> <!-- CFQP (BEST: Clawar), CFLCP (EXPERIMENTAL: Anitesciu-Potra), NSQP (EXPERIMENTAL: No-slip CLAWAR), NSLCP (BEST: No-slip LCP) -->
 <!--CFQP CFLCP NSQP NSLCP-->
   </idyn-controller>
 </XML>
