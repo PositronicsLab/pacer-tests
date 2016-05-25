@@ -1,0 +1,37 @@
+MatrixTransform {
+  UniqueID MatrixTransform_0
+  nodeMask 0xffffffff
+  cullingActive TRUE
+  referenceFrame RELATIVE
+  Matrix {
+    1 0 0 0
+    0 1 0 0
+    0 0 1 0
+    0 0 0 1
+  }
+  num_children 1
+  MatrixTransform {
+    UniqueID MatrixTransform_1
+    nodeMask 0xffffffff
+    cullingActive TRUE
+    referenceFrame RELATIVE
+    Matrix {
+      1 0 0 0
+      0 1 0 0
+      0 0 1 0
+      0 0 0 1
+    }
+    num_children 1
+    MatrixTransform {
+      nodeMask 0xffffffff
+      cullingActive TRUE
+      referenceFrame RELATIVE
+      Matrix {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        0 0 0 1
+      }
+    }
+  }
+}

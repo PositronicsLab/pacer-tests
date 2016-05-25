@@ -6,11 +6,11 @@ cd ${DIR}
 source ${BUILD_PATH}/Pacer/setup.sh
 
 # clean up worksapce
-git clean -dfx ../start ../sample*
+git clean -dfx . ../sample*
 
 # re-parse '.in' files
 ../../setup-tests.sh ../start/*.in ../sample*/*.in
 
-lldb -- moby-driver -p=${PACER_SIMULATOR_PATH}/libPacerMobyPlugin.so -s=0.001 -r avg-model/model.xml
+$1 -p=${PACER_SIMULATOR_PATH}/libPacerMobyPlugin.so -s=0.001 -r model.xml
 
 popd

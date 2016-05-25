@@ -1,0 +1,512 @@
+MatrixTransform {
+  UniqueID MatrixTransform_0
+  nodeMask 0xffffffff
+  cullingActive TRUE
+  referenceFrame RELATIVE
+  Matrix {
+    1 0 0 0
+    0 1 0 0
+    0 0 1 0
+    0 0 0 1
+  }
+  num_children 8
+  MatrixTransform {
+    nodeMask 0xffffffff
+    cullingActive TRUE
+    referenceFrame RELATIVE
+    Matrix {
+      1 0 0 0
+      0 1 0 0
+      0 0 1 0
+      0.095 0 0.05 1
+    }
+    num_children 1
+    MatrixTransform {
+      UniqueID MatrixTransform_1
+      nodeMask 0xffffffff
+      cullingActive TRUE
+      StateSet {
+        DataVariance STATIC
+        rendering_hint DEFAULT_BIN
+        renderBinMode INHERIT
+        Material {
+          UniqueID Material_2
+          ColorMode DIFFUSE
+          ambientColor 0.2 0.2 0.2 1
+          diffuseColor FRONT 7.82637e-06 0.131538 0.755605 1
+          diffuseColor BACK  0.8 0.8 0.8 1
+          specularColor 0 0 0 1
+          emissionColor 0 0 0 1
+          shininess 0
+        }
+      }
+      referenceFrame RELATIVE
+      Matrix {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        0 0 0 1
+      }
+      num_children 1
+      Geode {
+        nodeMask 0xffffffff
+        cullingActive TRUE
+        num_drawables 1
+        ShapeDrawable {
+          DataVariance STATIC
+          StateSet {
+            DataVariance STATIC
+            rendering_hint DEFAULT_BIN
+            renderBinMode INHERIT
+            GL_BLEND ON
+          }
+          Box {
+            Center 0 0 0
+            HalfLengths 0.0175 0.085 0.0125
+            Rotation 0 0 0 1
+          }
+          useDisplayList TRUE
+          useVertexBufferObjects FALSE
+          color 0.5 0.5 0.5 1
+        }
+      }
+    }
+  }
+  MatrixTransform {
+    nodeMask 0xffffffff
+    cullingActive TRUE
+    referenceFrame RELATIVE
+    Matrix {
+      1 0 0 0
+      0 1 0 0
+      0 0 1 0
+      0.095 0 0.025 1
+    }
+    num_children 1
+    MatrixTransform {
+      UniqueID MatrixTransform_3
+      nodeMask 0xffffffff
+      cullingActive TRUE
+      StateSet {
+        DataVariance STATIC
+        rendering_hint DEFAULT_BIN
+        renderBinMode INHERIT
+        Material {
+          UniqueID Material_4
+          ColorMode DIFFUSE
+          ambientColor 0.2 0.2 0.2 1
+          diffuseColor FRONT 0.45865 0.532767 0.218959 1
+          diffuseColor BACK  0.8 0.8 0.8 1
+          specularColor 0 0 0 1
+          emissionColor 0 0 0 1
+          shininess 0
+        }
+      }
+      referenceFrame RELATIVE
+      Matrix {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        0 0 0 1
+      }
+      num_children 1
+      Geode {
+        nodeMask 0xffffffff
+        cullingActive TRUE
+        num_drawables 1
+        ShapeDrawable {
+          DataVariance STATIC
+          StateSet {
+            DataVariance STATIC
+            rendering_hint DEFAULT_BIN
+            renderBinMode INHERIT
+            GL_BLEND ON
+          }
+          Box {
+            Center 0 0 0
+            HalfLengths 0.01 0.01 0.02
+            Rotation 0 0 0 1
+          }
+          useDisplayList TRUE
+          useVertexBufferObjects FALSE
+          color 0.5 0.5 0.5 1
+        }
+      }
+    }
+  }
+  MatrixTransform {
+    nodeMask 0xffffffff
+    cullingActive TRUE
+    referenceFrame RELATIVE
+    Matrix {
+      -0.000203673 0 -1 0
+      0 1 0 0
+      1 0 -0.000203673 0
+      0.11 -0.03 0.05 1
+    }
+    num_children 1
+    MatrixTransform {
+      UniqueID MatrixTransform_5
+      nodeMask 0xffffffff
+      cullingActive TRUE
+      StateSet {
+        DataVariance STATIC
+        rendering_hint DEFAULT_BIN
+        renderBinMode INHERIT
+        Material {
+          UniqueID Material_6
+          ColorMode DIFFUSE
+          ambientColor 0.2 0.2 0.2 1
+          diffuseColor FRONT 0.0470446 0.678865 0.679296 1
+          diffuseColor BACK  0.8 0.8 0.8 1
+          specularColor 0 0 0 1
+          emissionColor 0 0 0 1
+          shininess 0
+        }
+      }
+      referenceFrame RELATIVE
+      Matrix {
+        1 0 0 0
+        0 2.22045e-16 1 0
+        0 -1 2.22045e-16 0
+        0 0 0 1
+      }
+      num_children 1
+      Geode {
+        nodeMask 0xffffffff
+        cullingActive TRUE
+        num_drawables 1
+        ShapeDrawable {
+          DataVariance STATIC
+          StateSet {
+            DataVariance STATIC
+            rendering_hint DEFAULT_BIN
+            renderBinMode INHERIT
+            GL_BLEND ON
+          }
+          Cylinder {
+            Center 0 0 0
+            Radius 0.009
+            Height 0.015
+            Rotation 0.707107 0 0 0.707107
+          }
+          useDisplayList TRUE
+          useVertexBufferObjects FALSE
+          color 0.5 0.5 0.5 1
+        }
+      }
+    }
+  }
+  MatrixTransform {
+    nodeMask 0xffffffff
+    cullingActive TRUE
+    referenceFrame RELATIVE
+    Matrix {
+      -0.000203673 0 -1 0
+      0 1 0 0
+      1 0 -0.000203673 0
+      0.11 0.03 0.05 1
+    }
+    num_children 1
+    MatrixTransform {
+      UniqueID MatrixTransform_7
+      nodeMask 0xffffffff
+      cullingActive TRUE
+      StateSet {
+        DataVariance STATIC
+        rendering_hint DEFAULT_BIN
+        renderBinMode INHERIT
+        Material {
+          UniqueID Material_8
+          ColorMode DIFFUSE
+          ambientColor 0.2 0.2 0.2 1
+          diffuseColor FRONT 0.934693 0.383502 0.519416 1
+          diffuseColor BACK  0.8 0.8 0.8 1
+          specularColor 0 0 0 1
+          emissionColor 0 0 0 1
+          shininess 0
+        }
+      }
+      referenceFrame RELATIVE
+      Matrix {
+        1 0 0 0
+        0 2.22045e-16 1 0
+        0 -1 2.22045e-16 0
+        0 0 0 1
+      }
+      num_children 1
+      Geode {
+        nodeMask 0xffffffff
+        cullingActive TRUE
+        num_drawables 1
+        ShapeDrawable {
+          DataVariance STATIC
+          StateSet {
+            DataVariance STATIC
+            rendering_hint DEFAULT_BIN
+            renderBinMode INHERIT
+            GL_BLEND ON
+          }
+          Cylinder {
+            Center 0 0 0
+            Radius 0.009
+            Height 0.015
+            Rotation 0.707107 0 0 0.707107
+          }
+          useDisplayList TRUE
+          useVertexBufferObjects FALSE
+          color 0.5 0.5 0.5 1
+        }
+      }
+    }
+  }
+  MatrixTransform {
+    nodeMask 0xffffffff
+    cullingActive TRUE
+    referenceFrame RELATIVE
+    Matrix {
+      -0.000203673 0 -1 0
+      0 1 0 0
+      1 0 -0.000203673 0
+      0.11 0.06 0.05 1
+    }
+    num_children 1
+    MatrixTransform {
+      UniqueID MatrixTransform_9
+      nodeMask 0xffffffff
+      cullingActive TRUE
+      StateSet {
+        DataVariance STATIC
+        rendering_hint DEFAULT_BIN
+        renderBinMode INHERIT
+        Material {
+          UniqueID Material_10
+          ColorMode DIFFUSE
+          ambientColor 0.2 0.2 0.2 1
+          diffuseColor FRONT 0.830965 0.0345721 0.0534616 1
+          diffuseColor BACK  0.8 0.8 0.8 1
+          specularColor 0 0 0 1
+          emissionColor 0 0 0 1
+          shininess 0
+        }
+      }
+      referenceFrame RELATIVE
+      Matrix {
+        1 0 0 0
+        0 2.22045e-16 1 0
+        0 -1 2.22045e-16 0
+        0 0 0 1
+      }
+      num_children 1
+      Geode {
+        nodeMask 0xffffffff
+        cullingActive TRUE
+        num_drawables 1
+        ShapeDrawable {
+          DataVariance STATIC
+          StateSet {
+            DataVariance STATIC
+            rendering_hint DEFAULT_BIN
+            renderBinMode INHERIT
+            GL_BLEND ON
+          }
+          Cylinder {
+            Center 0 0 0
+            Radius 0.009
+            Height 0.015
+            Rotation 0.707107 0 0 0.707107
+          }
+          useDisplayList TRUE
+          useVertexBufferObjects FALSE
+          color 0.5 0.5 0.5 1
+        }
+      }
+    }
+  }
+  MatrixTransform {
+    nodeMask 0xffffffff
+    cullingActive TRUE
+    referenceFrame RELATIVE
+    Matrix {
+      1 0 0 0
+      0 1 0 0
+      0 0 1 0
+      0.095 0 0 1
+    }
+    num_children 1
+    MatrixTransform {
+      UniqueID MatrixTransform_11
+      nodeMask 0xffffffff
+      cullingActive TRUE
+      StateSet {
+        DataVariance STATIC
+        rendering_hint DEFAULT_BIN
+        renderBinMode INHERIT
+        Material {
+          UniqueID Material_12
+          ColorMode DIFFUSE
+          ambientColor 0.2 0.2 0.2 1
+          diffuseColor FRONT 0.5297 0.671149 0.00769819 1
+          diffuseColor BACK  0.8 0.8 0.8 1
+          specularColor 0 0 0 1
+          emissionColor 0 0 0 1
+          shininess 0
+        }
+      }
+      referenceFrame RELATIVE
+      Matrix {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        0 0 0 1
+      }
+      num_children 1
+      Geode {
+        nodeMask 0xffffffff
+        cullingActive TRUE
+        num_drawables 1
+        ShapeDrawable {
+          DataVariance STATIC
+          StateSet {
+            DataVariance STATIC
+            rendering_hint DEFAULT_BIN
+            renderBinMode INHERIT
+            GL_BLEND ON
+          }
+          Box {
+            Center 0 0 0
+            HalfLengths 0.02 0.0625 0.02
+            Rotation 0 0 0 1
+          }
+          useDisplayList TRUE
+          useVertexBufferObjects FALSE
+          color 0.5 0.5 0.5 1
+        }
+      }
+    }
+  }
+  MatrixTransform {
+    nodeMask 0xffffffff
+    cullingActive TRUE
+    referenceFrame RELATIVE
+    Matrix {
+      1 0 0 0
+      0 1 0 0
+      0 0 1 0
+      0 0 0 1
+    }
+    num_children 1
+    MatrixTransform {
+      UniqueID MatrixTransform_13
+      nodeMask 0xffffffff
+      cullingActive TRUE
+      StateSet {
+        DataVariance STATIC
+        rendering_hint DEFAULT_BIN
+        renderBinMode INHERIT
+        Material {
+          UniqueID Material_14
+          ColorMode DIFFUSE
+          ambientColor 0.2 0.2 0.2 1
+          diffuseColor FRONT 0.383416 0.0668422 0.417486 1
+          diffuseColor BACK  0.8 0.8 0.8 1
+          specularColor 0 0 0 1
+          emissionColor 0 0 0 1
+          shininess 0
+        }
+      }
+      referenceFrame RELATIVE
+      Matrix {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        0 0 0 1
+      }
+      num_children 1
+      Geode {
+        nodeMask 0xffffffff
+        cullingActive TRUE
+        num_drawables 1
+        ShapeDrawable {
+          DataVariance STATIC
+          StateSet {
+            DataVariance STATIC
+            rendering_hint DEFAULT_BIN
+            renderBinMode INHERIT
+            GL_BLEND ON
+          }
+          Box {
+            Center 0 0 0
+            HalfLengths 0.075 0.04 0.025
+            Rotation 0 0 0 1
+          }
+          useDisplayList TRUE
+          useVertexBufferObjects FALSE
+          color 0.5 0.5 0.5 1
+        }
+      }
+    }
+  }
+  MatrixTransform {
+    nodeMask 0xffffffff
+    cullingActive TRUE
+    referenceFrame RELATIVE
+    Matrix {
+      1 0 0 0
+      0 1 0 0
+      0 0 1 0
+      -0.095 0 0 1
+    }
+    num_children 1
+    MatrixTransform {
+      UniqueID MatrixTransform_15
+      nodeMask 0xffffffff
+      cullingActive TRUE
+      StateSet {
+        DataVariance STATIC
+        rendering_hint DEFAULT_BIN
+        renderBinMode INHERIT
+        Material {
+          UniqueID Material_16
+          ColorMode DIFFUSE
+          ambientColor 0.2 0.2 0.2 1
+          diffuseColor FRONT 0.686773 0.588977 0.930436 1
+          diffuseColor BACK  0.8 0.8 0.8 1
+          specularColor 0 0 0 1
+          emissionColor 0 0 0 1
+          shininess 0
+        }
+      }
+      referenceFrame RELATIVE
+      Matrix {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        0 0 0 1
+      }
+      num_children 1
+      Geode {
+        nodeMask 0xffffffff
+        cullingActive TRUE
+        num_drawables 1
+        ShapeDrawable {
+          DataVariance STATIC
+          StateSet {
+            DataVariance STATIC
+            rendering_hint DEFAULT_BIN
+            renderBinMode INHERIT
+            GL_BLEND ON
+          }
+          Box {
+            Center 0 0 0
+            HalfLengths 0.02 0.0625 0.02
+            Rotation 0 0 0 1
+          }
+          useDisplayList TRUE
+          useVertexBufferObjects FALSE
+          color 0.5 0.5 0.5 1
+        }
+      }
+    }
+  }
+}

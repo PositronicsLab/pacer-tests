@@ -1,9 +1,10 @@
   <XML>
     <plugins type="string vector">
       freeze
-    plugin-scheduler
+      plugin-scheduler
     error-check
-    joint-PID-controller
+    joint-PID-controller-accel
+   idyn-controller
   </plugins>
   
   <!--
@@ -29,11 +30,11 @@
     <priority type="double">0</priority>
     <duration type="double">0</duration>
     <dt type="double">0.001</dt>
-    <display type="bool">false</display>
+    <display type="bool">true</display>
     <output-model type="bool">true</output-model>
     <get-data-online type="bool">true</get-data-online>
-    <max-threads type="int">4</max-threads>
-    <max-samples type="int">1</max-samples>
+    <max-threads type="int">1</max-threads>
+    <max-samples type="int">16</max-samples>
     <executable type="string">monte-carlo-simulation/sample.bin</executable>
     <task-directory type="string">../sample-maybe/</task-directory>
   </monte-carlo-simulation>
@@ -305,7 +306,7 @@
     <last-cfs type="bool">false</last-cfs>
     <last-cfs-filter type="bool">false</last-cfs-filter>
     <des-contact type="bool">false</des-contact>
-    <max-contacts-per-foot type="double">1</max-contacts-per-foot>
+    <max-contacts-per-foot type="double">0</max-contacts-per-foot>
     <type type="string vector">CFQP</type> <!-- CFQP (BEST: Clawar), CFLCP (EXPERIMENTAL: Anitesciu-Potra), NSQP (EXPERIMENTAL: No-slip CLAWAR), NSLCP (BEST: No-slip LCP) -->
 <!--CFQP CFLCP NSQP NSLCP-->
   </idyn-controller>

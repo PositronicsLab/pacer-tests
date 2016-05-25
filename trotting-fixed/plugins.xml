@@ -127,7 +127,7 @@
     <file type="string">libwaypoints.so</file>
      <real-time-factor type="int">1</real-time-factor>
      <priority type="double">0</priority>
-     <max-forward-speed type="double">0.25</max-forward-speed>
+     <max-forward-speed type="double">0.5</max-forward-speed>
      <max-strafe-speed type="double">0</max-strafe-speed>
      <max-turn-speed type="double">0.1</max-turn-speed>
      <tolerance type="double">0.1</tolerance>
