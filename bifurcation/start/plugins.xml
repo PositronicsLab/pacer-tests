@@ -28,15 +28,15 @@
     <file type="string">monte-carlo-simulation/libmonte-carlo-simulation.so</file>
     <real-time-factor type="int">1</real-time-factor>
     <priority type="double">0</priority>
-    <duration type="double">0</duration>
+    <duration type="double">1.5</duration>
     <dt type="double">0.001</dt>
-    <display type="bool">true</display>
+    <display type="bool">false</display>
     <output-model type="bool">true</output-model>
     <get-data-online type="bool">true</get-data-online>
-    <max-threads type="int">1</max-threads>
-    <max-samples type="int">16</max-samples>
+    <max-threads type="int">4</max-threads>
+    <max-samples type="int">4</max-samples>
     <executable type="string">monte-carlo-simulation/sample.bin</executable>
-    <task-directory type="string">../sample-maybe/</task-directory>
+    <task-directory type="string">../sample-bad/</task-directory>
   </monte-carlo-simulation>
   <freeze>
     <file type="string">libstay.so</file>
@@ -51,7 +51,7 @@
     <events type="string vector">walk</events>
     <!--  PERSISTENT    -->
     <walk>
-      <time type="double">0.5</time>
+      <time type="double">0.01</time>
       <close type="string vector">
       </close>
       <open type="string vector">

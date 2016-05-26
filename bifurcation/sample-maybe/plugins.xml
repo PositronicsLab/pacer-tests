@@ -55,7 +55,7 @@
     <gait-duration type="double">0.6</gait-duration>
     <length type="double">1.2</length>
     <width type="double">1.2</width>
-    <height type="double">0.85</height>
+    <height type="double">1.05</height>
     <!--troting gait-->
 <!--    <gait type="double">0  0.5  0.5  0</gait>-->
 <!--    <gait type="double">0.25  0.75  0.75  0.25</gait> -->
