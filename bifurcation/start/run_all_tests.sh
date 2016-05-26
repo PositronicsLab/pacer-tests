@@ -7,7 +7,7 @@ cd ${DIR}
 git clean -dfx ../start
 
 # re-parse '.in' files
-../../setup-tests.sh ../*.in
+${PACER_SCRIPTS_PATH}/setup-tests.sh ../*.in
 
 for i in $@
 do
