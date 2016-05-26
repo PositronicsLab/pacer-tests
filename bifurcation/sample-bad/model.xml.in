@@ -1,4 +1,8 @@
 <XML >
+  <DRIVER>
+    <camera position="-1 1 1" target="0 0 0" up="0 0 1" />
+    <window location="0 0" size="640 480" />
+  </DRIVER>
 <Moby >
 <TimeSteppingSimulator bilateral-stabilization-tol="1e-06" constraint-stabilization-max-iterations="1" contact-dist-thesh="1e-06" current-time="0" id="0x7fff1c01e680" min-step-size="0.0005" unilateral-stabilization-tol="1.49012e-08" >
 <DynamicBody dynamic-body-id="STEP" />
