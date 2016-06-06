@@ -6,14 +6,15 @@ if(BUILD_MONTECARLO)
 endif(BUILD_MONTECARLO)
 
 #find BOOST libraries
+set(Boost_ADDITIONAL_VERSIONS "1.55.0" "1.56.0")
 find_package(Boost COMPONENTS program_options REQUIRED)
 link_directories(${BOOST_LIBRARY_DIRS})
 include_directories(${BOOST_INCLUDE_DIR})
 
   add_executable(sample.bin Sample.cpp)
 
-  target_link_libraries(sample.bin ${REQLIBS} boost_program_options MobyDriver Ravelin)
-  IF(USE_OSG_DISPLAY)
+  target_link_libraries(sample.bin ${REQLIBS} boost_program_options MobyDriver)
+  IF(USE_DISPLAY)
     #find OSG
     find_package (osg)
     find_package (osgViewer)
@@ -35,4 +36,7 @@ include_directories(${BOOST_INCLUDE_DIR})
       target_link_libraries (sample.bin OpenThreads)
       add_definitions (-DUSE_OSG_DISPLAY)
     ENDIF(OSG_FOUND)
-  ENDIF(USE_OSG_DISPLAY)
+  ENDIF(USE_DISPLAY)
+  
+  add_library(test-probability MODULE pendulum/pendulum-init.cpp)
+  target_link_libraries(test-probability ${REQLIBS})
