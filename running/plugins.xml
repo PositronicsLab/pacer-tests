@@ -8,6 +8,7 @@
       gait-planner
       ik-feet
       idyn-controller
+      poseListener
   </plugins>
   
   <!--
@@ -240,4 +241,17 @@
     <type type="string vector">CFLCP</type> <!-- CFQP (BEST: Clawar), CFLCP (EXPERIMENTAL: Anitesciu-Potra), NSQP (EXPERIMENTAL: No-slip CLAWAR), NSLCP (BEST: No-slip LCP) -->
 <!--CFQP CFLCP NSQP NSLCP-->
   </idyn-controller>
+
+  <trajectory-table>
+    <file type="string">libtrajectory-table.so</file>
+    <real-time-factor type="int">1</real-time-factor>
+    <priority type="double">1</priority>
+  </trajectory-table>
+
+  <poseListener>
+    <file type="string">libposeListener.so</file>
+    <real-time-factor type="int">1</real-time-factor>
+    <priority type="double">1</priority>
+    <id type="string">LF_FOOT           RF_FOOT             LH_FOOT             RH_FOOT</id>
+  </poseListener>
 </XML>

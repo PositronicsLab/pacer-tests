@@ -1,13 +1,15 @@
   <XML>
   <plugins type="string vector">
-    waypoints
+   error-check
     center-of-mass
-      end-effectors
-      gait-planner
-      eef-PID-controller
-      joint-PID-controller-accel
-      ik-feet
-      idyn-controller
+    end-effectors
+    trajectory-table
+    ik-feet
+    eef-PID-controller
+    joint-PID-controller-accel
+    idyn-controller
+  
+   
   </plugins>
   
   <!--
@@ -41,7 +43,7 @@
   <error-check>
     <file type="string">liberror-check.so</file>
     <real-time-factor type="int">1</real-time-factor>
-    <priority type="double">0</priority>
+    <priority type="double">10</priority>
   </error-check>
   <limits>
     <file type="string">liblimits.so</file>
@@ -237,4 +239,30 @@
     <type type="string vector">CFQP</type> <!-- CFQP (BEST: Clawar), CFLCP (EXPERIMENTAL: Anitesciu-Potra), NSQP (EXPERIMENTAL: No-slip CLAWAR), NSLCP (BEST: No-slip LCP) -->
 <!--CFQP CFLCP NSQP NSLCP-->
   </idyn-controller>
+
+  <poseListener>
+    <file type="string">libposeListener.so</file>
+    <priority type="double">1</priority>
+    <real-time-factor type="int">1</real-time-factor>
+    <id type="string">LF_FOOT           RF_FOOT             LH_FOOT             RH_FOOT</id>
+  </poseListener>
+
+  <trajectory-table>
+    <file type="string">libtrajectory-table.so</file>
+    <priority type="double">2</priority>
+    <real-time-factor type="int">1</real-time-factor>
+  </trajectory-table>
+
+  <goForward>
+    <file type="string">libgoForward.so</file>
+    <priority type="double">1</priority>
+    <real-time-factor type="int">1</real-time-factor>
+  </goForward>
+
+  <getFeet>
+    <file type="string">libgetFeet.so</file>
+    <priority type="double">1</priority>
+    <real-time-factor type="int">1</real-time-factor>
+  </getFeet>
+
 </XML>

@@ -26,52 +26,54 @@ std::string IntToStr(int n)
 }
 
 void loop(){
-boost::shared_ptr<Pacer::Controller> ctrl(ctrl_weak_ptr);
-   std::ifstream durTest;
-   std::string dur;
-   durTest.open("/home/brad/Desktop/Poses/iterCount.txt");
-   double duration=0;
-   ctrl->get_data<double>("gait-planner.gait-duration",duration);
-   std::getline(durTest,dur);
-   durTest.close();
-   if(std::stod(dur)>=(duration*10*10*10))
-   {
-     exit(0);
-   }
-   else
-   {
-     std::ofstream durTest2;
-     durTest2.open("/home/brad/Desktop/Poses/iterCount.txt");
-     double hold = std::stod(dur)+1;
-     durTest2 << hold;
-   }
-   durTest.close();
- 
-        //initializing variables
-        std::fstream file;
-	int i=0;
-        std::string filename = "/home/brad/Desktop/Poses/PoseSet.txt";
-        Ravelin::VectorNd command_x,command_xd;
+    boost::shared_ptr<Pacer::Controller> ctrl(ctrl_weak_ptr);
 
-        //get the position, base command, and end effector names
-        command_x=ctrl->get_base_value(Pacer::Controller::position);
+    //Work in Progress, current opens file iterCount.txt and checks to see if the number of iterations has exceeded the gait duration, assumes a timestep of .001,
+    // which may not always be the case
+    std::ifstream durTest;
+    std::string dur;
+    durTest.open("/home/brad/Desktop/Poses/iterCount.txt");
+    double duration=0;
+    ctrl->get_data<double>("gait-planner.gait-duration",duration);
+    std::getline(durTest,dur);
+    durTest.close();
+    //if the current test duration is greater than the gait duration, end the simulation.
+    //otherwise increment the iterCount value.
+    if(std::stod(dur)>=(duration*10*10*10))
+    {
+      exit(0);
+    }
+    else
+    {
+      std::ofstream durTest2;
+      durTest2.open("/home/brad/Desktop/Poses/iterCount.txt");
+      double hold = std::stod(dur)+1;
+      durTest2 << hold;
+      durTest2.close();
+    }
+
+     //initializing variables
+     std::fstream file;
+     int i=0;
+     std::string filename = "/home/brad/Desktop/Poses/PoseSet.txt";
+     Ravelin::VectorNd command_x,command_xd;
+
+     //get the position, base command, and end effector names
+     command_x=ctrl->get_base_value(Pacer::Controller::position);
         
-        ctrl->get_data<Ravelin::VectorNd>("base-command",command_xd);
-        std::vector<std::string> eef_names = ctrl->get_data<std::vector<std::string> >(plugin_namespace+".id");
+     ctrl->get_data<Ravelin::VectorNd>("base-command",command_xd);
+     std::vector<std::string> eef_names = ctrl->get_data<std::vector<std::string> >(plugin_namespace+".id");
       
-      //open the file that is being written to
-      file.open(filename, std::fstream::app|std::fstream::out);
+     //open the file that is being written to
+     file.open(filename, std::fstream::app|std::fstream::out);
 
-      //get the desired position, velocity, and acceleration for each end effector and put that in the file
+     //get the desired position, velocity, and acceleration for each end effector and put that in the file
      for (int i=0; i<eef_names.size(); i++) 
      {
-       
-           
             Ravelin::Origin3d pos_des =  ctrl->get_end_effector_value(eef_names[i],Pacer::Robot::position_goal);
             Ravelin::Origin3d vel_des =  ctrl->get_end_effector_value(eef_names[i],Pacer::Robot::velocity_goal);
             Ravelin::Origin3d accel_des =  ctrl->get_end_effector_value(eef_names[i],Pacer::Robot::acceleration_goal);
-            file << pos_des[0] << " " << pos_des[1] << " " << pos_des[2] << " " << vel_des[0] << " " << vel_des[1] << " " << vel_des[2] << " " << accel_des[0] << " " << accel_des[1] << " " << accel_des[2] << " ";
-       
+            file << pos_des[0] << " " << pos_des[1] << " " << pos_des[2] << " " << vel_des[0] << " " << vel_des[1] << " " << vel_des[2] << " " << accel_des[0] << " " << accel_des[1] << " " << accel_des[2] 		    << " "; 
      }
      
      //grab base position and base command and put those in the file and return to start the next row for the next iteration

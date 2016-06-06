@@ -2,8 +2,8 @@
   <plugins type="string vector">
       waypoints
       center-of-mass
-      end-effectors
-      gait-planner
+      
+     
       eef-PID-controller-accel
       ik-feet
       idyn-controller

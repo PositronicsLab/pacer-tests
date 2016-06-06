@@ -2,13 +2,13 @@
   <plugins type="string vector">
     center-of-mass
       end-effectors
-      gait-planner
+      trajectory-table
       eef-PID-controller
       joint-PID-controller-accel
       ik-feet
       idyn-controller
       goForward
-      poseListener
+     error-check
   </plugins>
   
   <!--

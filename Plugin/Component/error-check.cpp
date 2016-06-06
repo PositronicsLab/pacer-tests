@@ -1,4 +1,5 @@
 
+
 #include <Pacer/controller.h>
 #include "plugin.h"
 
@@ -7,39 +8,45 @@ void printQandQd()
   boost::shared_ptr<Pacer::Controller> ctrl(ctrl_weak_ptr);
   std::map<std::string, Ravelin::VectorNd > q, qd,u;
 
+  std::ofstream errOut;
+  errOut.open("/home/brad/Desktop/errOut.txt", std::ios::app);
+
   std::vector<std::string> joint_names = ctrl->get_data<std::vector<std::string> >("init.joint.id");
   std::vector<double> joint_dofs = ctrl->get_data<std::vector<double> >("init.joint.dofs");
   ctrl->get_joint_value(Pacer::Robot::position_goal, q);
   ctrl->get_joint_value(Pacer::Robot::velocity_goal, qd);
   ctrl->get_joint_value(Pacer::Robot::load_goal, u);
 
-  std::cout << "q's" << "\n";
+  errOut << "q's" << "\n";
   for (int i=0, ii=0; i<joint_names.size(); i++) 
   {
     for (int j=0; j<joint_dofs[i]; j++,ii++) 
     {
-        std::cout << joint_names[i] << ": q["<<j<<"]= " << q[joint_names[i]][j] << "\n";
+        errOut << joint_names[i] << ": q["<<j<<"]= " << q[joint_names[i]][j] << "\n";
     }
   }
 
-  std::cout << "qd's" << "\n";
+  errOut << "qd's" << "\n";
   for (int i=0, ii=0; i<joint_names.size(); i++) 
   {
     for (int j=0; j<joint_dofs[i]; j++,ii++) 
     {
-        std::cout << joint_names[i] << ": qd["<<j<<"]= " << qd[joint_names[i]][j] << "\n";
+        errOut << joint_names[i] << ": qd["<<j<<"]= " << qd[joint_names[i]][j] << "\n";
     }
   }
 
-  std::cout << "u's" << "\n";
+  errOut << "u's" << "\n";
   for (int i=0, ii=0; i<joint_names.size(); i++) 
   {
     for (int j=0; j<joint_dofs[i]; j++,ii++) 
     {
-        std::cout << joint_names[i] << ": u["<<j<<"]= " << u[joint_names[i]][j] << "\n";
+        errOut << joint_names[i] << ": u["<<j<<"]= " << u[joint_names[i]][j] << "\n";
     }
   }
 
+  
+errOut << "----------------------------------------------------------------------------------" << "\n";
+errOut.close();
 }
 
 void loop(){
@@ -82,6 +89,8 @@ boost::shared_ptr<Pacer::Controller> ctrl(ctrl_weak_ptr);
   ctrl->get_joint_value(Pacer::Robot::position_goal, q);
   ctrl->get_joint_value(Pacer::Robot::velocity_goal, qd);
   ctrl->get_joint_value(Pacer::Robot::load_goal, u);
+  
+
 
   std::vector<std::string> joint_names = ctrl->get_data<std::vector<std::string> >("init.joint.id");
   std::vector<double> joint_dofs = ctrl->get_data<std::vector<double> >("init.joint.dofs");
@@ -120,6 +129,7 @@ boost::shared_ptr<Pacer::Controller> ctrl(ctrl_weak_ptr);
 
     }
   }
+  
 }
 
 
