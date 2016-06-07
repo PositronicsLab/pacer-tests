@@ -13,8 +13,8 @@ void loop(){
 boost::shared_ptr<Pacer::Controller> ctrl(ctrl_weak_ptr);
   //string to hold extracted values, and size_type to keep track of location in the line
   std::string line;
-  
-  
+  exit(0);
+  /*
   //storage for each x/y/z value of the position, velocity, and acceleration of the end effectors
   double eef_x_x_0, eef_x_y_0, eef_x_z_0, eef_xd_x_0, eef_xd_y_0, eef_xd_z_0, eef_xdd_x_0, eef_xdd_y_0, eef_xdd_z_0;
   double eef_x_x_1, eef_x_y_1, eef_x_z_1, eef_xd_x_1, eef_xd_y_1, eef_xd_z_1, eef_xdd_x_1, eef_xdd_y_1, eef_xdd_z_1;
@@ -244,29 +244,17 @@ boost::shared_ptr<Pacer::Controller> ctrl(ctrl_weak_ptr);
   current++;
   currLine2 << current;
   currLine2.close();
+*/
 }
 
 void setup(){
 boost::shared_ptr<Pacer::Controller> ctrl(ctrl_weak_ptr);
 
-
-
+std::vector<std::vector<Ravelin::VectorNd> > allVals;
+std::vector<Ravelin::Origin3d> rowVals;
+std::vector<Ravelin::VectorNd> bodyVals;
  //string to hold extracted values, and size_type to keep track of location in the line
   std::string line;
-  
-  
-  //storage for each x/y/z value of the position, velocity, and acceleration of the end effectors
-  double eef_x_x_0, eef_x_y_0, eef_x_z_0, eef_xd_x_0, eef_xd_y_0, eef_xd_z_0, eef_xdd_x_0, eef_xdd_y_0, eef_xdd_z_0;
-  double eef_x_x_1, eef_x_y_1, eef_x_z_1, eef_xd_x_1, eef_xd_y_1, eef_xd_z_1, eef_xdd_x_1, eef_xdd_y_1, eef_xdd_z_1;
-  double eef_x_x_2, eef_x_y_2, eef_x_z_2, eef_xd_x_2, eef_xd_y_2, eef_xd_z_2, eef_xdd_x_2, eef_xdd_y_2, eef_xdd_z_2;
-  double eef_x_x_3, eef_x_y_3, eef_x_z_3, eef_xd_x_3, eef_xd_y_3, eef_xd_z_3, eef_xdd_x_3, eef_xdd_y_3, eef_xdd_z_3;
-  double base_x_0, base_x_1, base_x_2, base_x_3, base_x_4, base_x_5, base_x_6,
-         base_xd_0, base_xd_1, base_xd_2, base_xd_3, base_xd_4, base_xd_5;
-  //Origin3ds for position(x), velocity(xd), and acceleration(xdd)
-  Ravelin::Origin3d newX, newXd, newXdd;
-
-  //VectorNds for the base values
-  Ravelin::VectorNd newBaseX, newBaseXd;
 
   //get the end effector names
   const  std::vector<std::string>
@@ -285,8 +273,7 @@ boost::shared_ptr<Pacer::Controller> ctrl(ctrl_weak_ptr);
   if (myfile.is_open())
   {
     //get to the line that is needed
-    for( int i = 0; i < current; i++ )
-    {
+    
         getline (myfile,line);
         //once the desired line has been reached, put it in the line variable and feed those values into pacer
        
@@ -299,176 +286,57 @@ boost::shared_ptr<Pacer::Controller> ctrl(ctrl_weak_ptr);
             //for each end effector, get the x,y,z values of x/xd/xdd, but those into their respective Origin3ds, and send those Origins to Pacer as goal states
             // the values are always in the order LF to RF to LH to RH to Body.
 
-            	eef_x_x_0 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_x_y_0 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_x_z_0 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xd_x_0 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xd_y_0 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xd_z_0 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xdd_x_0 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xdd_y_0 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xdd_z_0 = std::stod(*tok_iter);
-                ++tok_iter;
-                     
-                eef_x_x_1 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_x_y_1 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_x_z_1 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xd_x_1 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xd_y_1 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xd_z_1 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xdd_x_1 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xdd_y_1 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xdd_z_1 = std::stod(*tok_iter);
-                ++tok_iter;
-                  
-                eef_x_x_2 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_x_y_2 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_x_z_2 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xd_x_2 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xd_y_2 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xd_z_2 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xdd_x_2 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xdd_y_2 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xdd_z_2 = std::stod(*tok_iter);
-                ++tok_iter;
-                  
-                eef_x_x_3 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_x_y_3 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_x_z_3 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xd_x_3 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xd_y_3 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xd_z_3 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xdd_x_3 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xdd_y_3 = std::stod(*tok_iter);
-                ++tok_iter;
-            	eef_xdd_z_3 = std::stod(*tok_iter);
-                ++tok_iter;
-                
-                
+for(int i=0;i<eef_names.size();i++)
+{
+     
+	rowVals.push_back(Ravelin::Origin3d(std::stod(*tok_iter),std::stod(*(std::next(tok_iter,1))),std::stod(*(std::next(tok_iter,2)))));
+        rowVals.push_back(Ravelin::Origin3d(std::stod(*(std::next(tok_iter,3))),std::stod(*(std::next(tok_iter,4))),std::stod(*(std::next(tok_iter,5)))));
+        rowVals.push_back(Ravelin::Origin3d(std::stod(*(std::next(tok_iter,6))),std::stod(*(std::next(tok_iter,7))),std::stod(*(std::next(tok_iter,8)))));
+        
+        	std::advance(tok_iter,8);
+}
+for(int i=0;i<eef_names.size();i++)
+{
+                ctrl->set_data<Ravelin::Origin3d>(eef_names[i]+".init.x",rowVals[(3*i)]);
+                ctrl->set_data<Ravelin::Origin3d>(eef_names[i]+".init.xd",rowVals[(3*i)+1]);
+                ctrl->set_data<Ravelin::Origin3d>(eef_names[i]+".init.xdd",rowVals[(3*i)+2]);
 
+                ctrl->set_end_effector_value(eef_names[i],Pacer::Controller::position,rowVals[(3*i)]);
+                ctrl->set_end_effector_value(eef_names[i],Pacer::Controller::velocity,rowVals[(3*i)+1]);
+                ctrl->set_end_effector_value(eef_names[i],Pacer::Controller::acceleration,rowVals[(3*i)+2]);	
+std::cout << "\n" << "\n" << rowVals[(3*i)] << "\n" << "\n";
+std::cout << "\n" << "\n" << rowVals[(3*i)+1] << "\n" << "\n";
+std::cout << "\n" << "\n" << rowVals[(3*i)+2] << "\n" << "\n";
 
-
- 
-
-                newX = Ravelin::Origin3d(eef_x_x_0,eef_x_y_0,eef_x_z_0);
-                newXd = Ravelin::Origin3d(eef_xd_x_0,eef_xd_y_0,eef_xd_z_0);
-                newXdd = Ravelin::Origin3d(eef_xdd_x_0,eef_xdd_y_0,eef_xdd_z_0);
-                 
-                ctrl->set_data<Ravelin::Origin3d>(eef_names[0]+".goal.x",newX);
-                ctrl->set_data<Ravelin::Origin3d>(eef_names[0]+".goal.xd",newXd);
-                ctrl->set_data<Ravelin::Origin3d>(eef_names[0]+".goal.xdd",newXdd);
-
-                ctrl->set_end_effector_value(eef_names[0],Pacer::Controller::position,newX);
-                ctrl->set_end_effector_value(eef_names[0],Pacer::Controller::velocity,newXd);
-                ctrl->set_end_effector_value(eef_names[0],Pacer::Controller::acceleration,newXdd);
-
-                newX = Ravelin::Origin3d(eef_x_x_1,eef_x_y_1,eef_x_z_1);
-                newXd = Ravelin::Origin3d(eef_xd_x_1,eef_xd_y_1,eef_xd_z_1);
-                newXdd = Ravelin::Origin3d(eef_xdd_x_1,eef_xdd_y_1,eef_xdd_z_1);
-                 
-                ctrl->set_data<Ravelin::Origin3d>(eef_names[1]+".state.x",newX);
-                ctrl->set_data<Ravelin::Origin3d>(eef_names[1]+".state.xd",newXd);
-                ctrl->set_data<Ravelin::Origin3d>(eef_names[1]+".state.xdd",newXdd);
-
-                ctrl->set_end_effector_value(eef_names[1],Pacer::Controller::position,newX);
-                ctrl->set_end_effector_value(eef_names[1],Pacer::Controller::velocity,newXd);
-                ctrl->set_end_effector_value(eef_names[1],Pacer::Controller::acceleration,newXdd);
-
-                newX = Ravelin::Origin3d(eef_x_x_2,eef_x_y_2,eef_x_z_2);
-                newXd = Ravelin::Origin3d(eef_xd_x_2,eef_xd_y_2,eef_xd_z_2);
-                newXdd = Ravelin::Origin3d(eef_xdd_x_2,eef_xdd_y_2,eef_xdd_z_2);
-                 
-                ctrl->set_data<Ravelin::Origin3d>(eef_names[2]+".state.x",newX);
-                ctrl->set_data<Ravelin::Origin3d>(eef_names[2]+".state.xd",newXd);
-                ctrl->set_data<Ravelin::Origin3d>(eef_names[2]+".state.xdd",newXdd);
-
-                ctrl->set_end_effector_value(eef_names[2],Pacer::Controller::position,newX);
-                ctrl->set_end_effector_value(eef_names[2],Pacer::Controller::velocity,newXd);
-                ctrl->set_end_effector_value(eef_names[2],Pacer::Controller::acceleration,newXdd);
-
-                newX = Ravelin::Origin3d(eef_x_x_3,eef_x_y_3,eef_x_z_3);
-                newXd = Ravelin::Origin3d(eef_xd_x_3,eef_xd_y_3,eef_xd_z_3);
-                newXdd = Ravelin::Origin3d(eef_xdd_x_3,eef_xdd_y_3,eef_xdd_z_3);
-                 
-                ctrl->set_data<Ravelin::Origin3d>(eef_names[3]+".state.x",newX);
-                ctrl->set_data<Ravelin::Origin3d>(eef_names[3]+".state.xd",newXd);
-                ctrl->set_data<Ravelin::Origin3d>(eef_names[3]+".state.xdd",newXdd);
-
-                ctrl->set_end_effector_value(eef_names[3],Pacer::Controller::position,newX);
-                ctrl->set_end_effector_value(eef_names[3],Pacer::Controller::velocity,newXd);
-                ctrl->set_end_effector_value(eef_names[3],Pacer::Controller::acceleration,newXdd);
-           
-            
+}               
 
             //get the base x and base-command values and put those into 6 dimensional Ravelin Vectors, and then send those to Pacer 
-            base_xd_0 = std::stod(*tok_iter);
-            ++tok_iter;
-            base_xd_1 = std::stod(*tok_iter);
-            ++tok_iter;
-            base_xd_2 = std::stod(*tok_iter);
-            ++tok_iter;
-            base_xd_3 = std::stod(*tok_iter);
-            ++tok_iter;
-            base_xd_4 = std::stod(*tok_iter);
-            ++tok_iter;
-            base_xd_5 = std::stod(*tok_iter);
-            ++tok_iter;
+            bodyVals.push_back(Ravelin::VectorNd::construct_variable(6,std::stod(*(std::next(tok_iter,1))),std::stod(*(std::next(tok_iter,2))),std::stod(*(std::next(tok_iter,3))),std::stod(*(std::next(tok_iter,4))),std::stod(*(std::next(tok_iter,5))),std::stod(*(std::next(tok_iter,6)))));
+           
+bodyVals.push_back(Ravelin::VectorNd::construct_variable(7,std::stod(*(std::next(tok_iter,7))),std::stod(*(std::next(tok_iter,8))),std::stod(*(std::next(tok_iter,9))),std::stod(*(std::next(tok_iter,10))),std::stod(*(std::next(tok_iter,11))),std::stod(*(std::next(tok_iter,12))),std::stod(*(std::next(tok_iter,13)))));
 
-            base_x_0 = std::stod(*tok_iter);
-            ++tok_iter;
-            base_x_1 = std::stod(*tok_iter);
-            ++tok_iter;
-            base_x_2 = std::stod(*tok_iter);
-            ++tok_iter;
-            base_x_3 = std::stod(*tok_iter);
-            ++tok_iter;
-            base_x_4 = std::stod(*tok_iter);
-            ++tok_iter;
-            base_x_5 = std::stod(*tok_iter);
-            ++tok_iter;
-            base_x_6 = std::stod(*tok_iter);
+            
+            std::cout << "\n" << bodyVals[0] << "\n";
+          
+            
+            std::cout << "\n" << bodyVals[1] << "\n";
+           
+
+ std::cout << "\n" << eef_names[0] << "\n";
+std::cout << "\n" << eef_names[1] << "\n";
+std::cout << "\n" << eef_names[2] << "\n";
+std::cout << "\n" << eef_names[3] << "\n";
 
         
-            newBaseX=Ravelin::VectorNd::construct_variable(7,base_x_0, base_x_1, base_x_2, base_x_3, base_x_4, base_x_5, base_x_6);
-            newBaseXd=Ravelin::VectorNd::construct_variable(6,base_xd_0, base_xd_1, base_xd_2, base_xd_3, base_xd_4, base_xd_5);
             
-            ctrl->set_base_value(Pacer::Controller::position,newBaseX);
-            ctrl->set_base_value(Pacer::Controller::velocity,newBaseXd);
-        }
+            ctrl->set_base_value(Pacer::Controller::position,bodyVals[0]);
+            ctrl->set_base_value(Pacer::Controller::velocity,bodyVals[1]);
+        
     
 
     //close the files
+    myfile.clear();
+    myfile.seekg (0, std::ios::beg);
     myfile.close();
     currLine.close();
 
@@ -486,7 +354,7 @@ boost::shared_ptr<Pacer::Controller> ctrl(ctrl_weak_ptr);
 
 std::ostringstream strs;
 Ravelin::Origin3d workv;
-ctrl->get_end_effector_value("RF_FOOT", Pacer::Controller::position);
+ctrl->get_data("LF_FOOT.init.x",workv);
 strs << workv;
 std::string str = strs.str();
 str.erase(std::remove(str.begin(), str.end(), '['), str.end());
@@ -503,19 +371,25 @@ while(std::getline(myfile2,line2))
 }
 ctrl->set_data<double>("num_pose_rows",line_count);
 std::cout << "\n" << "\n" << line_count << "\n" << "\n"; 
+myfile2.clear();
+myfile2.seekg (0, std::ios::beg);
 
 myfile2.close();
 myfile2.open("/home/brad/Desktop/Poses/PoseSet.txt");
 
 line_count=0;
-std::getline(myfile2,line2);
 
-	if(strstr(line.c_str(),str.c_str()))
+
+while(std::getline(myfile2,line2));
+{
+	if(strstr(line2.c_str(),str.c_str()))
         {
           ctrl->set_data<double>("init_row",line_count);   
           std::cout << "\n" << "\n" << line_count << "\n" << "\n"; 
         }
-   
-
+   line_count++;
+}
+myfile2.clear();
+myfile2.seekg (0, std::ios::beg);
 myfile2.close();
 }
