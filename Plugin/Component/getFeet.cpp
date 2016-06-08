@@ -15,7 +15,7 @@ boost::shared_ptr<Pacer::Controller> ctrl(ctrl_weak_ptr);
    }
 
 std::ofstream myFile;
-myFile.open("/home/brad/Desktop/Poses/feet.txt");
+myFile.open("feet.txt");
 myFile << counter;
 std::cout << counter << "\n" << "\n";
 myFile.close();
