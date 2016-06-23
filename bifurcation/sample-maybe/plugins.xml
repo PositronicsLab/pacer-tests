@@ -6,7 +6,7 @@
     gait-planner
     ik-feet
     joint-PID-controller-accel
-   idyn-controller
+    idyn-controller
   </plugins>
   
   <!--
@@ -44,7 +44,7 @@
   <gait-planner>
     <file type="string">libgait-planner.so</file>
     <real-time-factor type="int">1</real-time-factor>
-    <command type="double vector">0 0 0 0 0 -0.75</command>
+    <command type="double vector">0 0 0 0 0 -1.2</command>
     <priority type="double">1</priority>
     <pose type="double">0.0 0 0 0 0 0</pose>
     <feet type="string">LF_FOOT           RF_FOOT             LH_FOOT             RH_FOOT</feet>

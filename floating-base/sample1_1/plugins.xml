@@ -1,8 +1,10 @@
   <XML>
   <plugins type="string vector">
-    plugin-scheduler
-    freeze
     error-check
+    center-of-mass
+    end-effectors
+    gait-planner
+    ik-feet
     joint-PID-controller
   </plugins>
   
