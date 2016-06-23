@@ -7,5 +7,6 @@
   <task-file type="file">plugins.xml</task-file>
   <init>
     <control-kinematics type="bool">true</control-kinematics>
+    <control-kinematics-feedback type="double">1e3</control-kinematics-feedback>
   </init>
 </XML>
