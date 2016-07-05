@@ -1,5 +1,6 @@
 #include <Pacer/controller.h>
 #include "plugin.h"
+#include <boost/tokenizer.hpp>
 #include <sys/stat.h>
 #include <iostream>
 #include <fstream>
@@ -11,8 +12,25 @@ void loop(){
      //initializing variables
      std::fstream file;
      int i=0;
-     std::string filename = "PoseSet.txt";
+     std::string filename;
      Ravelin::VectorNd command_x,command_xd;
+
+     std::string line;
+     std::ifstream initLine ("trackVars.txt");
+
+  //get the current row to be used, and convert it to a double
+  std::getline(initLine,line);
+	typedef boost::tokenizer<boost::char_separator<char> > 
+            tokenizer;
+            boost::char_separator<char> sep(" ");
+            tokenizer tokens(line, sep);
+            tokenizer::iterator tok_iter = tokens.begin();
+
+  double modelNo=std::stod(*tok_iter);
+  double currVel=std::stod(*(std::next(tok_iter,2)));
+   initLine.close();
+
+    filename = modelNo + "-" + currVel + "-" + "PoseSet.txt";
 
      //get the position, base command, and end effector names
     

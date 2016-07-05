@@ -17,35 +17,23 @@ void printQandQd()
   ctrl->get_joint_value(Pacer::Robot::velocity_goal, qd);
   ctrl->get_joint_value(Pacer::Robot::load_goal, u);
 
-  errOut << "q's" << "\n";
   for (int i=0, ii=0; i<joint_names.size(); i++) 
   {
     for (int j=0; j<joint_dofs[i]; j++,ii++) 
     {
-        errOut << joint_names[i] << ": q["<<j<<"]= " << q[joint_names[i]][j] << "\n";
+        errOut << qd[joint_names[i]][j]-velcoty_limit[ii] << " ";
     }
   }
 
-  errOut << "qd's" << "\n";
   for (int i=0, ii=0; i<joint_names.size(); i++) 
   {
     for (int j=0; j<joint_dofs[i]; j++,ii++) 
     {
-        errOut << joint_names[i] << ": qd["<<j<<"]= " << qd[joint_names[i]][j] << "\n";
+        errOut << u[joint_names[i]][j]-torque_limit[ii] << " ";
     }
-  }
-
-  errOut << "u's" << "\n";
-  for (int i=0, ii=0; i<joint_names.size(); i++) 
-  {
-    for (int j=0; j<joint_dofs[i]; j++,ii++) 
-    {
-        errOut << joint_names[i] << ": u["<<j<<"]= " << u[joint_names[i]][j] << "\n";
-    }
-  }
 
   
-errOut << "----------------------------------------------------------------------------------" << "\n";
+errOut << "\n";
 errOut.close();
 }
 
