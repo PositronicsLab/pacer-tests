@@ -16,6 +16,7 @@ boost::shared_ptr<Pacer::Controller> ctrl(ctrl_weak_ptr);
   double testDur=std::stod(getenv("test_dur"));
   double currVel=std::stod(getenv("curr_vel")); 
   double currLine=std::stod(getenv("curr_line"));
+  std::ostringstream s;
   
   if(numIter>=testDur)
    {
@@ -23,7 +24,8 @@ boost::shared_ptr<Pacer::Controller> ctrl(ctrl_weak_ptr);
    }
    else
    {
-      setenv("curr_iter",numIter++,1);
+      s << numIter++;
+      setenv("curr_iter",s.str().c_str(),1);
    }
   
   std::vector<std::vector<Ravelin::Origin3d> > allRowVals;
@@ -48,8 +50,10 @@ for(int foot=0, vec=0;foot<eef_names.size(); foot++,vec+3)
 }
             ctrl->set_base_value(Pacer::Controller::position_goal,allBodyVals[currLine][0]);
             ctrl->set_base_value(Pacer::Controller::velocity_goal,allBodyVals[currLine][1]);
-
-    setenv("curr_line",currLine,1);
+        s.clear();
+        s.str(std::string());
+        s << currLine++;
+    setenv("curr_line",s.str().c_str(),1);
     
     if(currLine>=num_rows)
     {
@@ -73,7 +77,7 @@ std::vector<Ravelin::VectorNd> bodyVals;
 
   double modelNo=std::stod(getenv("filename"));
   double currVel=std::stod(getenv("curr_vel"));
-  double init=std::stod(getenv("curr_line");
+  double init=std::stod(getenv("curr_line"));
   
 
   

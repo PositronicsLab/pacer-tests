@@ -10,6 +10,7 @@ void loop(){
     boost::shared_ptr<Pacer::Controller> ctrl(ctrl_weak_ptr);
 
      //initializing variables
+     std::fstream file;
      std::string filename;
      Ravelin::VectorNd command_x,command_xd;
 
@@ -20,7 +21,7 @@ void loop(){
     s << modelNo << "-" << currVel << "-" << "PoseSet.txt";
     filename = s.str();
 
-
+   std::cout << "I'm here" << "\n" << "\n" << "\n";
      //get the position, base command, and end effector names
     
      std::vector<std::string> eef_names = ctrl->get_data<std::vector<std::string> >(plugin_namespace+".id");
@@ -51,6 +52,7 @@ void loop(){
 
      //close the file
      file.close();
+ std::cout << "now I'm here" << "\n" << "\n" << "\n";
 }
 
 void setup(){

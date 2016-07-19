@@ -1,2 +1,0 @@
-1	  10      .001      .001         0          1
-Model #  maxVel currVel   timestep  startIter  iterDur

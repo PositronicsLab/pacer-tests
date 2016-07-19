@@ -29,8 +29,11 @@ void printQandQd()
         std::ostringstream s;
         s << joint_names[i] << "_vel";
         std::string line=s.str();
+        s.clear();//clear any bits set
+        s.str(std::string());
+        s << qd[joint_names[i]][j]-velocity_limit[ii];
         
-        setenv(line,qd[joint_names[i]][j]-velocity_limit[ii],1);
+        setenv(line.c_str(),s.str().c_str(),1);
     }
   }
 
@@ -41,7 +44,10 @@ void printQandQd()
         std::ostringstream s;
         s << joint_names[i] << "_tor";
         std::string line=s.str();
-        setenv(line,qd[joint_names[i]][j]-torque_limit[ii],1);
+        s.clear();//clear any bits set
+        s.str(std::string());
+        s << qd[joint_names[i]][j]-velocity_limit[ii];
+        setenv(line.c_str(),s.str().c_str(),1);
     }
  }
   

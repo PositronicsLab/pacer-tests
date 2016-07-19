@@ -1,9 +1,10 @@
 #include "plugin.h"
 #include <Pacer/controller.h>
 #include <Pacer/utilities.h>
+#include <string>
+#include <iostream>
 
 void loop(){
-
 double currSpeed =std::stod(getenv("curr_vel"));
 
 boost::shared_ptr<Pacer::Controller> ctrl(ctrl_weak_ptr);
@@ -27,17 +28,23 @@ Ravelin::Vector3d com(base_horizontal_frame->x.data());
   Ravelin::Origin3d command_SE2(goto_direction[0]*currSpeed,0,0);
       ctrl->set_data<Ravelin::Origin3d>("SE2_command",command_SE2);
 
-     currSpeed+=std::stod(getenv("delta_v"));
+   
 
-     setenv("curr_vel",currSpeed,1);
+}
+
+void setup(){
+double currSpeed =std::stod(getenv("curr_vel"));
+  currSpeed+=std::stod(getenv("delta_v"));
+     std::ostringstream s;
+        s << currSpeed;
+        std::string line=s.str();
+
+     setenv("curr_vel",line.c_str(),1);
   
      if(currSpeed>std::stod(getenv("max_vel")))
 	{
 		setenv("curr_vel","0",1);
 	}
-
-    
-}
-
-void setup(){
+    s.clear();
+    s.str(std::string());
 }
