@@ -7,5 +7,5 @@ git clean -dfx .
 # re-parse '.in' files
 ../setup-tests.sh *.in
 
-$1 -p=${PACER_SIMULATOR_PATH}/libPacerMobyPlugin.so -r -s=0.001 -oi model.xml > out.log
+$1 -p=${PACER_SIMULATOR_PATH}/libPacerMobyPlugin.so -r -s=0.015 -oi model.xml > out.log
 
