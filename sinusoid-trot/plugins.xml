@@ -1,0 +1,52 @@
+  <XML>
+  <plugins type="string vector">
+      sinusoid-walk
+  </plugins>
+  
+  <!--
+      ik-feet
+      idyn-controller
+      ik-feet
+   joint-PID-controller
+   idyn-controller
+   OTHER PLUGINS:
+      ik-feet
+      eef-PID-controller
+   
+      error-check
+   joint-PID-controller
+   idyn-controller
+   stabilization
+   gamepad
+   waypoints
+   output
+
+   -->
+  
+  <!-- =================== PLUGIN DESCRIPTIONS ==================== -->
+  <camera>
+    <file type="string">libcamera.so</file>
+    <real-time-factor type="int">10</real-time-factor>
+    <xyz type="double vector">-0.5 0 0.2</xyz>
+    <rpy type="double vector">0 0 0</rpy>
+    <priority type="double">0</priority>
+  </camera>
+  <error-check>
+    <file type="string">liberror-check.so</file>
+    <real-time-factor type="int">1</real-time-factor>
+    <priority type="double">0</priority>
+  </error-check>
+  <limits>
+    <file type="string">liblimits.so</file>
+    <real-time-factor type="int">1</real-time-factor>
+    <priority type="double">10</priority>
+  </limits>
+  
+  <sinusoid-walk>
+    <file type="string">libsinusoid-walk.so</file>
+    <priority type="double">1</priority>
+    <real-time-factor type="int">1</real-time-factor>
+    <amplitude type="double">0.1</amplitude>
+    <frequency type="double">6</frequency>
+  </sinusoid-walk>
+</XML>
