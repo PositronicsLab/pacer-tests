@@ -29,7 +29,7 @@
     <duration type="double">0.9</duration>
     <dt type="double">0.001</dt>
     <display type="bool">true</display>
-    <output-model type="bool">true</output-model>
+    <output-model type="bool">false</output-model>
     <get-data-online type="bool">true</get-data-online>
     <max-threads type="int">1</max-threads>
     <max-samples type="int">1</max-samples>

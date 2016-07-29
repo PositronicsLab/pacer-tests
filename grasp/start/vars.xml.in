@@ -13,4 +13,5 @@
     </base>
   </init>
 
+  <uncertainty-file type="file">@@PACER_MODEL_PATH@@/Arm/uncertainty.xml</uncertainty-file>
 </XML>
