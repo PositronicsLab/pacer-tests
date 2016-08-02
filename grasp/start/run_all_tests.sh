@@ -12,6 +12,7 @@ do
   git clean -dfx $i
   ${PACER_SCRIPT_PATH}/setup-tests.sh $i/*.in
   sed -i.bak "s#>.*</task-directory>#>$i</task-directory>#g" plugins.xml
-  screen -d -m -L ./run.sh
-  sleep 10s
+  #screen -d -m -L ./run.sh
+  ../../../BUILD/Moby/moby-driver -r -p=${PACER_SIMULATOR_PATH}/libPacerMobyPlugin.so -s=0.001 model.xml &> data.log
+  #sleep 10s
 done
