@@ -7,5 +7,5 @@ git clean -dfx .
 # re-parse '.in' files
 ${PACER_SCRIPT_PATH}/setup-tests.sh *.in
 
-$1 -p=${PACER_SIMULATOR_PATH}/libPacerMobyPlugin.so -r -s=0.015 -oi model.xml > out.log
+ ${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --no-pipe --duration .4 --stepsize 0.0001 --sample 1 --controlled --display --kinematic
 
