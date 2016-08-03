@@ -1,13 +1,14 @@
   <XML>
   <plugins type="string vector">
-      center-of-mass
+    center-of-mass
       end-effectors
-      gait-planner
+      error-check
       eef-PID-controller
       joint-PID-controller-accel
       ik-feet
       idyn-controller
-   </plugins>
+      trajectory-table
+  </plugins>
   
   <!--
       ik-feet
@@ -37,7 +38,7 @@
     <rpy type="double vector">0 0 0</rpy>
     <priority type="double">0</priority>
   </camera>
- <error-check>
+  <error-check>
     <file type="string">liberror-check.so</file>
     <real-time-factor type="int">1</real-time-factor>
     <priority type="double">10</priority>
@@ -237,7 +238,7 @@
 <!--CFQP CFLCP NSQP NSLCP-->
   </idyn-controller>
 
- <poseListener>
+  <poseListener>
     <file type="string">libposeListener.so</file>
     <priority type="double">1</priority>
     <real-time-factor type="int">1</real-time-factor>

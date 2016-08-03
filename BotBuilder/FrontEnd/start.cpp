@@ -5,9 +5,15 @@
 #include <FL/Fl_Input.H>
 #include <FL/Fl_File_Chooser.H>
 #include <FL/Fl_Text_Display.H>
+#include <string>
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdlib.h> 
+#include <iostream>
+#include <fstream>
 
 // GLOBALS
-Fl_Input        *G_inpdirname = NULL;
+Fl_Window *win = NULL;
 Fl_Input        *G_maxvelocity = NULL;
 Fl_Input        *G_deltav = NULL;
 Fl_Input        *G_unitlength = NULL;
@@ -17,7 +23,7 @@ Fl_Input        *G_testduration = NULL;
 Fl_File_Chooser *G_chooser    = NULL;
 
 void Next_CB(Fl_Widget*w, void*data) {
-    setenv("filename",G_inpdirname->value(),1);
+    setenv("modelNo","1",1);
     setenv("max_vel",G_maxvelocity->value(),1);
     setenv("delta_v",G_deltav->value(),1);
     setenv("curr_vel","0",1);
@@ -28,49 +34,44 @@ void Next_CB(Fl_Widget*w, void*data) {
     setenv("curr_line","0",1);
     setenv("curr_iter","0",1);
 
-    system("./init.sh");
-    exit(0);
+
+   std::ofstream myfile;
+   myfile.open ("/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt");
+   myfile << "----------------------------start.cpp---------------------------------";
+   myfile << "\n";
+   myfile << "modelNo: " << getenv("modelNo") << "\n";
+   myfile << "max_vel: " << getenv("max_vel") << "\n";
+   myfile << "delta_v: " << getenv("delta_v") << "\n";
+   myfile << "curr_vel: " << getenv("curr_vel") << "\n";
+   myfile << "unit_len: " << getenv("unit_len") << "\n";
+   myfile << "unit_den: " << getenv("unit_den") << "\n";
+   myfile << "unit_rad: " << getenv("unit_rad") << "\n";
+   myfile << "test_dur: " << getenv("test_dur") << "\n";
+   myfile << "curr_line: " << getenv("curr_line") << "\n";
+   myfile << "curr_iter: " << getenv("curr_iter") << "\n";
+   myfile.close();
+    
+
+	pid_t pid;
+
+
+   std::string line=getenv("BUILDER_SCRIPT_PATH");
+   line+="/init.sh";
+    pid=fork();
+    if(pid==0)
+    {execl(line.c_str(),line.c_str());}
+	win->hide();
+    
 }
 
 void Exit_CB(Fl_Widget*w, void*data) {
     exit(0);
 }
 
-void Butt_CB(Fl_Widget*w, void*data) {
-    const char *directory = G_inpdirname->value();
-
-    if ( ! G_chooser ) {
-        G_chooser = new Fl_File_Chooser("", "", Fl_File_Chooser::SINGLE, "");
-    }
-
-    G_chooser->directory(directory[0]?directory:NULL);
-    G_chooser->show();
-
-    // Block until user picks something.
-    //     (The other way to do this is to use a callback())
-    //
-    while(G_chooser->shown()) {
-        Fl::wait();
-    }
-
-    // Print the results
-    if ( G_chooser->value() == NULL ) {
-        fprintf(stderr, "(User hit 'Cancel')\n");
-        return;
-    }
-
-    fprintf(stderr, "DIRECTORY: '%s'\n", G_chooser->directory());
-    fprintf(stderr, "    VALUE: '%s'\n", G_chooser->value());
-    G_inpdirname->value(G_chooser->value());
-}
-
 int main() {
-     Fl_Window *win = new Fl_Window(425, 325, "Bot Builder");
+     win = new Fl_Window(425, 325, "Bot Builder");
 
      int y = 10;
-     G_inpdirname = new Fl_Input(80,y,200,25,"Filename");
-     G_inpdirname->value("");
-     y+=90;
 
      G_maxvelocity = new Fl_Input(200,y,200,25,"Maximum Velocity:");
      G_maxvelocity->value("");
@@ -96,13 +97,9 @@ int main() {
      G_testduration->value("");
      y+=30;
 
-     Fl_Text_Display *disp = new Fl_Text_Display(80, 80, 0, 0, "Test Conditions:");
-
      Fl_Button *ebut = new Fl_Button(win->w()-100,win->h()-25,50,25,"Exit");
      ebut->callback(Exit_CB);
 
-     Fl_Button *bbut = new Fl_Button(300,10,80,25,"Browse");
-     bbut->callback(Butt_CB);
 
      Fl_Button *cbut = new Fl_Button(win->w()-50,win->h()-25,50,25,"Next");
      cbut->callback(Next_CB);

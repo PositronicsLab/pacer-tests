@@ -3,15 +3,20 @@
 #include <FL/Fl_Int_Input.H>
 #include <FL/Fl_Slider.H>
 #include <FL/Fl_Text_Display.H>
+#include <FL/Fl_Text_Buffer.H>
 #include <FL/Fl_Button.H>
 #include <stdio.h>
 #include <string>       // std::string
 #include <iostream>     // std::cout
 #include <sstream>  
 #include <stdlib.h>  
+#include <sys/types.h>
+#include <unistd.h>
+#include <iostream>
+#include <sys/wait.h>
 
 
-
+Fl_Window *win = NULL;
 
 void Exit_CB(Fl_Widget*w, void*data) {
     exit(0);
@@ -122,6 +127,11 @@ void Butt_CB(Fl_Widget*w, void*data) {
     double linkRad= std::stod(getenv("linkRad"));
     double footRad= std::stod(getenv("footRad"));
     double footLen= std::stod(getenv("footLen"));
+    double modelNo= std::stod(getenv("modelNo"));
+    modelNo++;
+
+setenv("curr_vel", "0", 1);
+   
 
    lenF1+=(unitLen*slide1->value());
    lenF2+=(unitLen*slide2->value());
@@ -210,12 +220,31 @@ else
    setenv("density",line.c_str(),1);
    s.clear();
    s.str(std::string());
-   
-   system("home/brad/Desktop/Tests/pacer-tests/trotting/generate.sh");
+
+   s << modelNo;
+   line=s.str();
+   setenv("modelNo",line.c_str(),1);
+   s.clear();
+   s.str(std::string());
+
+   std::string line2=getenv("BUILDER_SCRIPT_PATH");
+	line2+="/generate.sh";
+        char* args[] = { NULL };
+   pid_t pid=fork();
+
+	if(pid==0)
+        {execl(line2.c_str(), line2.c_str(), (char *) 0);}
+
+	win->hide();
+
+
+
+	
 }
 
 int main() {
-    Fl_Window *win = new Fl_Window(700, 500, "Bot Builder");
+    
+    win = new Fl_Window(700, 500, "Bot Builder");
     
     slide1 = new SliderInput(20,200,200,25,"Front leg link 1 length");
     slide1->bounds(-100,100);       // set min/max for slider
@@ -261,22 +290,35 @@ int main() {
     slide11->bounds(-100,100);       // set min/max for slider
     slide11->value(0);           // set initial value
  
-    
-    std::stringstream s;
-    s << "velocity limits:" << " " << getenv("LF_X_1_vel") << " " << getenv("LF_Y_2_vel") << " " << getenv("LF_Y_3_vel"); 
-                           //<< " " << getenv("RF_X_1_vel") << " " << getenv("RF_Y_2_vel") << " " << getenv("RF_Y_3_vel")
-                          // << " " << getenv("LH_X_1_vel") << " " << getenv("LH_Y_2_vel") << " " << getenv("LH_Y_3_vel") 
-                          // << " " << getenv("RH_X_1_vel") << " " << getenv("RH_Y_2_vel") << " " << getenv("RH_Y_3_vel");  
-                            
-    Fl_Text_Display *disp = new Fl_Text_Display(400, 80, 0, 0,s.str().c_str() );
-    s.clear();
-    s.str(std::string());
-    s << "torque limits:" << " " << getenv("LF_X_1_tor") << " " << getenv("LF_Y_2_tor") << " " << getenv("LF_Y_3_tor"); 
-                           //<< " " << getenv("RF_X_1_tor") << " " << getenv("RF_Y_2_tor") << " " << getenv("RF_Y_3_tor")
-                           //<< " " << getenv("LH_X_1_tor")<< " " << getenv("LH_Y_2_tor") << " " << getenv("LH_Y_3_tor") 
-                           //<< " "<< getenv("RH_X_1_tor") << " " << getenv("RH_Y_2_tor") << " " << getenv("RH_Y_3_tor");
 
-    Fl_Text_Display *otherDisp = new Fl_Text_Display(400, 140, 0, 0,s.str().c_str() );
+	  Fl_Text_Buffer *txt_buff = new Fl_Text_Buffer();
+          Fl_Text_Buffer *txt_buff2 = new Fl_Text_Buffer();
+    std::string LF_1_vel=getenv("LF_X_1_vel");
+    std::stringstream s;
+    s << "LF leg: " << LF_1_vel << " " << getenv("LF_Y_2_vel") << " " << getenv("LF_Y_3_vel") 
+      << "\n" << "RF leg: " << getenv("RF_X_1_vel") << " " << getenv("RF_Y_2_vel") << " " << getenv("RF_Y_3_vel")
+      << "\n" << "LH leg: " << getenv("LH_X_1_vel") << " " << getenv("LH_Y_2_vel") << " " << getenv("LH_Y_3_vel") 
+      << "\n" << "RH leg: " << getenv("RH_X_1_vel") << " " << getenv("RH_Y_2_vel") << " " << getenv("RH_Y_3_vel");
+
+   std::cout << s.str();  
+    std::cout << "\n";
+     
+                            
+    Fl_Text_Display *disp = new Fl_Text_Display(20, 20, 100, 100,"Velocity Limit Jacobian:" );
+    std::stringstream s2;
+    s2 << "LF leg: " << getenv("LF_X_1_tor") << " " << getenv("LF_Y_2_tor") << " " << getenv("LF_Y_3_tor") 
+      << "\n" << "RF leg: " << getenv("RF_X_1_tor") << " " << getenv("RF_Y_2_tor") << " " << getenv("RF_Y_3_tor")
+      << "\n" << "LH leg: " << getenv("LH_X_1_tor")<< " " << getenv("LH_Y_2_tor") << " " << getenv("LH_Y_3_tor") 
+      << "\n" << "RH leg: " << getenv("RH_X_1_tor") << " " << getenv("RH_Y_2_tor") << " " << getenv("RH_Y_3_tor");
+      
+std::cout << "getting environment" << getenv("LF_X_1_tor") << "\n" << "\n" << "\n";  
+    txt_buff->text(s.str().c_str());
+     disp->buffer(txt_buff);
+
+    Fl_Text_Display *otherDisp = new Fl_Text_Display(200, 20, 100, 100,"Torque Limit Jacobian:" );
+
+    txt_buff2->text(s2.str().c_str());
+    otherDisp->buffer(txt_buff2);
 
      Fl_Button *ebut = new Fl_Button(win->w()-125,win->h()-25,50,25,"Exit");
      ebut->callback(Exit_CB);

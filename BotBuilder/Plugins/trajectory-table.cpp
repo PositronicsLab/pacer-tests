@@ -8,23 +8,74 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 void loop(){
+
+
+std::fstream myfile;
+   myfile.open ("/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt", std::ios::in | std::ios::out | std::ios::ate);
+   myfile << "----------------------------trajectory-table.cpp---------------------------------";
+   myfile << "\n";
+   myfile << "modelNo: " << getenv("modelNo") << "\n";
+   myfile << "max_vel: " << getenv("max_vel") << "\n";
+   myfile << "delta_v: " << getenv("delta_v") << "\n";
+   myfile << "curr_vel: " << getenv("curr_vel") << "\n";
+   myfile << "unit_len: " << getenv("unit_len") << "\n";
+   myfile << "unit_den: " << getenv("unit_den") << "\n";
+   myfile << "unit_rad: " << getenv("unit_rad") << "\n";
+   myfile << "test_dur: " << getenv("test_dur") << "\n";
+   myfile << "curr_line: " << getenv("curr_line") << "\n";
+   myfile << "curr_iter: " << getenv("curr_iter") << "\n";
+   myfile << "lenF1: " << getenv("lenF1") << "\n";
+   myfile << "lenF2: " << getenv("lenF2") << "\n";
+   myfile << "lenH1: " << getenv("lenH1") << "\n";
+   myfile << "lenH2: " << getenv("lenH2") << "\n";
+   myfile << "base_size_length: " << getenv("base_size_length") << "\n";
+   myfile << "base_size_width: " << getenv("base_size_width") << "\n";
+   myfile << "base_size_height: " << getenv("base_size_height") << "\n";
+   myfile << "density: " << getenv("density") << "\n";
+   myfile << "linkRad: " << getenv("linkRad") << "\n";
+   myfile << "footRad: " << getenv("footRad") << "\n";
+   myfile << "footLen: " << getenv("footLen") << "\n";
+   myfile << "KINEMATIC: " << getenv("KINEMATIC") << "\n";
+   myfile.close();
+
+
+
+
+
+pid_t pid;
+
+
+
+
+
 boost::shared_ptr<Pacer::Controller> ctrl(ctrl_weak_ptr);
 
-  double numIter=std::stod(getenv("curr_iter"));
-  double testDur=std::stod(getenv("test_dur"));
-  double currVel=std::stod(getenv("curr_vel")); 
+  double numIter= std::stod(getenv("curr_iter"));
+  double testDur= std::stod(getenv("test_dur"));
+  double currVel= std::stod(getenv("curr_vel")); 
   double currLine=std::stod(getenv("curr_line"));
   std::ostringstream s;
-  
   if(numIter>=testDur)
    {
-	exit(0);
-   }
+        setenv("curr_iter","0",1);
+        std::string line2=getenv("BUILDER_SCRIPT_PATH");
+	
+	line2+="/setup-plugins-play.sh";
+        
+	pid=fork();
+	if(pid==0)
+        {execl(line2.c_str(), line2.c_str(), (char *) 0);}
+pause();
+	}
+	
    else
    {
-      s << numIter++;
+      numIter+=1;
+      s << numIter;
       setenv("curr_iter",s.str().c_str(),1);
    }
   
@@ -52,12 +103,35 @@ for(int foot=0, vec=0;foot<eef_names.size(); foot++,vec+3)
             ctrl->set_base_value(Pacer::Controller::velocity_goal,allBodyVals[currLine][1]);
         s.clear();
         s.str(std::string());
-        s << currLine++;
+        currLine+=1;
+        s << currLine;
     setenv("curr_line",s.str().c_str(),1);
     
-    if(currLine>=num_rows)
+    if(currLine>=num_rows && std::stod(getenv("curr_vel"))<std::stod(getenv("max_vel")))
     {
-    	exit(0);
+        setenv("curr_line","0",1);
+        setenv("curr_iter","0",1);
+
+
+	double curr_vel=std::stod(getenv("curr_vel"));
+        curr_vel+=std::stod(getenv("delta_v"));
+        std::ostringstream s;
+        s << curr_vel;
+        std::string line=s.str();
+
+	setenv("curr_vel",line.c_str(),1);
+
+        std::string line3=getenv("BUILDER_SCRIPT_PATH");
+	
+	line3+="/setup-plugins-play.sh";
+        
+	pid=fork();
+	if(pid==0)
+        {execl(line3.c_str(), line3.c_str(), (char *) 0);}
+	pause();
+	
+
+    	
     }
 }
 
@@ -75,11 +149,9 @@ std::vector<Ravelin::VectorNd> bodyVals;
   const  std::vector<std::string>
   eef_names = ctrl->get_data<std::vector<std::string> >("init.end-effector.id");
 
-  double modelNo=std::stod(getenv("filename"));
+  double modelNo=std::stod(getenv("modelNo"));
   double currVel=std::stod(getenv("curr_vel"));
   double init=std::stod(getenv("curr_line"));
-  
-
   
    std::ostringstream s;
     s << modelNo << "-" << currVel << "-" << "PoseSet.txt";
@@ -137,6 +209,7 @@ for(int foot=0, vec=0;foot<eef_names.size(); foot++,vec+3)
 }
             ctrl->set_base_value(Pacer::Controller::position,allBodyVals[init][0]);
             ctrl->set_base_value(Pacer::Controller::velocity,allBodyVals[init][1]);
+std::cout << "\n" << "\n" << init << "\n" << "\n";
 
 myfile.close();
 }

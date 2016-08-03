@@ -5,8 +5,51 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <string>
 
 void loop(){
+
+
+std::fstream myfile;
+   myfile.open ("/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt", std::ios::in | std::ios::out | std::ios::ate);
+   myfile << "----------------------------poseListener.cpp---------------------------------";
+   myfile << "\n";
+   myfile << "modelNo: " << getenv("modelNo") << "\n";
+   myfile << "max_vel: " << getenv("max_vel") << "\n";
+   myfile << "delta_v: " << getenv("delta_v") << "\n";
+   myfile << "curr_vel: " << getenv("curr_vel") << "\n";
+   myfile << "unit_len: " << getenv("unit_len") << "\n";
+   myfile << "unit_den: " << getenv("unit_den") << "\n";
+   myfile << "unit_rad: " << getenv("unit_rad") << "\n";
+   myfile << "test_dur: " << getenv("test_dur") << "\n";
+   myfile << "curr_line: " << getenv("curr_line") << "\n";
+   myfile << "curr_iter: " << getenv("curr_iter") << "\n";
+   myfile << "lenF1: " << getenv("lenF1") << "\n";
+   myfile << "lenF2: " << getenv("lenF2") << "\n";
+   myfile << "lenH1: " << getenv("lenH1") << "\n";
+   myfile << "lenH2: " << getenv("lenH2") << "\n";
+   myfile << "base_size_length: " << getenv("base_size_length") << "\n";
+   myfile << "base_size_width: " << getenv("base_size_width") << "\n";
+   myfile << "base_size_height: " << getenv("base_size_height") << "\n";
+   myfile << "density: " << getenv("density") << "\n";
+   myfile << "linkRad: " << getenv("linkRad") << "\n";
+   myfile << "footRad: " << getenv("footRad") << "\n";
+   myfile << "footLen: " << getenv("footLen") << "\n";
+   myfile << "KINEMATIC: " << getenv("KINEMATIC") << "\n";
+   myfile.close();
+
+
+
+
+
+
+
+
+
+
+
+
+
     boost::shared_ptr<Pacer::Controller> ctrl(ctrl_weak_ptr);
 
      //initializing variables
@@ -14,14 +57,12 @@ void loop(){
      std::string filename;
      Ravelin::VectorNd command_x,command_xd;
 
-  double modelNo= std::stod(getenv("filename"));
+  double modelNo= std::stod(getenv("modelNo"));
   double currVel= std::stod(getenv("curr_vel"));
     
     std::ostringstream s;
     s << modelNo << "-" << currVel << "-" << "PoseSet.txt";
     filename = s.str();
-
-   std::cout << "I'm here" << "\n" << "\n" << "\n";
      //get the position, base command, and end effector names
     
      std::vector<std::string> eef_names = ctrl->get_data<std::vector<std::string> >(plugin_namespace+".id");
@@ -52,7 +93,6 @@ void loop(){
 
      //close the file
      file.close();
- std::cout << "now I'm here" << "\n" << "\n" << "\n";
 }
 
 void setup(){
