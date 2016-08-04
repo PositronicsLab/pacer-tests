@@ -1,46 +1,100 @@
-<XML>
-  <DRIVER>
-    <camera position="2.0 2.0 0.0" target="0 0 0" up="0 0 1" />
-    <window location="0 0" size="640 480" />
-  </DRIVER>
-  <MOBY>
-
-  <GravityForce id="gravity" accel="0 0 -9.81" />
-
-<TimeSteppingSimulator min-step-size="0.001" constraint-stabilization-max-iterations="0">
-  <RecurrentForce recurrent-force-id="gravity" />
-  <DisabledPair object1-id="ARM" object2-id="ARM"/>
-  <DynamicBody dynamic-body-id="ARM" />
-  <DynamicBody dynamic-body-id="GROUND" />
-  <DynamicBody dynamic-body-id="BLOCK" />
-  <ContactParameters object1-id="ARM" object2-id="GROUND" mu-coulomb="1"   mu-viscous="0" />
-  <ContactParameters object1-id="ARM" object2-id="BLOCK" mu-coulomb="100"    mu-viscous="0" />
-  <ContactParameters object1-id="GROUND" object2-id="BLOCK" mu-coulomb="1" mu-viscous="0" />
-  <ImplicitConstraint joint-id="fixed-base" /> 
-</TimeSteppingSimulator>
-
-  <FixedJoint id="fixed-base" inboard-link-id="GROUND" outboard-link-id="LINK_0" location="0 0 0" />
-<SDF filename="@@PACER_MODEL_PATH@@/Arm/model.sdf"/>
-<!-- ideal mox size: 0.050710678 -->
-<Box id="block" rpy="0 0.0 0"  xlen="0.05071" ylen="0.05071" zlen="0.05071" density="6000"/>
-  <RigidBody id="BLOCK" color="0.6 0.6 0.6 0" enabled="true"
-  position="0.31 0 -0.1506"
-  visualization-id="block"
-  compliant="false">
-    <InertiaFromPrimitive primitive-id="block" />
-    <CollisionGeometry primitive-id="block" />
-  </RigidBody>
-
-  <!-- setup the platform rigid body; it is not active -->
-     <Box id="ground-primitive-viz" rpy="1.5708 0.0 0"  xlen="8" ylen="0.001" zlen="8" />
-     <Plane id="ground-primitive" rpy="1.5708 0 0" />
-<!--<Heightmap id="ground-primitive" filename="heightmap.mat" width="1" depth="1" rpy="1.5708 0 0" />-->
-<RigidBody id="GROUND" color="0.6 0.6 0.6 0" enabled="false"
-  position="0 0 -0.2"
-  visualization-id="ground-primitive-viz"
-  compliant="false">
-    <CollisionGeometry primitive-id="ground-primitive" />
-  </RigidBody>
-
-  </MOBY>
+<XML >
+<DRIVER>
+<camera position="1.0 1.0 1.0" target="0 0 0.2" up="0 0 1" />
+<window location="0 0" size="640 480" />
+</DRIVER>
+  <Moby >
+    <TimeSteppingSimulator bilateral-stabilization-tol="1e-06" constraint-stabilization-max-iterations="0" current-time="0" id="0x7fbac981b0a8" min-step-size="0.001" unilateral-stabilization-tol="1.49012e-08" >
+      <DynamicBody dynamic-body-id="GROUND" />
+      <DynamicBody dynamic-body-id="BLOCK" />
+      <DynamicBody dynamic-body-id="ARM" />
+      <ImplicitConstraint joint-id="fixed-base" />
+      <ContactParameters damping="0" epsilon="0" friction-cone-edges="4" mu-coulomb="1" mu-viscous="0" object1-id="BLOCK" object2-id="GROUND" penalty-kp="0" penalty-kv="0" stiffness="0" />
+      <ContactParameters damping="0" epsilon="0" friction-cone-edges="4" mu-coulomb="0" mu-viscous="0" object1-id="ARM" object2-id="GROUND" penalty-kp="0" penalty-kv="0" stiffness="0" />
+      <ContactParameters damping="0" epsilon="0" friction-cone-edges="4" mu-coulomb="99" mu-viscous="0" object1-id="ARM" object2-id="BLOCK" penalty-kp="0" penalty-kv="0" stiffness="0" />
+      <DisabledPair object1-id="ARM" object2-id="ARM" />
+      <DisabledPair object1-id="ARM" object2-id="GROUND" />
+      <!-- DisabledPair object1-id="ARM" object2-id="BLOCK" / -->
+    </TimeSteppingSimulator>
+    <RigidBody angular-velocity="0 0 0" compliant="false" enabled="false" id="GROUND" inertia="0 0 0; 0 0 0; 0 0 0;" inertial-relative-com="0 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0" position="0 0 -0.05" quat="1 0 0 0" visualization-id="0x7fbac8750370" >
+      <RecurrentForce recurrent-force-id="gravity" />
+      <CollisionGeometry compliant-layer-depth="0" id="0x7fbac8750ab0" primitive-id="ground-primitive" relative-origin="0 0 0" relative-quat="1 0 0 0" />
+    </RigidBody>
+    <RigidBody angular-velocity="0 0 0" compliant="false" enabled="true" id="BLOCK" inertia="0.000335327 0 0; 0 0.000335327 0; 0 0 0.000335327;" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.782406" position="0.30 0.14 -0.0246" quat="1 0 0 0" visualization-id="block" color="0.5 0 0.5 1">
+      <RecurrentForce recurrent-force-id="gravity" />
+      <CollisionGeometry compliant-layer-depth="0" id="0x7fbac874f740" primitive-id="block" relative-origin="0 0 0" relative-quat="1 0 0 0" />
+    </RigidBody>
+    <RCArticulatedBody fdyn-algorithm="crb" fdyn-algorithm-frame="linkcom" floating-base="true" id="ARM" visualization-id="0x7fbac8719f30" location="0 0 0.1" >
+      <RecurrentForce recurrent-force-id="gravity" />
+      <RigidBody angular-velocity="0 0 0" articulated-body-id="ARM" compliant="false" enabled="true" id="LINK_0" inertia="1.5e-05 0 0; 0 3e-05 0; 0 0 3e-05;" inertial-relative-com="0 0 0.1" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="1" position="0 0 0.1" quat="1 0 0 0" visualization-id="0x7fbac8719460" />
+      <RigidBody angular-velocity="0 0 0" articulated-body-id="ARM" compliant="false" enabled="true" id="LINK_1" inertia="2.52978e-06 0 0; 0 3.61104e-05 0; 0 0 3.61104e-05;" inertial-relative-com="0.05 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.0418146" position="0.1 0 0.1" quat="1 0 0 0" visualization-id="0x7fbac87222c0" />
+      <RigidBody angular-velocity="0 0 0" articulated-body-id="ARM" compliant="false" enabled="true" id="LINK_2" inertia="3.61104e-05 6.90838e-21 1.23348e-10; 6.90841e-21 3.61104e-05 3.78036e-21; 1.23348e-10 3.78036e-21 2.52978e-06;" inertial-relative-com="0.05 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.0418146" position="0.2 0 0.1" quat="1 0 0 0" visualization-id="0x7fbac87228e0" />
+      <RigidBody angular-velocity="0 0 0" articulated-body-id="ARM" compliant="false" enabled="true" id="LINK_3" inertia="3.61104e-05 -1.66429e-21 -4.5308e-16; -1.66434e-21 3.61104e-05 -1.23348e-10; -4.5308e-16 -1.23348e-10 2.52978e-06;" inertial-relative-com="0.05 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.0418146" position="0.3 0 0.1" quat="1 0 0 0" visualization-id="0x7fbac87254f0" />
+      <RigidBody angular-velocity="0 0 0" articulated-body-id="ARM" compliant="false" enabled="true" id="LINK_4" inertia="3.61104e-05 -4.53085e-16 1.0917e-20; -4.53085e-16 2.52978e-06 2.46697e-10; 1.09169e-20 2.46697e-10 3.61104e-05;" inertial-relative-com="0.05 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.0418146" position="0.4 2.77554e-18 0.1" quat="1 0 0 0" visualization-id="0x7fbac87227c0" />
+      <RigidBody angular-velocity="0 0 0" articulated-body-id="ARM" compliant="false" enabled="true" id="LINK_5" inertia="3.61104e-05 -2.46697e-10 -9.98557e-21; -2.46697e-10 2.52978e-06 -1.35925e-15; -9.98568e-21 -1.35925e-15 3.61104e-05;" inertial-relative-com="0.05 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.0418146" position="0.5 2.77554e-18 0.1" quat="1 0 0 0" visualization-id="0x7fbac87313b0" />
+      <RigidBody angular-velocity="0 0 0" articulated-body-id="ARM" compliant="false" enabled="true" id="LINK_6" inertia="2.52978e-06 3.70045e-10 -1.35925e-15; 3.70045e-10 3.61104e-05 1.49783e-20; -1.35925e-15 1.49784e-20 3.61104e-05;" inertial-relative-com="0.05 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.0418146" position="0.6 2.77554e-18 0.1" quat="1 0 0 0" visualization-id="0x7fbac87343f0" />
+      <RigidBody angular-velocity="0 0 0" articulated-body-id="ARM" compliant="false" enabled="true" id="HAND" inertia="3.358e-05 0 0; 0 3.358e-05 0; 0 0 3.358e-05;" inertial-relative-com="-1.11022e-16 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.1" position="0.65 5.5513e-18 0.1" quat="1 0 0 0" visualization-id="0x7fbac8728c30">
+      <CollisionGeometry compliant-layer-depth="0" id="0x7fbac874f740" primitive-id="block" relative-origin="0 0 0" relative-quat="1 0 0 0" />
+      </RigidBody>
+      <RigidBody angular-velocity="0 0 0" articulated-body-id="ARM" compliant="false" enabled="true" id="FINGER00" inertia="1.25827e-07 -1.32948e-17 1.16123e-07; -1.32948e-17 2.41953e-07 1.32945e-17; 1.16123e-07 1.32945e-17 1.25832e-07;" inertial-relative-com="0.05 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.00171696" position="0.7 -0.02 0.1" quat="1 0 0 0" visualization-id="0x7fbac8734ab0" >
+        <CollisionGeometry compliant-layer-depth="0" id="FINGER_collision" primitive-id="0x7fbac873a148" relative-origin="-4.85723e-17 0 0" relative-quat="1 0 0 0" />
+      </RigidBody>
+      <RigidBody angular-velocity="0 0 0" articulated-body-id="ARM" compliant="false" enabled="true" id="FINGER01" inertia="1.25827e-07 -1.32948e-17 1.16123e-07; -1.32948e-17 2.41953e-07 1.32945e-17; 1.16123e-07 1.32945e-17 1.25832e-07;" inertial-relative-com="0.05 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.00171696" position="0.7 0.02 0.1" quat="1 0 0 0" visualization-id="0x7fbac873a360" >
+        <CollisionGeometry compliant-layer-depth="0" id="FINGER_collision" primitive-id="0x7fbac873d7e8" relative-origin="-4.85723e-17 0 0" relative-quat="1 0 0 0" />
+      </RigidBody>
+      <RigidBody angular-velocity="0 0 0" articulated-body-id="ARM" compliant="false" enabled="true" id="FINGER10" inertia="1.25832e-07 -1.32944e-17 -1.16123e-07; -1.32944e-17 2.41953e-07 -1.32947e-17; -1.16123e-07 -1.32947e-17 1.25827e-07;" inertial-relative-com="0.05 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.00171696" position="0.7 -0.02 0.1" quat="1 0 0 0" visualization-id="0x7fbac873dc50" >
+        <CollisionGeometry compliant-layer-depth="0" id="FINGER_collision" primitive-id="0x7fbac8742598" relative-origin="-4.85723e-17 0 0" relative-quat="1 0 0 0" />
+      </RigidBody>
+      <RigidBody angular-velocity="0 0 0" articulated-body-id="ARM" compliant="false" enabled="true" id="FINGER11" inertia="1.25832e-07 -1.32944e-17 -1.16123e-07; -1.32944e-17 2.41953e-07 -1.32947e-17; -1.16123e-07 -1.32947e-17 1.25827e-07;" inertial-relative-com="0.05 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.00171696" position="0.7 0.02 0.1" quat="1 0 0 0" visualization-id="0x7fbac8741fe0" >
+        <CollisionGeometry compliant-layer-depth="0" id="FINGER_collision" primitive-id="0x7fbac8745c58" relative-origin="-4.85723e-17 0 0" relative-quat="1 0 0 0" />
+      </RigidBody>
+      <RevoluteJoint axis="1 0 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="X_1" inboard-link-id="LINK_0" location="0.05 0 0.1" lower-limits="-1e+06" outboard-link-id="LINK_1" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0x7fbac87466e0" />
+      <RevoluteJoint axis="0 1 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="Y_2" inboard-link-id="LINK_1" location="0.15 0 0.1" lower-limits="-1e+06" outboard-link-id="LINK_2" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0x7fbac8746860" />
+      <RevoluteJoint axis="0 0 1" compliant-layer-depth="0" coulomb-friction-coeff="0" id="Z_3" inboard-link-id="LINK_2" location="0.25 0 0.1" lower-limits="-1e+06" outboard-link-id="LINK_3" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0x7fbac8748fc0" />
+      <RevoluteJoint axis="1 0 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="X_4" inboard-link-id="LINK_3" location="0.35 2.77554e-18 0.1" lower-limits="-1e+06" outboard-link-id="LINK_4" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0x7fbac8749ae0" />
+      <RevoluteJoint axis="0 1 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="Y_5" inboard-link-id="LINK_4" location="0.45 2.77554e-18 0.1" lower-limits="-1e+06" outboard-link-id="LINK_5" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0x7fbac874a5f0" />
+      <RevoluteJoint axis="0 0 1" compliant-layer-depth="0" coulomb-friction-coeff="0" id="Z_6" inboard-link-id="LINK_5" location="0.55 2.77554e-18 0.1" lower-limits="-1e+06" outboard-link-id="LINK_6" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0x7fbac874b140" />
+      <RevoluteJoint axis="1 0 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="X_7" inboard-link-id="LINK_6" location="0.65 5.5513e-18 0.1" lower-limits="-1e+06" outboard-link-id="HAND" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0x7fbac874bc50" />
+      <RevoluteJoint axis="0 1 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="F_00" inboard-link-id="HAND" location="0.65 -0.02 0.1" lower-limits="-1e+06" outboard-link-id="FINGER00" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0x7fbac874c760" />
+      <RevoluteJoint axis="0 1 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="F_01" inboard-link-id="HAND" location="0.65 0.02 0.1" lower-limits="-1e+06" outboard-link-id="FINGER01" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0x7fbac874d270" />
+      <RevoluteJoint axis="0 -1 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="F_10" inboard-link-id="HAND" location="0.65 -0.02 0.1" lower-limits="-1e+06" outboard-link-id="FINGER10" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0x7fbac874de10" />
+      <RevoluteJoint axis="0 -1 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="F_11" inboard-link-id="HAND" location="0.65 0.02 0.1" lower-limits="-1e+06" outboard-link-id="FINGER11" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0x7fbac874e910" />
+    </RCArticulatedBody>
+    <OSGGroup filename="vizdata_0x7fbac8750370.osg" id="0x7fbac8750370" />
+    <GravityForce accel="0 0 -9.81" id="gravity" />
+    <Plane id="ground-primitive" mass="0" position="0 0 0" quat="0.707105 0.707108 0 0" />
+    <OSGGroup filename="vizdata_0x7fbac8745a50.osg" id="0x7fbac8745a50" />
+<!-- Box density="6000" edge-sample-length="1.79769e+308" id="block" position="0 0 0" quat="1 0 0 0" xlen="0.05071" ylen="0.05071" zlen="0.05071" / -->
+    <Sphere density="1000" id="block" position="0 0 0" quat="1 0 0 0" radius="0.025355" />
+    <OSGGroup filename="vizdata_0x7fbac8719f30.osg" id="0x7fbac8719f30" />
+    <OSGGroup filename="vizdata_0x7fbac8719460.osg" id="0x7fbac8719460" />
+    <OSGGroup filename="vizdata_0x7fbac87222c0.osg" id="0x7fbac87222c0" />
+    <OSGGroup filename="vizdata_0x7fbac87228e0.osg" id="0x7fbac87228e0" />
+    <OSGGroup filename="vizdata_0x7fbac87254f0.osg" id="0x7fbac87254f0" />
+    <OSGGroup filename="vizdata_0x7fbac87227c0.osg" id="0x7fbac87227c0" />
+    <OSGGroup filename="vizdata_0x7fbac87313b0.osg" id="0x7fbac87313b0" />
+    <OSGGroup filename="vizdata_0x7fbac87343f0.osg" id="0x7fbac87343f0" />
+    <OSGGroup filename="vizdata_0x7fbac8728c30.osg" id="0x7fbac8728c30" />
+    <OSGGroup filename="vizdata_0x7fbac8734ab0.osg" id="0x7fbac8734ab0" />
+    <Sphere id="0x7fbac873a148" mass="0" num-points="100" position="0 0 0" quat="1 0 0 0" radius="0.00505" />
+    <OSGGroup filename="vizdata_0x7fbac873a360.osg" id="0x7fbac873a360" />
+    <Sphere id="0x7fbac873d7e8" mass="0" num-points="100" position="0 0 0" quat="1 0 0 0" radius="0.00505" />
+    <OSGGroup filename="vizdata_0x7fbac873dc50.osg" id="0x7fbac873dc50" />
+    <Sphere id="0x7fbac8742598" mass="0" num-points="100" position="0 0 0" quat="1 0 0 0" radius="0.00505" />
+    <OSGGroup filename="vizdata_0x7fbac8741fe0.osg" id="0x7fbac8741fe0" />
+    <Sphere id="0x7fbac8745c58" mass="0" num-points="100" position="0 0 0" quat="1 0 0 0" radius="0.00505" />
+    <OSGGroup filename="vizdata_0x7fbac87466e0.osg" id="0x7fbac87466e0" />
+    <OSGGroup filename="vizdata_0x7fbac8746860.osg" id="0x7fbac8746860" />
+    <OSGGroup filename="vizdata_0x7fbac8748fc0.osg" id="0x7fbac8748fc0" />
+    <OSGGroup filename="vizdata_0x7fbac8749ae0.osg" id="0x7fbac8749ae0" />
+    <OSGGroup filename="vizdata_0x7fbac874a5f0.osg" id="0x7fbac874a5f0" />
+    <OSGGroup filename="vizdata_0x7fbac874b140.osg" id="0x7fbac874b140" />
+    <OSGGroup filename="vizdata_0x7fbac874bc50.osg" id="0x7fbac874bc50" />
+    <OSGGroup filename="vizdata_0x7fbac874c760.osg" id="0x7fbac874c760" />
+    <OSGGroup filename="vizdata_0x7fbac874d270.osg" id="0x7fbac874d270" />
+    <OSGGroup filename="vizdata_0x7fbac874de10.osg" id="0x7fbac874de10" />
+    <OSGGroup filename="vizdata_0x7fbac874e910.osg" id="0x7fbac874e910" />
+    <FixedJoint id="fixed-base" inboard-link-id="GROUND" outboard-link-id="LINK_0" location="0.15 0 0" />
+    
+  </Moby>
 </XML>

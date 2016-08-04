@@ -1,6 +1,7 @@
   <XML>
   <plugins type="string vector">
-      end-effectors
+error-check
+    end-effectors
       freeze
       grasp
       plugin-scheduler
@@ -65,6 +66,7 @@
     <file type="string">liberror-check.so</file>
     <real-time-factor type="int">1</real-time-factor>
     <priority type="double">0</priority>
+    <errors type="string vector">explode</errors>
   </error-check>
   
   <end-effectors>
