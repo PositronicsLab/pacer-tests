@@ -36,7 +36,8 @@ echo "----------------------------setup-plugins-capt.sh-------------------------
    echo "KINEMATIC: "$KINEMATIC"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
 
 
-   ${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --no-pipe --duration .4 --stepsize 0.0001 --sample 1 --controlled --display
+#gdb --args ${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --no-pipe --duration .4 --stepsize 0.0001 --sample 1 --controlled --display 
+${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --no-pipe --duration .4 --stepsize 0.0001 --sample 1 --controlled --display 
 
 
 

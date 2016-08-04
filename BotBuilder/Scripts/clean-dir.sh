@@ -1,7 +1,13 @@
 #!/bin/bash
+rm $BUILDER_CAPT_PATH/*.log
+rm $BUILDER_CAPT_PATH/*.dat
+rm $BUILDER_CAPT_PATH/*.xml.bak
+rm $BUILDER_CAPT_PATH/*.osg
+
 rm $BUILDER_XML_PATH/*.log
 rm $BUILDER_XML_PATH/*.dat
 rm $BUILDER_XML_PATH/*.xml.bak
+rm $BUILDER_XML_PATH/*.osg
 
 echo "----------------------------clean-dir.sh---------------------------------"  >> /home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt
    echo "modelNo: "$modelNo"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"

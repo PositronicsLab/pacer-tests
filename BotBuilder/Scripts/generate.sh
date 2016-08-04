@@ -1,8 +1,8 @@
 #!/bin/bash
 #generate a model with the Monte-Carlo simulation with the provided initial x/xd/xdd values
 #as only the xml file is needed, the duration is set to zero and Moby control is off
-cd $BUILDER_XML_PATH
-${PACER_SCRIPT_PATH}/setup-tests.sh $BUILDER_XML_PATH/*.in
+cd $BUILDER_CAPT_PATH
+$PACER_SCRIPT_PATH/setup-tests.sh $BUILDER_CAPT_PATH/*.in
 
 ${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --no-pipe --duration 0 --stepsize 0.001 --xml --sample 1 \
  --BODY0.density  $density --BODY0.size $base_size_length  $base_size_width  $base_size_height \

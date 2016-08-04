@@ -2,13 +2,12 @@
   <plugins type="string vector">
     center-of-mass
       end-effectors
-      gait-planner
+      error-check
       eef-PID-controller
       joint-PID-controller-accel
       ik-feet
       idyn-controller
-      goForward
-      poseListener
+      trajectory-table
   </plugins>
   
   <!--
@@ -42,7 +41,7 @@
   <error-check>
     <file type="string">liberror-check.so</file>
     <real-time-factor type="int">1</real-time-factor>
-    <priority type="double">0</priority>
+    <priority type="double">10</priority>
   </error-check>
   <limits>
     <file type="string">liblimits.so</file>

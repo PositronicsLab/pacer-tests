@@ -1,5 +1,5 @@
 #!/bin/bash
-cd $BUILDER_XML_PATH
+cd $BUILDER_CAPT_PATH
 
 for i in `ls -v model-*.xml`; 
 do 

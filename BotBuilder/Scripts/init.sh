@@ -1,6 +1,7 @@
 #!/bin/bash
 source /home/brad/Project/Pacer/debug/setup.sh
-cd $BUILDER_SCRIPT_PATH
+cd $BUILDER_CAPT_PATH
+$BUILDER_SCRIPT_PATH/clean-dir.sh
 
 export lenF1=.05
 export lenF2=.1
@@ -46,4 +47,4 @@ echo "----------------------------init.sh---------------------------------"  >> 
    echo "footLen: "$footLen"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
    echo "KINEMATIC: "$KINEMATIC"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
 
-./generate.sh
+$BUILDER_SCRIPT_PATH/generate.sh

@@ -1,7 +1,7 @@
 #!/bin/bash
-cd $BUILDER_XML_PATH
+cd $BUILDER_CAPT_PATH
 NAME=`basename $1 .xml`
-cat $BUILDER_XML_PATH/sim-ground-model.xml > $NAME-sim.xml
+cat $BUILDER_CAPT_PATH/sim-ground-model.xml > $NAME-sim.xml
 
 sed -i.bak 's#<XML >##g' $1
 sed -i.bak 's#<Moby >##g' $1
@@ -10,6 +10,7 @@ sed -i.bak 's#</Moby>#</MOBY>#g' $1
 cat $1 >> $NAME-sim.xml
 
 cat $NAME-sim.xml > model.xml
+cp model.xml $BUILDER_XML_PATH/model.xml
 
 echo "----------------------------place-robot.sh---------------------------------"  >> /home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt
    echo "modelNo: "$modelNo"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
@@ -37,8 +38,9 @@ echo "----------------------------place-robot.sh--------------------------------
    echo "KINEMATIC: "$KINEMATIC"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
 
 $BUILDER_SCRIPT_PATH/moveOld.sh
+
 if [ "$KINEMATIC"=true ] ; then
-	$BUILDER_SCRIPT_PATH/setup-plugins-capt.sh *.capt
+	$BUILDER_CAPT_PATH/run.sh
 fi
 	#. $BUILDER_SCRIPT_PATH/setup-plugins-play.sh *.play
 

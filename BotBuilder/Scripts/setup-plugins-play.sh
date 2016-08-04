@@ -1,13 +1,6 @@
 #!/bin/bash
 cd $BUILDER_XML_PATH
 
-# create new file
-  cp -f "plugins.xml.play" "plugins.xml"
-echo "I'm here" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
-
-
-
-
 echo "----------------------------setup-plugins-play.sh---------------------------------"  >> /home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt
    echo "modelNo: "$modelNo"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
    echo "max_vel: "$max_vel"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
@@ -34,7 +27,7 @@ echo "----------------------------setup-plugins-play.sh-------------------------
    echo "KINEMATIC: "$KINEMATIC"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
    echo "Current Directory: "$BUILDER_XML_PATH"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
  
-	${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --no-pipe --duration .4 --stepsize 0.001 --sample 1 --controlled
+	${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --no-pipe --duration .4 --stepsize 0.001 --sample 1 --controlled --stand
 
         
 
