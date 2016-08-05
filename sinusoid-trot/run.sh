@@ -5,7 +5,7 @@ source ${PACER_BINARY_PATH}/setup.sh
 # clean up worksapce
 git clean -dfx .
 # re-parse '.in' files
-../setup-tests.sh *.in
+${PACER_SCRIPT_PATH}/setup-tests.sh *.in
 
 $@ -p=${PACER_SIMULATOR_PATH}/libPacerMobyPlugin.so -s=0.05 model.xml > out.log
 

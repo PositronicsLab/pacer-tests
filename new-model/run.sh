@@ -1,5 +1,5 @@
 git clean -dxf . ;
-../setup-tests.sh *.in ;
+${PACER_SCRIPT_PATH}/setup-tests.sh *.in ;
 
 legMult=$(python -c "import random;print(random.uniform(0.1, .9))")
 legMult=$(echo "scale=2;$legMult" | bc)
