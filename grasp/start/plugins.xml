@@ -62,6 +62,7 @@
     <get-data-online type="bool">true</get-data-online>
     <max-threads type="int">10</max-threads>
     <max-samples type="int">10</max-samples>
+    <max-working type="int">1</max-working>
     <executable type="string">monte-carlo-simulation/sample.bin</executable>
     <task-directory type="string">../sample-direct</task-directory>
   </monte-carlo-simulation>

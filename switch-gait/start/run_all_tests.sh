@@ -4,13 +4,30 @@ source ${BUILD_PATH}/Pacer/setup.sh
   
 git clean -dfx .. 
 
+# copy plugin directory for all jobs
+for i in $@
+do
+  # copy generic job
+  cp -r ../sample ../sample-$i
+done
+
 # re-parse '.in' files
 ${PACER_SCRIPT_PATH}/setup-tests.sh ./*.in ../sample/*.in
 
-sed -i.bak "s#>.*</task-directory>#>$@</task-directory>#g" plugins.xml
+# edit all jobs and include them in main controller
 for i in $@
 do
-  cp -r ../sample ../sample-$i
+  # edit job details
   sed -i.bak "s#>.*</switch-at-time>#>$i</switch-at-time>#g" ../sample-$i/plugins.xml
+  
+  # paste plugin job into plugin.xml
+  # make sed tool for this job
+  cat append-monte-carlo.xml | sed "s#monte-carlo-name.xml#../sample-$i/monte-carlo.xml#g" > edit-plugin.sh
+  chmod +x edit-plugin.sh
+  # append to second-to-last line of file
+  ./edit-plugin.sh
 done
-  screen -d -m -L ../../../BUILD/Moby/moby-driver -r -p=${PACER_SIMULATOR_PATH}/libPacerMobyPlugin.so -s=0.001 model.xml
+
+
+# run pacer
+screen -d -m -L ../../../BUILD/Moby/moby-driver -r -p=${PACER_SIMULATOR_PATH}/libPacerMobyPlugin.so -s=0.001 model.xml

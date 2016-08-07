@@ -1,0 +1,1 @@
+sed '$i<task-file type="file">monte-carlo-name.xml</task-file>' newfile.xml
