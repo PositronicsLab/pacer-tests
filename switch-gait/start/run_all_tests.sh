@@ -18,7 +18,7 @@ ${PACER_SCRIPT_PATH}/setup-tests.sh ./*.in ../sample/*.in
 for i in $@
 do
   # edit job details
-  sed -i.bak "s#>.*</switch-at-time>#>$i</switch-at-time>#g" ../sample-$i/plugins.xml
+  sed -i.bak "s#>.*</time>#>$i</time>#g" ../sample-$i/plugins.xml
   
   # paste plugin job into plugin.xml
   # make sed tool for this job
@@ -26,6 +26,8 @@ do
   chmod +x edit-plugin.sh
   # append to second-to-last line of file
   ./edit-plugin.sh
+
+  rpl "plugin-scheduler</open>" " monte-carlo-sample-$i plugin-scheduler</open>" plugin.xml
 done
 
 
