@@ -2,7 +2,7 @@
   <logging type="string">NONE</logging>
   <real-time-factor type="double">1</real-time-factor>
   
-  <robot-model type="string">/home/brad/Desktop/Tests/pacer-tests/BotBuilder/XML/model.xml</robot-model>
+  <robot-model type="string">../XML/model.xml</robot-model>
   
   <init>
     <base>
