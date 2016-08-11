@@ -8,7 +8,6 @@ export BUILDER_PLUGIN_PATH=$BUILDER_HOME_PATH/Plugins
 export BUILDER_GUI_PATH=$BUILDER_HOME_PATH/FrontEnd
 export BUILDER_CAPT_PATH=$BUILDER_HOME_PATH/XML-traj
 export BUILDER_POSE_PATH=$BUILDER_HOME_PATH/PoseSets
-export PACER_MODEL_PATH=$BUILDER_CAPT_PATH
 #export curr_vel=.1
 #export max_vel=.5
 #export test_dur=4

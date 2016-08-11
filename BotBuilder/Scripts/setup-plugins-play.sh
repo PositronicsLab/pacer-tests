@@ -29,7 +29,7 @@ echo "----------------------------setup-plugins-play.sh-------------------------
 
    $BUILDER_SCRIPT_PATH/setInitVals.sh
  
-	${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --no-pipe --duration .4 --moby s=0.001 r p=${PACER_SIMULATOR_PATH}/libPacerMobyPlugin.so $BUILDER_XML_PATH/model.xml --sample 1 --stand
+	${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --no-pipe --duration .4 --moby s=0.001 r p=${PACER_SIMULATOR_PATH}/libPacerMobyPlugin.so $BUILDER_XML_PATH/model-1.xml --sample 1 --stand
         
 
 

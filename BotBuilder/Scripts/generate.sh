@@ -44,6 +44,3 @@ echo "----------------------------generate.sh---------------------------------" 
    echo "footRad: "$footRad"" >> "/tmp/debug.txt"
    echo "footLen: "$footLen"" >> "/tmp/debug.txt"
    echo "KINEMATIC: "$KINEMATIC"" >> "/tmp/debug.txt"
-
-$BUILDER_SCRIPT_PATH/place-robot.sh model-*.xml
-cp model-*.xml $BUILDER_CAPT_PATH/
