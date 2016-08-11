@@ -22,30 +22,30 @@ ${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --no-pipe --duration 0
  --RH_LEG_2.density $density --RH_LEG_2.length $lenH2 --RH_LEG_2.radius $linkRad \
  --LF_X_1.axis 1 0 0 --LF_X_1.tare 0 --LF_Y_2.axis 0 1 0 --LF_Y_2.tare 0 --LF_Y_3.axis 0 1 0 --LF_Y_3.tare 0 --LH_X_1.axis -1 0 0 --LH_X_1.tare 0 --LH_Y_2.axis 0 1 0 --LH_Y_2.tare 0 --LH_Y_3.axis 0 1 0 --LH_Y_3.tare 0 --RF_X_1.axis 1 0 0 --RF_X_1.tare 0 --RF_Y_2.axis 0 -1 0 --RF_Y_2.tare 0 --RF_Y_3.axis 0 -1 0 --RF_Y_3.tare 0 --RH_X_1.axis -1 0 0 --RH_X_1.tare 0 --RH_Y_2.axis 0 -1 0 --RH_Y_2.tare 0 --RH_Y_3.axis 0 -1 0 --RH_Y_3.tare 0
 
-echo "----------------------------generate.sh---------------------------------"  >> /home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt
-   echo "modelNo: "$modelNo"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
-   echo "max_vel: "$max_vel"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
-   echo "delta_v: "$delta_v"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
-   echo "curr_vel: "$curr_vel"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
-   echo "unit_len: "$unit_len"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
-   echo "unit_den: "$unit_den"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
-   echo "unit_rad: "$unit_rad"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
-   echo "test_dur: "$test_dur"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
-   echo "curr_line: "$curr_line"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
-   echo "curr_iter: "$curr_iter"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
+echo "----------------------------generate.sh---------------------------------"  >> /tmp/debug.txt
+   echo "modelNo: "$modelNo"" >> "/tmp/debug.txt"
+   echo "max_vel: "$max_vel"" >> "/tmp/debug.txt"
+   echo "delta_v: "$delta_v"" >> "/tmp/debug.txt"
+   echo "curr_vel: "$curr_vel"" >> "/tmp/debug.txt"
+   echo "unit_len: "$unit_len"" >> "/tmp/debug.txt"
+   echo "unit_den: "$unit_den"" >> "/tmp/debug.txt"
+   echo "unit_rad: "$unit_rad"" >> "/tmp/debug.txt"
+   echo "test_dur: "$test_dur"" >> "/tmp/debug.txt"
+   echo "curr_line: "$curr_line"" >> "/tmp/debug.txt"
+   echo "curr_iter: "$curr_iter"" >> "/tmp/debug.txt"
 
-   echo "lenF1: "$lenF1"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
-   echo "lenF2: "$lenF2"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
-   echo "lenH1: "$lenH1"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
-   echo "lenH2: "$lenH2"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
-   echo "base_size_length: "$base_size_length"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
-   echo "base_size_width: "$base_size_width"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
-   echo "base_size_height: "$base_size_height"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
-   echo "density: "$density"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
-   echo "linkRad: "$linkRad"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
-   echo "footRad: "$footRad"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
-   echo "footLen: "$footLen"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
-   echo "KINEMATIC: "$KINEMATIC"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
+   echo "lenF1: "$lenF1"" >> "/tmp/debug.txt"
+   echo "lenF2: "$lenF2"" >> "/tmp/debug.txt"
+   echo "lenH1: "$lenH1"" >> "/tmp/debug.txt"
+   echo "lenH2: "$lenH2"" >> "/tmp/debug.txt"
+   echo "base_size_length: "$base_size_length"" >> "/tmp/debug.txt"
+   echo "base_size_width: "$base_size_width"" >> "/tmp/debug.txt"
+   echo "base_size_height: "$base_size_height"" >> "/tmp/debug.txt"
+   echo "density: "$density"" >> "/tmp/debug.txt"
+   echo "linkRad: "$linkRad"" >> "/tmp/debug.txt"
+   echo "footRad: "$footRad"" >> "/tmp/debug.txt"
+   echo "footLen: "$footLen"" >> "/tmp/debug.txt"
+   echo "KINEMATIC: "$KINEMATIC"" >> "/tmp/debug.txt"
 
 $BUILDER_SCRIPT_PATH/place-robot.sh model-*.xml
 cp model-*.xml $BUILDER_CAPT_PATH/

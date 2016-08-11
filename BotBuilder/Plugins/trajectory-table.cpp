@@ -15,7 +15,7 @@ void loop(){
 
 
 std::fstream myfile;
-   myfile.open ("/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt", std::ios::in | std::ios::out | std::ios::ate);
+   myfile.open ("/tmp/debug.txt", std::ios::in | std::ios::out | std::ios::ate);
    myfile << "----------------------------trajectory-table.cpp---------------------------------";
    myfile << "\n";
    myfile << "modelNo: " << getenv("modelNo") << "\n";

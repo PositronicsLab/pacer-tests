@@ -36,7 +36,7 @@ void Next_CB(Fl_Widget*w, void*data) {
 
 
    std::ofstream myfile;
-   myfile.open ("/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt");
+   myfile.open ("/tmp/debug.txt");
    myfile << "----------------------------start.cpp---------------------------------";
    myfile << "\n";
    myfile << "modelNo: " << getenv("modelNo") << "\n";

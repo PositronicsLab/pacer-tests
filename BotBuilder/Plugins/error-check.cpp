@@ -14,7 +14,7 @@ void printQandQd()
   std::vector<double> velocity_limit;
 
   std::ofstream errOut;
-  errOut.open("/home/brad/Desktop/Tests/pacer-tests/BotBuilder/matlabData.txt", std::ios::app);
+  errOut.open("/tmp/debug.txt", std::ios::app);
 
   std::vector<std::string> joint_names = ctrl->get_data<std::vector<std::string> >("init.joint.id");
   std::vector<double> joint_dofs = ctrl->get_data<std::vector<double> >("init.joint.dofs");
@@ -87,7 +87,7 @@ ctrl->get_data("num_pose_rows",num_rows);
 
 
 std::fstream myfile;
-   myfile.open ("/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt", std::ios::in | std::ios::out | std::ios::ate);
+   myfile.open ("/tmp/debug.txt", std::ios::in | std::ios::out | std::ios::ate);
    myfile << "----------------------------error-check.cpp---------------------------------";
    myfile << "\n";
    myfile << "modelNo: " << getenv("modelNo") << "\n";
