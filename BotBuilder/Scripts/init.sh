@@ -1,5 +1,5 @@
 #!/bin/bash
-source /home/brad/Project/Pacer/debug/setup.sh
+source ${PACER_BINARY_PATH}/setup.sh
 cd $BUILDER_XML_PATH
 $BUILDER_SCRIPT_PATH/clean-dir.sh
 $PACER_SCRIPT_PATH/setup-tests.sh $BUILDER_CAPT_PATH/*.in
