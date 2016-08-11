@@ -1,12 +1,5 @@
 #!/bin/bash
-rm $BUILDER_CAPT_PATH/*.log
-rm $BUILDER_CAPT_PATH/*.dat
-rm $BUILDER_CAPT_PATH/*.ba*
-
-
-rm $BUILDER_XML_PATH/*.log
-rm $BUILDER_XML_PATH/*.dat
-rm $BUILDER_XML_PATH/*.ba*
+git clean -dxf $BUILDER_HOME_PATH/XML $BUILDER_HOME_PATH/XML-traj
 
 
 echo "----------------------------clean-dir.sh---------------------------------"  >> /tmp/debug.txt
