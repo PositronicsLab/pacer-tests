@@ -4,21 +4,42 @@ source ${BUILD_PATH}/Pacer/setup.sh
   
 git clean -dfx .. 
 
+${PACER_SCRIPT_PATH}/setup-tests.sh ./*.in
+
 # copy plugin directory for all jobs
+ii=0
 for i in $@
 do
+  ii=$((ii + 1))
   # copy generic job
   cp -r ../sample ../sample-$i
+  pushd .
+  cd ../sample-$i
+  # re-parse '.in' files
+  ${PACER_SCRIPT_PATH}/setup-tests.sh ./*.in
+  sed -i.bak "s#>.*</file>#>monte-carlo-simulation/libmonte-carlo-simulation-${ii}.so</file>#g" ../sample-$i/monte-carlo.xml
+  popd
 done
 
-# re-parse '.in' files
-${PACER_SCRIPT_PATH}/setup-tests.sh ./*.in ../sample/*.in
 
 # edit all jobs and include them in main controller
 for i in $@
 do
   # edit job details
-  sed -i.bak "s#>.*</time>#>$i</time>#g" ../sample-$i/plugins.xml
+  sed -i.bak "s#>.*</progress>#>$i</progress>#g" ../sample-$i/plugins.xml
+
+  x=$[RANDOM % 256]
+  red=$(bc <<<"scale=2;$x/256.0")
+  y=$[RANDOM % 256]
+  green=$(bc <<<"scale=2;$y/256.0")
+  z=$[RANDOM % 256]
+  blue=$(bc <<<"scale=2;$z/256.0")
+  
+  echo "sample-$i has color [$red $green $blue]"
+
+  printf "\x1b[38;2;${x};${y};${z}mCOLOR\x1b[0m\n"
+
+  sed -i.bak "s#>.*</color>#>$red $green $blue</color>#g" ../sample-$i/monte-carlo.xml
   
   # paste plugin job into plugin.xml
   # make sed tool for this job
@@ -27,9 +48,9 @@ do
   # append to second-to-last line of file
   ./edit-plugin.sh
 
-  rpl "plugin-scheduler</open>" " monte-carlo-sample-$i plugin-scheduler</open>" plugin.xml
+  rpl -q "plugin-scheduler</open>" " monte-carlo-sample-$i plugin-scheduler</open>" plugins.xml
 done
 
 
 # run pacer
-screen -d -m -L ../../../BUILD/Moby/moby-driver -r -p=${PACER_SIMULATOR_PATH}/libPacerMobyPlugin.so -s=0.001 model.xml
+../../../BUILD/Moby/moby-driver -r -p=${PACER_SIMULATOR_PATH}/libPacerMobyPlugin.so -s=0.001 ../../model/model.xml

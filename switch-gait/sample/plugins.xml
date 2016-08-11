@@ -33,6 +33,11 @@
     <priority type="double">0</priority>
     <errors type="string vector">explode flip fall ground</errors>
   </error-check>
+  <freeze>
+    <file type="string">libstay.so</file>
+     <real-time-factor type="int">1</real-time-factor>
+     <priority type="double">1</priority>
+  </freeze>
   
   <plugin-scheduler>
     <file type="string">libplugin-scheduler.so</file>
@@ -52,18 +57,20 @@
     </switch>
   </plugin-scheduler>
   <switch-gait>
-    <file type="string">output/switch-gait.so</file>
+    <file type="string">libswitch-gait.so</file>
     <real-time-factor type="int">1</real-time-factor>
     <priority type="double">0</priority>
     <progress type="double">0.5</progress>
     <gait type="string">trot</gait>
     <planner type="string">gait-planner</planner>
     <trot>
-      <gait type="double">0.25  0.75  0.75  0.25</gait>
-      <duty-factor type="double">0.6  0.6 0.6  0.6</duty-factor>
+      <gait type="double vector">0.25  0.75  0.75  0.25</gait>
+      <speed type="double vector">0.5  0.1 1 </speed>
+      <duty-factor type="double vector">0.6  0.6 0.6  0.6</duty-factor>
     </trot>
     <walk>
       <gait type="double">0.25  0.75  0.0  0.5</gait>
+      <speed type="double vector">0.1  0.05 0.5 </speed>
       <duty-factor type="double">0.75  0.75 0.75  0.75</duty-factor>
     </walk>
   </switch-gait>
@@ -81,6 +88,18 @@
     <priority type="double">0</priority>
   </end-effectors>
   
+  <waypoints2>
+    <file type="string">libwaypoints.so</file>
+     <real-time-factor type="int">1</real-time-factor>
+     <priority type="double">0</priority>
+     <max-forward-speed type="double">0.1</max-forward-speed>
+     <max-strafe-speed type="double">0.05</max-strafe-speed>
+     <max-turn-speed type="double">0.5</max-turn-speed>
+     <tolerance type="double">0.1</tolerance>
+     <waypoints type="double vector">
+       100.00000  -0.00000
+     </waypoints>
+  </waypoints2>
   <waypoints>
     <file type="string">libwaypoints.so</file>
      <real-time-factor type="int">1</real-time-factor>
@@ -165,7 +184,7 @@
     <id type="string">LF_FOOT           RF_FOOT             LH_FOOT             RH_FOOT</id>
     <gains>
       <kp type="double">1e3 1e3 1e3   1e3 1e3 1e3   1e3 1e3 1e3   1e3 1e3 1e3</kp>
-      <kv type="double">3e1 3e1 3e1     3e1 3e1 3e1     3e1 3e1 3e1     3e1 3e1 3e1     </kv>
+      <kv type="double">2e1 2e1 2e1      2e1 2e1 2e1     2e1 2e1 2e1    2e1 2e1 2e1   </kv>
       <ki type="double">0 0 0     0 0 0     0 0 0     0 0 0</ki>
     </gains>
   </eef-PID-controller>

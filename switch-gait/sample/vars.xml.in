@@ -3,8 +3,13 @@
   <logging type="string">NONE</logging>
   <real-time-factor type="double">1</real-time-factor>
   
-  <init-file type="file">@@PACER_MODEL_PATH@@/@@TESTING_ROBOT@@/init.xml</init-file>
+  <init-file type="file">@@PACER_MODEL_PATH@@/links/init.xml</init-file>
+  <robot-model type="string">@@PWD@@/../../model/model.xml</robot-model>
   
   <task-file type="file">plugins.xml</task-file>
+  <moby>
+    <display-moby-skeleton type="bool">false</display-moby-skeleton>
+    <display-pacer-skeleton type="bool">false</display-pacer-skeleton>
+  </moby>
 
 </XML>
