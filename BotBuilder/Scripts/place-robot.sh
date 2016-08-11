@@ -10,7 +10,7 @@ sed -i.bak 's#</Moby>#</MOBY>#g' $1
 cat $1 >> $NAME-sim.xml
 
 cat $NAME-sim.xml > model.xml
-cp model.xml $BUILDER_XML_PATH/model.xml
+cat model.xml > $BUILDER_XML_PATH/model.xml
 
 echo "----------------------------place-robot.sh---------------------------------"  >> /tmp/debug.txt
    echo "modelNo: "$modelNo"" >> "/tmp/debug.txt"
@@ -38,7 +38,7 @@ echo "----------------------------place-robot.sh--------------------------------
    echo "KINEMATIC: "$KINEMATIC"" >> "/tmp/debug.txt"
 
 $BUILDER_SCRIPT_PATH/moveOld.sh
-
+cd $BUILDER_CAPT_PATH
 if [ "$KINEMATIC"=true ] ; then
 	$BUILDER_CAPT_PATH/run.sh
 fi

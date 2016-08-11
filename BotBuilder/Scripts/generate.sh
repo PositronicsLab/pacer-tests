@@ -2,10 +2,8 @@
 #generate a model with the Monte-Carlo simulation with the provided initial x/xd/xdd values
 #as only the xml file is needed, the duration is set to zero and Moby control is off
 cd $BUILDER_XML_PATH
-$BUILDER_SCRIPT_PATH/clean-dir.sh
-$PACER_SCRIPT_PATH/setup-tests.sh $BUILDER_CAPT_PATH/*.in
-$PACER_SCRIPT_PATH/setup-tests.sh $BUILDER_XML_PATH/*.in
 
+$BUILDER_SCRIPT_PATH/moveOld.sh
 ${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --no-pipe --duration 0 --moby s=0.001 model-gen.xml --xml --sample 1 \
  --BODY0.density  $density --BODY0.size $base_size_length  $base_size_width  $base_size_height \
  --LF_FOOT.density $density --LF_FOOT.foot.radius $footRad --LF_FOOT.length $footLen --LF_FOOT.radius $linkRad \

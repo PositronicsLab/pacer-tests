@@ -1,7 +1,5 @@
 #!/bin/bash
-cd $BUILDER_CAPT_PATH
-
-for i in `ls -v model-*.xml`; 
+for i in `ls -v model-1*.xml`; 
 do 
        mv $i $BUILDER_HOME_PATH/Old 
 	

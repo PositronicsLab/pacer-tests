@@ -1,7 +1,9 @@
 #!/bin/bash
 source /home/brad/Project/Pacer/debug/setup.sh
-cd $BUILDER_CAPT_PATH
+cd $BUILDER_XML_PATH
 $BUILDER_SCRIPT_PATH/clean-dir.sh
+$PACER_SCRIPT_PATH/setup-tests.sh $BUILDER_CAPT_PATH/*.in
+$PACER_SCRIPT_PATH/setup-tests.sh $BUILDER_XML_PATH/*.in
 
 export lenF1=.05
 export lenF2=.1

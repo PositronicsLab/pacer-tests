@@ -1,12 +1,12 @@
 #!/bin/bash
 rm $BUILDER_CAPT_PATH/*.log
 rm $BUILDER_CAPT_PATH/*.dat
-rm $BUILDER_CAPT_PATH/*.xml.bak
+rm $BUILDER_CAPT_PATH/*.ba*
 
 
 rm $BUILDER_XML_PATH/*.log
 rm $BUILDER_XML_PATH/*.dat
-rm $BUILDER_XML_PATH/*.xml.bak
+rm $BUILDER_XML_PATH/*.ba*
 
 
 echo "----------------------------clean-dir.sh---------------------------------"  >> /tmp/debug.txt
