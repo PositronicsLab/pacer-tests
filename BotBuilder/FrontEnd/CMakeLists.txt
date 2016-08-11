@@ -5,11 +5,10 @@
     FIND_PACKAGE(FLTK REQUIRED)
     FIND_PACKAGE(OpenGL REQUIRED)
 
-    ADD_EXECUTABLE(start runTest.cpp)
-
-    TARGET_LINK_LIBRARIES(start ${FLTK_LIBRARIES} X11 dl Xext Xinerama Xft Xcursor Xfixes ${OPENGL_LIBRARIES})
-
-    ADD_EXECUTABLE(editor start.cpp)
-
-    TARGET_LINK_LIBRARIES(editor ${FLTK_LIBRARIES} X11 dl Xext Xinerama Xft Xcursor Xfixes  ${OPENGL_LIBRARIES})
+    ADD_EXECUTABLE(start start.cpp)
+    #TARGET_LINK_LIBRARIES(start ${FLTK_LIBRARIES} ${OPENGL_LIBRARIES} X11 dl Xext Xinerama Xft fontconfig Xcursor Xfixes)
+    TARGET_LINK_LIBRARIES(start ${FLTK_LIBRARIES} ${OPENGL_LIBRARIES})
+    ADD_EXECUTABLE(editor runTest.cpp)
+    #TARGET_LINK_LIBRARIES(editor ${FLTK_LIBRARIES} ${OPENGL_LIBRARIES} X11 dl Xext Xinerama Xft fontconfig Xcursor Xfixes)
+    TARGET_LINK_LIBRARIES(editor ${FLTK_LIBRARIES} ${OPENGL_LIBRARIES})
 
