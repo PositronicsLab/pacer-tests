@@ -5,4 +5,8 @@
   <init-file type="file">@@PACER_MODEL_PATH@@/links/init.xml</init-file>
 
   <task-file type="file">plugins.xml</task-file>
+<main>
+	<stepsize type="double">0.001</stepsize>
+	<realtime type="bool">false</realtime>
+</main>
 </XML>

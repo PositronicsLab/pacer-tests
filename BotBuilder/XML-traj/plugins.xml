@@ -1,11 +1,10 @@
   <XML>
   <plugins type="string vector">
-    center-of-mass
-      end-effectors
-      gait-planner
-      ik-feet
-      goForward
-      poseListener
+     gait-planner
+     center-of-mass
+     end-effectors
+     ik-feet
+     plugin-scheduler
   </plugins>
   
   <!--
@@ -29,6 +28,24 @@
    -->
   
   <!-- =================== PLUGIN DESCRIPTIONS ==================== -->
+ <plugin-scheduler>
+    <file type="string">libplugin-scheduler.so</file>
+    <real-time-factor type="int">1</real-time-factor>
+    <priority type="double">0</priority>
+    <relative-start-time type="bool">true</relative-start-time>
+    <events type="string vector">record</events>
+    <!--  PERSISTENT    -->
+    <record>
+      <time type="double">0.4</time>
+      <open type="string vector">
+        poseListener
+     goForward
+      </open>
+      <close type="string vector">
+        plugin-scheduler
+      </close>
+    </record>
+</plugin-scheduler>
   <camera>
     <file type="string">libcamera.so</file>
     <real-time-factor type="int">10</real-time-factor>
@@ -54,7 +71,8 @@
   </center-of-mass>
   
   <end-effectors>
-    <file type="string">libend-effectors.so</file>
+<id type="string vector">LF_FOOT RF_FOOT LH_FOOT RH_FOOT</id>   
+ <file type="string">libend-effectors.so</file>
     <real-time-factor type="int">1</real-time-factor>
     <priority type="double">0</priority>
   </end-effectors>
@@ -154,7 +172,7 @@
     <step-height type="double">0.02</step-height>
     <gait-duration type="double">0.4</gait-duration>
     <length type="double">1.2</length>
-    <width type="double">1.2</width>
+    <width type="double">2</width>
     <height type="double">0.75</height>
     <!--troting gait-->
     <gait type="double">0.25  0.75  0.75  0.25</gait>
@@ -238,10 +256,12 @@
 
   <poseListener>
     <file type="string">libposeListener.so</file>
-    <priority type="double">1</priority>
+    <priority type="double">10</priority>
     <real-time-factor type="int">1</real-time-factor>
     <id type="string">LF_FOOT           RF_FOOT             LH_FOOT             RH_FOOT</id>
+    <duration type="double">.4</duration>
   </poseListener>
+
 
   <trajectory-table>
     <file type="string">libtrajectory-table.so</file>
@@ -253,6 +273,7 @@
     <file type="string">libgoForward.so</file>
     <priority type="double">1</priority>
     <real-time-factor type="int">1</real-time-factor>
+    <duration type="double">.4</duration>
   </goForward>
 
 </XML>

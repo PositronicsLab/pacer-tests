@@ -57,7 +57,8 @@
   </center-of-mass>
   
   <end-effectors>
-    <file type="string">libend-effectors.so</file>
+<id type="string vector">LF_FOOT RF_FOOT LH_FOOT RH_FOOT</id>   
+ <file type="string">libend-effectors.so</file>
     <real-time-factor type="int">1</real-time-factor>
     <priority type="double">0</priority>
   </end-effectors>

@@ -230,10 +230,10 @@ else
    std::string line2=getenv("BUILDER_SCRIPT_PATH");
 	line2+="/generate.sh";
         char* args[] = { NULL };
-   pid_t pid=fork();
+   
 
-	if(pid==0)
-        {execl(line2.c_str(), line2.c_str(), (char *) 0);}
+	
+        execl(line2.c_str(), line2.c_str(), (char *) 0);
 
 	win->hide();
 

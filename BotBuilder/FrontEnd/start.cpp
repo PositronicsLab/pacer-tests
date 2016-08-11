@@ -52,15 +52,15 @@ void Next_CB(Fl_Widget*w, void*data) {
    myfile.close();
     
 
-	pid_t pid;
+	
 
 
    std::string line=getenv("BUILDER_SCRIPT_PATH");
    line+="/init.sh";
-    pid=fork();
-    if(pid==0)
-    {execl(line.c_str(),line.c_str());}
-	win->hide();
+    
+    std::cout << "execling" << "/n";
+    execl(line.c_str(),line.c_str(),0);
+	
     
 }
 

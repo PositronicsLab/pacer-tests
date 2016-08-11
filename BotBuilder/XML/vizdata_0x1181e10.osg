@@ -1,0 +1,97 @@
+MatrixTransform {
+  UniqueID MatrixTransform_0
+  nodeMask 0xffffffff
+  cullingActive TRUE
+  referenceFrame RELATIVE
+  Matrix {
+    1 0 0 0
+    0 1 0 0
+    0 0 1 0
+    0 0 0 1
+  }
+  num_children 1
+  MatrixTransform {
+    UniqueID MatrixTransform_1
+    nodeMask 0xffffffff
+    cullingActive TRUE
+    referenceFrame RELATIVE
+    Matrix {
+      1 0 0 0
+      0 1 0 0
+      0 0 1 0
+      0 0 0 1
+    }
+    num_children 1
+    MatrixTransform {
+      nodeMask 0xffffffff
+      cullingActive TRUE
+      referenceFrame RELATIVE
+      Matrix {
+        1 0 0 0
+        0 1 0 0
+        0 0 1 0
+        0 0 0 1
+      }
+      num_children 1
+      MatrixTransform {
+        nodeMask 0xffffffff
+        cullingActive TRUE
+        referenceFrame RELATIVE
+        Matrix {
+          1 0 0 0
+          0 1 0 0
+          0 0 1 0
+          0 0 0 1
+        }
+        num_children 1
+        MatrixTransform {
+          nodeMask 0xffffffff
+          cullingActive TRUE
+          StateSet {
+            rendering_hint DEFAULT_BIN
+            renderBinMode INHERIT
+            Material {
+              ColorMode DIFFUSE
+              ambientColor 0.2 0.2 0.2 1
+              diffuseColor FRONT 0.85092 0.266666 0.53976 1
+              diffuseColor BACK  0.8 0.8 0.8 1
+              specularColor FRONT 0 0 0 1
+              specularColor BACK  0 0 0 1
+              emissionColor FRONT 0 0 0 1
+              emissionColor BACK  0 0 0 1
+              shininess 0
+            }
+          }
+          referenceFrame RELATIVE
+          Matrix {
+            1 0 0 0
+            0 1 0 0
+            0 0 1 0
+            0 0 0 1
+          }
+          num_children 1
+          Geode {
+            nodeMask 0xffffffff
+            cullingActive TRUE
+            num_drawables 1
+            ShapeDrawable {
+              StateSet {
+                rendering_hint DEFAULT_BIN
+                renderBinMode INHERIT
+                GL_BLEND ON
+              }
+              Box {
+                Center 0 0 0
+                HalfLengths 0.05 0.015 0.01
+                Rotation 0 0 0 1
+              }
+              useDisplayList TRUE
+              useVertexBufferObjects FALSE
+              color 1 0.5 0 1
+            }
+          }
+        }
+      }
+    }
+  }
+}

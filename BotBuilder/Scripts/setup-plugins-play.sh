@@ -26,9 +26,10 @@ echo "----------------------------setup-plugins-play.sh-------------------------
    echo "footLen: "$footLen"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
    echo "KINEMATIC: "$KINEMATIC"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
    echo "Current Directory: "$BUILDER_XML_PATH"" >> "/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/debug.txt"
- 
-	${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --no-pipe --duration .4 --stepsize 0.001 --sample 1 --controlled --stand
 
+   $BUILDER_SCRIPT_PATH/setInitVals.sh
+ 
+	${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --no-pipe --duration .4 --moby s=0.001 r p=${PACER_SIMULATOR_PATH}/libPacerMobyPlugin.so $BUILDER_XML_PATH/model.xml --sample 1 --stand
         
 
 
