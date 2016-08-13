@@ -1,0 +1,16 @@
+.DS_Store
+*~
+*.swp
+*.bak
+*.log
+*.mat
+*.dat
+*.osg
+*.png
+driver.out*
+vars.xml
+model.xml
+model-*.xml
+CMakeFiles
+CMakeCache.txt
+*.mp4
