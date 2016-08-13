@@ -17,12 +17,17 @@ export base_size_height=.05
 
 export density=1200
 
-export linkRad=0.01
-export footRad=0.01
-export footLen=0.1
+export FlinkRad=0.01
+export FfootRad=0.01
+export FfootLen=0.1
+
+export HlinkRad=0.01
+export HfootRad=0.01
+export HfootLen=0.1
 
 export KINEMATIC="true"
 
+export jac_count=0
 
 echo "----------------------------init.sh---------------------------------"  >> "/tmp/debug.txt"
    echo "modelNo: "$modelNo"" >> "/tmp/debug.txt"

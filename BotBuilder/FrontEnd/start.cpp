@@ -16,9 +16,6 @@
 Fl_Window *win = NULL;
 Fl_Input        *G_maxvelocity = NULL;
 Fl_Input        *G_deltav = NULL;
-Fl_Input        *G_unitlength = NULL;
-Fl_Input        *G_unitdensity = NULL;
-Fl_Input        *G_unitradius = NULL;
 Fl_Input        *G_testduration = NULL;
 Fl_File_Chooser *G_chooser    = NULL;
 
@@ -27,9 +24,9 @@ void Next_CB(Fl_Widget*w, void*data) {
     setenv("max_vel",G_maxvelocity->value(),1);
     setenv("delta_v",G_deltav->value(),1);
     setenv("curr_vel","0",1);
-    setenv("unit_len",G_unitlength->value(),1);
-    setenv("unit_den",G_unitdensity->value(),1);
-    setenv("unit_rad",G_unitradius->value(),1);
+    setenv("unit_len","0.001",1);
+    setenv("unit_den","0.001",1);
+    setenv("unit_rad","0.001",1);
     setenv("test_dur",G_testduration->value(),1);
     setenv("curr_line","0",1);
     setenv("curr_iter","0",1);
@@ -58,7 +55,7 @@ void Next_CB(Fl_Widget*w, void*data) {
    std::string line=getenv("BUILDER_SCRIPT_PATH");
    line+="/init.sh";
     
-    std::cout << "execling" << "/n";
+    
     execl(line.c_str(),line.c_str(),0);
 	
     
@@ -80,20 +77,8 @@ int main() {
      G_deltav = new Fl_Input(200,y,200,25,"Change in velocity per test:");
      G_deltav->value("");
      y+=30;
-     
-     G_unitlength = new Fl_Input(200,y,200,25,"Unit Length(SI):");
-     G_unitlength->value("");
-     y+=30;
 
-     G_unitdensity = new Fl_Input(200,y,200,25,"Unit Density(SI):");
-     G_unitdensity->value("");
-     y+=30;
-
-     G_unitradius = new Fl_Input(200,y,200,25,"Unit Radius(SI):");
-     G_unitradius->value("");
-     y+=30;
-
-     G_testduration = new Fl_Input(200,y,200,25,"Test Duration:");
+     G_testduration = new Fl_Input(200,y,200,25,"Sliding Window Iterations:");
      G_testduration->value("");
      y+=30;
 

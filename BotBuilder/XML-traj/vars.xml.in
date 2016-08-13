@@ -2,7 +2,7 @@
   <logging type="string">NONE</logging>
   <real-time-factor type="double">1</real-time-factor>
   
-  <robot-model type="string">@@BUILDER_XML_PATH@@/model-1.xml</robot-model>
+  <robot-model type="string">@@PWD@@/../XML/model-1.xml</robot-model>
   
   <init>
     <base>
@@ -19,8 +19,8 @@
       <active type="bool">true true true   true true true   true true true   true true true</active>
       <limits>
         <!-- <u type="double">7.3 7.3 7.3  7.3 7.3 7.3  7.3 7.3 7.3  7.3 7.3 7.3</u> -->
-        <qd type="double">1e6 1e6 1e6  1e6 1e6 1e6  1e6 1e6 1e6  1e6 1e6 1e6</qd>
-        <u type="double">1e6 1e6 1e6  1e6 1e6 1e6  1e6 1e6 1e6  1e6 1e6 1e6</u>
+        <u type="double">7.3 7.3 7.3  7.3 7.3 7.3  7.3 7.3 7.3  7.3 7.3 7.3</u>
+        <qd type="double">30 30 30   30 30 30   30 30 30   30 30 30   </qd>
         
       </limits>
     </joint>

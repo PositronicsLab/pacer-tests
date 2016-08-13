@@ -5,20 +5,22 @@ cd $BUILDER_XML_PATH
 
 ${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --no-pipe --duration 0 --moby s=0.001 model-gen.xml --xml --sample 1 \
  --BODY0.density  $density --BODY0.size $base_size_length  $base_size_width  $base_size_height \
- --LF_FOOT.density $density --LF_FOOT.foot.radius $footRad --LF_FOOT.length $footLen --LF_FOOT.radius $linkRad \
- --LF_LEG_1.density  $density --LF_LEG_1.length $lenF1 --LF_LEG_1.radius $linkRad \
- --LF_LEG_2.density $density --LF_LEG_2.length $lenF2 --LF_LEG_2.radius $linkRad \
- --LH_FOOT.density $density --LH_FOOT.foot.radius $footRad --LH_FOOT.length $footLen --LH_FOOT.radius $linkRad \
- --LH_LEG_1.density $density --LH_LEG_1.length $lenH1 --LH_LEG_1.radius $linkRad \
- --LH_LEG_2.density $density --LH_LEG_2.length $lenH2 --LH_LEG_2.radius $linkRad \
- --RF_FOOT.density $density --RF_FOOT.foot.radius $footRad --RF_FOOT.length $footLen --RF_FOOT.radius $linkRad \
- --RF_LEG_1.density $density --RF_LEG_1.length $lenF1 --RF_LEG_1.radius $linkRad \
- --RF_LEG_2.density $density --RF_LEG_2.length $lenF2 --RF_LEG_2.radius $linkRad \
- --RH_FOOT.density $density --RH_FOOT.foot.radius $footRad --RH_FOOT.length $footLen --RH_FOOT.radius $linkRad \
- --RH_LEG_1.density $density --RH_LEG_1.length $lenH1 --RH_LEG_1.radius $linkRad \
- --RH_LEG_2.density $density --RH_LEG_2.length $lenH2 --RH_LEG_2.radius $linkRad \
+ --LF_FOOT.density $density --LF_FOOT.foot.radius $FfootRad --LF_FOOT.length $FfootLen --LF_FOOT.radius $FlinkRad \
+ --LF_LEG_1.density  $density --LF_LEG_1.length $lenF1 --LF_LEG_1.radius $FlinkRad \
+ --LF_LEG_2.density $density --LF_LEG_2.length $lenF2 --LF_LEG_2.radius $FlinkRad \
+ --LH_FOOT.density $density --LH_FOOT.foot.radius $HfootRad --LH_FOOT.length $HfootLen --LH_FOOT.radius $HlinkRad \
+ --LH_LEG_1.density $density --LH_LEG_1.length $lenH1 --LH_LEG_1.radius $HlinkRad \
+ --LH_LEG_2.density $density --LH_LEG_2.length $lenH2 --LH_LEG_2.radius $HlinkRad \
+ --RF_FOOT.density $density --RF_FOOT.foot.radius $FfootRad --RF_FOOT.length $FfootLen --RF_FOOT.radius $FlinkRad \
+ --RF_LEG_1.density $density --RF_LEG_1.length $lenF1 --RF_LEG_1.radius $FlinkRad \
+ --RF_LEG_2.density $density --RF_LEG_2.length $lenF2 --RF_LEG_2.radius $FlinkRad \
+ --RH_FOOT.density $density --RH_FOOT.foot.radius $HfootRad --RH_FOOT.length $HfootLen --RH_FOOT.radius $HlinkRad \
+ --RH_LEG_1.density $density --RH_LEG_1.length $lenH1 --RH_LEG_1.radius $HlinkRad \
+ --RH_LEG_2.density $density --RH_LEG_2.length $lenH2 --RH_LEG_2.radius $HlinkRad \
  --LF_X_1.axis 1 0 0 --LF_X_1.tare 0 --LF_Y_2.axis 0 1 0 --LF_Y_2.tare 0 --LF_Y_3.axis 0 1 0 --LF_Y_3.tare 0 --LH_X_1.axis -1 0 0 --LH_X_1.tare 0 --LH_Y_2.axis 0 1 0 --LH_Y_2.tare 0 --LH_Y_3.axis 0 1 0 --LH_Y_3.tare 0 --RF_X_1.axis 1 0 0 --RF_X_1.tare 0 --RF_Y_2.axis 0 -1 0 --RF_Y_2.tare 0 --RF_Y_3.axis 0 -1 0 --RF_Y_3.tare 0 --RH_X_1.axis -1 0 0 --RH_X_1.tare 0 --RH_Y_2.axis 0 -1 0 --RH_Y_2.tare 0 --RH_Y_3.axis 0 -1 0 --RH_Y_3.tare 0
 
+cd $BUILDER_CAPT_PATH
+$BUILDER_CAPT_PATH/run.sh
 echo "----------------------------generate.sh---------------------------------"  >> /tmp/debug.txt
    echo "modelNo: "$modelNo"" >> "/tmp/debug.txt"
    echo "max_vel: "$max_vel"" >> "/tmp/debug.txt"
