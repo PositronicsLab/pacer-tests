@@ -127,9 +127,13 @@ void Butt_CB(Fl_Widget*w, void*data) {
 
     double density= std::stod(getenv("density"));
 
-    double linkRad= std::stod(getenv("linkRad"));
-    double footRad= std::stod(getenv("footRad"));
-    double footLen= std::stod(getenv("footLen"));
+    double FlinkRad= std::stod(getenv("FlinkRad"));
+    double FfootRad= std::stod(getenv("FfootRad"));
+    double FfootLen= std::stod(getenv("FfootLen"));
+    double HlinkRad= std::stod(getenv("HlinkRad"));
+    double HfootRad= std::stod(getenv("HfootRad"));
+    double HfootLen= std::stod(getenv("HfootLen"));
+
     double modelNo= std::stod(getenv("modelNo"));
     modelNo++;
 
@@ -138,15 +142,20 @@ setenv("curr_vel", "0", 1);
 
    lenF1+=(unitLen*slide1->value());
    lenF2+=(unitLen*slide2->value());
+   FfootLen+=(unitLen*slide3->value());
    lenH1+=(unitLen*slide4->value());
    lenH2+=(unitLen*slide5->value());
-   base_size_length+=(unitLen*slide6->value());
-   base_size_width+=(unitLen*slide7->value());
-   base_size_height+=(unitLen*slide8->value());
-   density+=(unitDen*slide10->value());
-   footRad+=(unitRad*slide11->value());
-   linkRad+=(unitRad*slide9->value());
-   footLen+=(unitLen*slide3->value());
+   HfootLen+=(unitLen*slide6->value());
+   base_size_length+=(unitLen*slide7->value());
+   base_size_width+=(unitLen*slide8->value());
+   base_size_height+=(unitLen*slide9->value());
+   FlinkRad+=(unitRad*slide10->value());
+   HlinkRad+=(unitRad*slide11->value());
+   density+=(unitDen*slide12->value());
+   FfootRad+=(unitRad*slide13->value());
+   HfootRad+=(unitRad*slide14->value());
+   
+   
 
    if(slide1->value()!=0 || slide2->value()!=0 || slide3->value()!=0 || slide4->value()!=0 || slide5->value()!=0 || slide6->value()!=0 || slide7->value()!=0 || slide8->value()!=0 || slide9->value()!=0 || slide11->value()!=0)
 {
@@ -200,21 +209,39 @@ else
    s.clear();
    s.str(std::string());
 
-   s << footRad;
+   s << FfootRad;
    line=s.str();
-   setenv("footRad",line.c_str(),1);
+   setenv("FfootRad",line.c_str(),1);
    s.clear();
    s.str(std::string());
 
-   s << linkRad;
+   s << FlinkRad;
    line=s.str();
-   setenv("linkRad",line.c_str(),1);
+   setenv("FlinkRad",line.c_str(),1);
    s.clear();
    s.str(std::string());
 
-   s << footLen;
+   s << FfootLen;
    line=s.str();
-   setenv("footLen",line.c_str(),1);
+   setenv("FfootLen",line.c_str(),1);
+   s.clear();
+   s.str(std::string());
+
+   s << HfootRad;
+   line=s.str();
+   setenv("HfootRad",line.c_str(),1);
+   s.clear();
+   s.str(std::string());
+
+   s << HlinkRad;
+   line=s.str();
+   setenv("HlinkRad",line.c_str(),1);
+   s.clear();
+   s.str(std::string());
+
+   s << HfootLen;
+   line=s.str();
+   setenv("HfootLen",line.c_str(),1);
    s.clear();
    s.str(std::string());
 
@@ -313,6 +340,7 @@ int main() {
     slide13->bounds(-100,100);       // set min/max for slider
     slide13->value(0);           // set initial value
     height+=40; 
+
     slide14 = new SliderInput(0,height,200,25,"radius of back feet");
     slide14->bounds(-100,100);       // set min/max for slider
     slide14->value(0);           // set initial value
@@ -464,7 +492,7 @@ int main() {
        << " " << /*getenv("4_LH_X_1_tor")<< " " <<*/ getenv("4_LH_Y_2_tor") << " " << getenv("4_LH_Y_3_tor") 
        << " " << /*getenv("4_RH_X_1_tor") << " " <<*/ getenv("4_RH_Y_2_tor") << " " << getenv("4_RH_Y_3_tor");
     four_tor_buff->text(four_tor.str().c_str());
-    two_tor_disp->buffer(four_tor_buff);
+    four_tor_disp->buffer(four_tor_buff);
 
     std::stringstream five_vel;
     five_vel << /*getenv("5_LF_X_1_vel") << " " <<*/ getenv("5_LF_Y_2_vel") << " " << getenv("5_LF_Y_3_vel") 

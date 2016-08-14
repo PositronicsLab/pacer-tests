@@ -1,6 +1,8 @@
 #!/bin/bash
 #generate a model with the Monte-Carlo simulation with the provided initial x/xd/xdd values
 #as only the xml file is needed, the duration is set to zero and Moby control is off
+cd $BUILDER_SCRIPT_PATH
+./clean-dir.sh
 cd $BUILDER_XML_PATH
 
 ${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --no-pipe --duration 0 --moby s=0.001 model-gen.xml --xml --sample 1 \
@@ -18,6 +20,9 @@ ${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --no-pipe --duration 0
  --RH_LEG_1.density $density --RH_LEG_1.length $lenH1 --RH_LEG_1.radius $HlinkRad \
  --RH_LEG_2.density $density --RH_LEG_2.length $lenH2 --RH_LEG_2.radius $HlinkRad \
  --LF_X_1.axis 1 0 0 --LF_X_1.tare 0 --LF_Y_2.axis 0 1 0 --LF_Y_2.tare 0 --LF_Y_3.axis 0 1 0 --LF_Y_3.tare 0 --LH_X_1.axis -1 0 0 --LH_X_1.tare 0 --LH_Y_2.axis 0 1 0 --LH_Y_2.tare 0 --LH_Y_3.axis 0 1 0 --LH_Y_3.tare 0 --RF_X_1.axis 1 0 0 --RF_X_1.tare 0 --RF_Y_2.axis 0 -1 0 --RF_Y_2.tare 0 --RF_Y_3.axis 0 -1 0 --RF_Y_3.tare 0 --RH_X_1.axis -1 0 0 --RH_X_1.tare 0 --RH_Y_2.axis 0 -1 0 --RH_Y_2.tare 0 --RH_Y_3.axis 0 -1 0 --RH_Y_3.tare 0
+
+export curr_vel=0
+
 
 cd $BUILDER_CAPT_PATH
 $BUILDER_CAPT_PATH/run.sh
