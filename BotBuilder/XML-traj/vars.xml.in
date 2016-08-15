@@ -34,6 +34,6 @@
 <main>
 	<stepsize type="double">0.001</stepsize>
 	<realtime type="bool">false</realtime>
-        <propWindow type="bool">false</propWindow>
+        
 </main>
 </XML>
