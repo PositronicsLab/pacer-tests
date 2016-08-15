@@ -5,9 +5,9 @@ export curr_vel=0
 export unit_len=0.001
 export unit_den=0.001
 export unit_rad=0.001
-export test_dur=100        #sliding window length
+export test_dur=5       #sliding window length
 export curr_line=0
-export curr_iter=00
+export curr_iter=0
 
 $BUILDER_SCRIPT_PATH/init.sh
 

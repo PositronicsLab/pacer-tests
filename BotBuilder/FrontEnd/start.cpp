@@ -22,7 +22,7 @@ Fl_File_Chooser *G_chooser    = NULL;
 void Next_CB(Fl_Widget*w, void*data) {
     setenv("modelNo","1",1);
     setenv("max_vel",G_maxvelocity->value(),1);
-    setenv("delta_v",G_deltav->value(),1);std::stod(getenv("jac_count"))
+    setenv("delta_v",G_deltav->value(),1);
     setenv("unit_len","0.001",1);
     setenv("unit_den","0.001",1);
     setenv("unit_rad","0.001",1);
