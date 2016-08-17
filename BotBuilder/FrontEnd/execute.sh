@@ -1,5 +1,5 @@
 export modelNo=1
-export max_vel=0.2
+export max_vel=1.5
 export delta_v=0.1
 export curr_vel=0
 export unit_len=0.001

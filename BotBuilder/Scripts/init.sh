@@ -5,11 +5,11 @@ $BUILDER_SCRIPT_PATH/clean-dir.sh
 $PACER_SCRIPT_PATH/setup-tests.sh $BUILDER_CAPT_PATH/*.in
 $PACER_SCRIPT_PATH/setup-tests.sh $BUILDER_XML_PATH/*.in
 
-export lenF1=.05
+export lenF1=0.058
 export lenF2=.1
 
-export lenH1=.05
-export lenH2=.1
+export lenH1=0.061
+export lenH2=0.101
 
 export base_size_length=.15
 export base_size_width=.08
@@ -18,11 +18,11 @@ export base_size_height=.05
 export density=1200
 
 export FlinkRad=0.01
-export FfootRad=0.01
+export FfootRad=0.009
 export FfootLen=0.1
 
 export HlinkRad=0.01
-export HfootRad=0.01
+export HfootRad=0.009
 export HfootLen=0.1
 
 export KINEMATIC="true"

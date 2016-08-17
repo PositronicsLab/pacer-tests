@@ -251,6 +251,7 @@ trajectory-table
     <file type="string">libtrajectory-table.so</file>
     <priority type="double">1</priority>
     <real-time-factor type="int">1</real-time-factor>
+    <propWindow type="bool">false</propWindow>
   </trajectory-table>
 
   <goForward>
