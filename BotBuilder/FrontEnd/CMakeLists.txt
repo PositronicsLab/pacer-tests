@@ -1,15 +1,29 @@
-    CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
-    PROJECT(example)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+PROJECT(example)
 
-    FIND_PACKAGE(FLTK REQUIRED)
-    FIND_PACKAGE(OpenGL REQUIRED)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/CMakeModules)
 
-    ADD_EXECUTABLE(start start.cpp)
-    #TARGET_LINK_LIBRARIES(start ${FLTK_LIBRARIES} ${OPENGL_LIBRARIES} X11 dl Xext Xinerama Xft fontconfig Xcursor Xfixes)
-    TARGET_LINK_LIBRARIES(start ${FLTK_LIBRARIES} ${OPENGL_LIBRARIES} dl)
-    ADD_EXECUTABLE(editor runTest.cpp)
-    #TARGET_LINK_LIBRARIES(editor ${FLTK_LIBRARIES} ${OPENGL_LIBRARIES} X11 dl Xext Xinerama Xft fontconfig Xcursor Xfixes)
-    TARGET_LINK_LIBRARIES(editor ${FLTK_LIBRARIES} ${OPENGL_LIBRARIES} dl)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+
+FIND_PACKAGE(FLTK REQUIRED)
+set (LIBS ${LIBS} ${FLTK_LIBRARIES})
+
+FIND_PACKAGE(OpenGL REQUIRED)
+set (LIBS ${LIBS} ${OPENGL_LIBRARIES})
+
+# add Ravelin
+find_package(Ravelin REQUIRED)
+link_directories(${RAVELIN_LIBRARY_DIR})
+include_directories(${RAVELIN_INCLUDE_DIR})
+set (LIBS ${LIBS} ${RAVELIN_LIBRARIES})
+
+set (LIBS ${LIBS} dl)
+#set (LIBS ${LIBS} X11 Xext Xinerama Xft fontconfig Xcursor Xfixes)
+
+ADD_EXECUTABLE(start start.cpp)
+TARGET_LINK_LIBRARIES(start ${LIBS})
+
+ADD_EXECUTABLE(editor runTest.cpp)
+TARGET_LINK_LIBRARIES(editor ${LIBS})
 
