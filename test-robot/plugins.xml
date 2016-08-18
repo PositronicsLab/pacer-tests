@@ -114,7 +114,7 @@
   <gamepad>
     <file type="string">gamepad/libgamepad.so</file>
      <real-time-factor type="int">1</real-time-factor>
-     <max-forward-speed type="double">0.3</max-forward-speed>
+     <max-forward-speed type="double">1</max-forward-speed>
      <max-strafe-speed type="double">0.2</max-strafe-speed>
      <max-turn-speed type="double">1</max-turn-speed>
      <priority type="double">0</priority>
