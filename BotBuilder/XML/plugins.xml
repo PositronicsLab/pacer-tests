@@ -156,8 +156,8 @@ trajectory-table
     <global-up type="bool">true</global-up>
     <holonomic type="bool">false</holonomic>
     <step-height type="double">0.02</step-height>
-    <gait-duration type="double">0.4</gait-duration>
-    <length type="double">1.2</length>
+    <gait-duration type="double">0.3</gait-duration>
+    <length type="double">1</length>
     <width type="double">1.2</width>
     <height type="double">0.75</height>
     <!--troting gait-->

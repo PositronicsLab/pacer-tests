@@ -413,10 +413,10 @@ int main() {
   limit_names.push_back("tor");
   
   std::vector<std::string> limb_names;
-  limb_names.push_back("RF");
   limb_names.push_back("LF");
-  limb_names.push_back("RH");
+  limb_names.push_back("RF");
   limb_names.push_back("LH");
+  limb_names.push_back("RH");
   
   std::vector<std::string> joint_names;
   //  joint_names.push_back("X_1");
@@ -427,33 +427,46 @@ int main() {
   int N_LIMBS = limb_names.size();
   int N_JOINTS = joint_names.size();
   
-
   win = new Fl_Window(1300, 650, "Bot Builder");
   
   std::vector<Fl_Text_Buffer*> main_buff(N_LIMITS);
-  std::vector<Fl_Text_Display*> main_disp;
+  std::vector<Fl_Text_Display*> main_disp(N_LIMITS);
+  for(int index=0;index<N_LIMITS;index++)
+  {
+	main_buff[index]=new Fl_Text_Buffer();
+  }
 
-  main_disp.push_back(new Fl_Text_Display(200, 20, 500, 40,std::string(limit_names[0] + " Limit Jacobian:").c_str()));
-  main_disp.push_back(new Fl_Text_Display(700, 20, 500, 40,std::string(limit_names[1] + " Limit Jacobian:").c_str()));
+  main_disp[0]=new Fl_Text_Display(200, 20, 500, 40,std::string(limit_names[0] + " Limit Jacobian:").c_str());
+  main_disp[1]=new Fl_Text_Display(700, 20, 500, 40,std::string(limit_names[1] + " Limit Jacobian:").c_str());
   
   Ravelin::VectorNd x(N_LIMBS*N_JOINTS*N_LIMITS);
   Ravelin::MatrixNd J(N_LIMBS*N_JOINTS*N_LIMITS,params.size());
+  std::cout << "made matrices" << std::endl;
 
   {
     int j = 0;
-    for (int limit=0;limit<limit_names.size();limit++,j++) {
+    for (int limit=0;limit<limit_names.size();limit++) {
       std::stringstream row_val;
-      for (int limb=0;limb<limb_names.size();limb++,j++) {
+      std::cout << "limit: " <<limit << std::endl;
+      for (int limb=0;limb<limb_names.size();limb++) {
         for (int joint=0;joint<joint_names.size();joint++,j++) {
           std::string env_name(limb_names[limb]+"_"+joint_names[joint]+"_"+limit_names[limit]);
+          std::cout << "put variable in x" << j << std::endl;
           x[j] = std::stod(getenv(env_name.c_str()));
+          std::cout << "added variable from getenv" << std::endl;
           row_val << x[j] << " ";
+          std::cout << "added to row val:" <<x[j] << " " << env_name.c_str() << std::endl;
         }
       }
-      main_buff[limit]->text(row_val.str().c_str());
+      std::cout << "putting values in front end" << std::endl;
       main_disp[limit]->buffer(main_buff[limit]);
+      std::cout << "put values in disp" << std::endl;
+      main_buff[limit]->text(row_val.str().c_str());
+      std::cout << "put values in buff" << std::endl;
+      
     }
   }
+  std::cout << "put values in matrices" << std::endl;
 //  
 //  std::stringstream main_vel;
 //  main_vel << /*getenv("LF_X_1_vel") << " " <<*/ getenv("LF_Y_2_vel") << " " << getenv("LF_Y_3_vel")
@@ -477,35 +490,46 @@ int main() {
   
   for (int limit=0;limit<limit_names.size();limit++) {
     buff[limit].resize(params.size());
+    disp[limit].resize(params.size());
+       for(int paramIndx=0;paramIndx<params.size();paramIndx++)
+          {buff[limit][paramIndx]=new Fl_Text_Buffer();}
     int height=80;
     for (int i=0;i<params.size();i++) {
-      disp[limit].push_back(new Fl_Text_Display(200+(500*limit), height, 500, 40,""));
-      
-      slide.push_back(new SliderInput(0,height,200,25,params[i].tooltip.c_str()));
+      disp[limit][i]=new Fl_Text_Display(200+(500*limit), height, 500, 40,"");
+      if(limit==0)
+     { slide.push_back(new SliderInput(0,height,200,25,params[i].tooltip.c_str()));
       slide[i]->bounds(-100,100);       // set min/max for slider
-      slide[i]->value(0);           // set initial value
+      slide[i]->value(0);  }         // set initial value
       
       height+=40;
     }
   }
-  
+  std::cout << "made sliders" << std::endl;
   for (int i=0;i<params.size();i++) {
     std::string num_str = SSTR(params[i].number);
     
     int j = 0;
-    for (int limit=0;limit<limit_names.size();limit++,j++) {
+    for (int limit=0;limit<limit_names.size();limit++) {
+      std::cout << "limit: " <<limit << std::endl;
       std::stringstream row_val;
-      for (int limb=0;limb<limb_names.size();limb++,j++) {
+      for (int limb=0;limb<limb_names.size();limb++) {
         for (int joint=0;joint<joint_names.size();joint++,j++) {
+           std::cout << "put variable in J" << std::endl;
           std::string env_name(num_str + "_"+limb_names[limb]+"_"+joint_names[joint]+"_"+limit_names[limit]);
           J(j,i) = std::stod(getenv(env_name.c_str()));
           row_val << J(j,i) << " ";
         }
       }
-      buff[limit][params[i].number]->text(row_val.str().c_str());
-      disp[limit][params[i].number]->buffer(buff[limit][params[i].number]);
+      std::cout << "putting values in front end" << std::endl;
+      std::cout << "limit: " << limit << std::endl;
+      std::cout << "number: " << params[i].number << std::endl;
+      disp[limit][i]->buffer(buff[limit][i]);
+      std::cout << "put values in disp" << std::endl;
+      buff[limit][i]->text(row_val.str().c_str());
+      std::cout << "put values in buff" << std::endl;
+      
     }
-    
+    std::cout << "filled more matrix variables" << std::endl;
 //    std::stringstream one_vel;
 //    one_vel << /*getenv(num_str + "_LF_X_1_vel") << " " <<*/ getenv(num_str + "_LF_Y_2_vel") << " " << getenv(num_str + "_LF_Y_3_vel")
 //    << " " << /*getenv(num_str + "_RF_X_1_vel") << " " <<*/ getenv(num_str + "_RF_Y_2_vel") << " " << getenv(num_str + "_RF_Y_3_vel")
@@ -534,13 +558,17 @@ int main() {
   
   Ravelin::VectorNd step;
   J_inv.mult(x,step);
-  
+  std::cout << "got the inverse" << std::endl;
+  std::cout << "step: " << step.rows()<< std::endl;
+  std::cout << "slide: " << slide.size()<< std::endl;
   assert(step.rows() == slide.size());
-  
+  std::cout << "passed assertion" << std::endl;
   for (int i=0; i<step.rows(); i++) {
     double update = step[i] / (double) params[i].unit;
     slide[i]->value(update);
+   /* std::cout << "\n" << "\n" << update << "\n" << "\n";*/
   }
+  std::cout << "valued slides" << std::endl;
   
   
   /*
@@ -548,7 +576,6 @@ int main() {
    slide1->bounds(-100,100);       // set min/max for slider
    slide1->value(0);           // set initial value
    height+=40;
-   
    slide2 = new SliderInput(0,height,200,25,"Front leg link 2 length");
    slide2->bounds(-100,100);       // set min/max for slider
    slide2->value(0);           // set initial value
@@ -942,8 +969,8 @@ int main() {
   
   win->show();
   
-  int RETURN_FALG = Fl::run();
+  int RETURN_FLAG = Fl::run();
   
-  return RETURN_FALG;
+  return RETURN_FLAG;
 }
 
