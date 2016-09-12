@@ -174,9 +174,9 @@
     <redirect-swing-interval type="double">0</redirect-swing-interval>
     <global-up type="bool">true</global-up>
     <holonomic type="bool">false</holonomic>
-    <step-height type="double">0.02</step-height>
-    <gait-duration type="double">0.3</gait-duration>
-    <length type="double">1</length>
+    <step-height type="double">0.01</step-height>
+    <gait-duration type="double">0.4</gait-duration>
+    <length type="double">2</length>
     <width type="double">1.2</width>
     <height type="double">0.75</height>
     <!--troting gait-->
@@ -254,7 +254,7 @@
     <last-cfs type="bool">false</last-cfs>
     <last-cfs-filter type="bool">false</last-cfs-filter>
     <des-contact type="bool">true</des-contact>
-    <max-contacts-per-foot type="double">1</max-contacts-per-foot>
+    <max-contacts-per-foot type="double">0</max-contacts-per-foot>
     <type type="string vector">CFQP</type> <!-- CFQP (BEST: Clawar), CFLCP (EXPERIMENTAL: Anitesciu-Potra), NSQP (EXPERIMENTAL: No-slip CLAWAR), NSLCP (BEST: No-slip LCP) -->
 <!--CFQP CFLCP NSQP NSLCP-->
   </idyn-controller>
@@ -264,7 +264,7 @@
     <priority type="double">10</priority>
     <real-time-factor type="int">1</real-time-factor>
     <id type="string">LF_FOOT           RF_FOOT             LH_FOOT             RH_FOOT</id>
-    <duration type="double">.3</duration>
+    <duration type="double">2</duration>
   </poseListener>
 
 
@@ -279,7 +279,7 @@
     <file type="string">libgoForward.so</file>
     <priority type="double">1</priority>
     <real-time-factor type="int">1</real-time-factor>
-    <duration type="double">.3</duration>
+    <duration type="double">2</duration>
   </goForward>
 
 </XML>
