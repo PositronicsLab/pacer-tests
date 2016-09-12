@@ -26,4 +26,8 @@
 
   <task-file type="file">plugins.xml</task-file>
 
+  <moby>
+    <display-pacer-skeleton type="bool">true</display-pacer-skeleton>
+    <display-moby-skeleton type="bool">true</display-moby-skeleton>
+  </moby>
 </XML>
