@@ -4,6 +4,8 @@
      center-of-mass
      end-effectors
      ik-feet
+     joint-PID-controller-accel
+     idyn-controller
      plugin-scheduler
   </plugins>
   
