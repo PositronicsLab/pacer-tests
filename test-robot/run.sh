@@ -23,5 +23,6 @@ sed -i.bak "s#>.*</max-forward-speed>#>$3</max-forward-speed>#g" plugins.xml
 sed -i.bak "s#>.*</robot-model>#>$ABS_PATH/$ROBOT_NAME</robot-model>#g" vars.xml
 sed -i.bak "s#>.*</xd>#>$3 0 0.1 0 0 0</xd>#g" vars.xml
 
-$1 -r -p=${PACER_SIMULATOR_PATH}/libPacerMobyPlugin.so -s=0.001 "$ABS_PATH/$ROBOT_NAME"
+#$1 -r -p=${PACER_SIMULATOR_PATH}/libPacerMobyPlugin.so -s=0.001 "$ABS_PATH/$ROBOT_NAME"
+${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --no-pipe --duration 5 --stand --sample 1 --moby -r p=${PACER_SIMULATOR_PATH}/libPacerMobyPlugin.so s=0.0005 r y=osg v=100 "$ABS_PATH/$ROBOT_NAME"
 
