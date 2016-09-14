@@ -38,7 +38,7 @@
     <events type="string vector">record</events>
     <!--  PERSISTENT    -->
     <record>
-      <time type="double">0.4</time>
+      <time type="double">0.3</time>
       <open type="string vector">
         poseListener
      goForward
@@ -177,9 +177,9 @@
     <global-up type="bool">false</global-up>
     <holonomic type="bool">false</holonomic>
     <step-height type="double">0.01</step-height>
-    <gait-duration type="double">0.4</gait-duration>
+    <gait-duration type="double">0.3</gait-duration>
     <length type="double">2</length>
-    <width type="double">1.2</width>
+    <width type="double">1.1</width>
     <height type="double">0.75</height>
     <!--troting gait-->
     <gait type="double">0.25  0.75  0.75  0.25</gait>
@@ -266,7 +266,7 @@
     <priority type="double">10</priority>
     <real-time-factor type="int">1</real-time-factor>
     <id type="string">LF_FOOT           RF_FOOT             LH_FOOT             RH_FOOT</id>
-    <duration type="double">2</duration>
+    <duration type="double">0.3</duration>
   </poseListener>
 
 
@@ -281,7 +281,7 @@
     <file type="string">libgoForward.so</file>
     <priority type="double">1</priority>
     <real-time-factor type="int">1</real-time-factor>
-    <duration type="double">2</duration>
+    <duration type="double">0.33</duration>
   </goForward>
 
 </XML>
