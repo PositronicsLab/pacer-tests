@@ -1,7 +1,9 @@
 #!/bin/bash
 source ${BUILD_PATH}/Pacer/setup.sh
 # clean up worksapce
-  
+ 
+if [ "$#" -gt "0" ] 
+then
 git clean -dfx .. 
 
 ${PACER_SCRIPT_PATH}/setup-tests.sh ./*.in
@@ -48,9 +50,10 @@ do
   # append to second-to-last line of file
   ./edit-plugin.sh
 
-  rpl -q "plugin-scheduler</open>" " monte-carlo-sample-$i plugin-scheduler</open>" plugins.xml
+  rpl -q "<!-- mc-plugins -->" " monte-carlo-sample-$i <!-- mc-plugins -->" plugins.xml
 done
-
+rpl -q "<!-- mc-plugins -->" "" plugins.xml
+fi
 
 # run pacer
 ../../../BUILD/Moby/moby-driver -r -p=${PACER_SIMULATOR_PATH}/libPacerMobyPlugin.so -s=0.001 ../../model/model.xml
