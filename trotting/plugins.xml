@@ -3,8 +3,8 @@
       center-of-mass
       end-effectors
       gait-planner
-      joint-PID-controller-accel
-      ik-feet
+      eef-PID-controller
+      limits 
   </plugins>
   
   <!--
@@ -53,6 +53,7 @@
   </center-of-mass>
   
   <end-effectors>
+    <id type="string vector">LF_FOOT           RF_FOOT             LH_FOOT             RH_FOOT</id>
     <file type="string">libend-effectors.so</file>
     <real-time-factor type="int">1</real-time-factor>
     <priority type="double">0</priority>
@@ -152,13 +153,13 @@
     <global-up type="bool">true</global-up>
     <holonomic type="bool">false</holonomic>
     <step-height type="double">0.02</step-height>
-    <gait-duration type="double">0.4</gait-duration>
+    <gait-duration type="double">0.5</gait-duration>
     <length type="double">1.2</length>
     <width type="double">1.2</width>
     <height type="double">0.75</height>
     <!--troting gait-->
     <gait type="double">0.25  0.75  0.75  0.25</gait>
-    <duty-factor type="double">0.6  0.6 0.6  0.6</duty-factor>
+    <duty-factor type="double">0.45  0.45 0.45  0.45</duty-factor>
   </gait-planner>
   
   <ik-feet>
@@ -181,18 +182,18 @@
     </gains>
   </joint-PID-controller>
 
-<joint-PID-controller-accel>
-  <file type="string">libjoint-PID-controller.so</file>
-  <priority type="double">3</priority>
-  <real-time-factor type="int">1</real-time-factor>
-  <acceleration type="bool">true</acceleration>
-  <!-- Gains are for the q of joint ids respectively -->
-  <gains>
-    <kp type="double">5e4 5e4 5e4      5e4 5e4 5e4      5e4 5e4 5e4     5e4 5e4 5e4</kp>
-    <kv type="double">2e2 2e2 2e2      2e2 2e2 2e2      2e2 2e2 2e2     2e2 2e2 2e2 </kv>
-    <ki type="double">0 0 0     0 0 0     0 0 0     0 0 0</ki>
-  </gains>
-</joint-PID-controller-accel>
+  <joint-PID-controller-accel>
+    <file type="string">libjoint-PID-controller.so</file>
+    <priority type="double">3</priority>
+    <real-time-factor type="int">1</real-time-factor>
+    <acceleration type="bool">true</acceleration>
+    <!-- Gains are for the q of joint ids respectively -->
+    <gains>
+      <kp type="double">5e4 5e4 5e4      5e4 5e4 5e4      5e4 5e4 5e4     5e4 5e4 5e4</kp>
+      <kv type="double">2e2 2e2 2e2      2e2 2e2 2e2      2e2 2e2 2e2     2e2 2e2 2e2 </kv>
+      <ki type="double">0 0 0     0 0 0     0 0 0     0 0 0</ki>
+    </gains>
+  </joint-PID-controller-accel>
 
   <eef-PID-controller>
     <file type="string">libeef-PID-controller.so</file>
@@ -220,7 +221,6 @@
     </gains>
   </eef-PID-controller-accel>
 
-
   <idyn-controller>
     <file type="string">inverse-dynamics/libinverse-dynamics.so</file>
     <priority type="double">4</priority>
@@ -231,7 +231,7 @@
     <last-cfs type="bool">false</last-cfs>
     <last-cfs-filter type="bool">false</last-cfs-filter>
     <des-contact type="bool">true</des-contact>
-    <max-contacts-per-foot type="double">1</max-contacts-per-foot>
+    <max-contacts-per-foot type="double">0</max-contacts-per-foot>
     <type type="string vector">CFQP</type> <!-- CFQP (BEST: Clawar), CFLCP (EXPERIMENTAL: Anitesciu-Potra), NSQP (EXPERIMENTAL: No-slip CLAWAR), NSLCP (BEST: No-slip LCP) -->
 <!--CFQP CFLCP NSQP NSLCP-->
   </idyn-controller>

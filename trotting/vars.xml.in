@@ -10,7 +10,7 @@
       <x type="double"> 0 0 0.17 0 0 0</x>
       <xd type="double">0 0 0   0 0 0</xd>
     </base>
-    <control-kinematics type="bool">true</control-kinematics>
+    <control-kinematics type="bool">false</control-kinematics>
     <control-kinematics-feedback type="double">0</control-kinematics-feedback>
   </init>
 </XML>
