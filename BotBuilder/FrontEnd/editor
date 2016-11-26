@@ -37,7 +37,7 @@ def handleApply(self):
 		os.environ[params[i].name]=str(params[i].value)
 	subprocess.call(name, shell=True)
 	app.processEvents()
-	pixmap = QPixmap("/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/model-1.png")
+	pixmap = QPixmap(os.environ["BUILDER_GUI_PATH"]+"/model-1.png")
 	label.setPixmap(pixmap)
 	label.show()
 
@@ -200,11 +200,11 @@ for i in range(0,NUM_PARAMS):
 
 global label
 label = QLabel(win)
-pixmap = QPixmap("/home/brad/Desktop/Tests/pacer-tests/BotBuilder/FrontEnd/model-1.png")
+pixmap = QPixmap(os.environ["BUILDER_GUI_PATH"]+"/model-1.png")
 label.setPixmap(pixmap)
-label.move(940,100)
+label.move(1000,100)
 model = QLabel("Current Model:",win)
-model.move(940,80)
+model.move(1000,80)
 
 vel_main=list()
 tor_main=list()

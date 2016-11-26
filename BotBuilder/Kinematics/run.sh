@@ -9,5 +9,5 @@ sed -i.bak '/dynamic-body-id="GROUND"/d' ./model-1.xml
 #sed -i '8i<ImplicitConstraint joint-id="fixed-base" />' ./model-1.xml
 #sed -i '95i<FixedJoint id="fixed-base" inboard-link-id="GROUND" outboard-link-id="BODY0" location="0 0 0" />' ./model-1.xml
 
-${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --no-pipe --float --duration 100 --sample 1 --moby s=0.001 p=${PACER_SIMULATOR_PATH}/libPacerMobyPlugin.so model-1.xml
+${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --no-pipe --float --duration 100 --sample 1 --moby r s=0.001 p=${PACER_SIMULATOR_PATH}/libPacerMobyPlugin.so model-1.xml
 

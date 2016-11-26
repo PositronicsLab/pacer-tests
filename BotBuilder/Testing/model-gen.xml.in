@@ -23,18 +23,6 @@
 <TimeSteppingSimulator min-step-size="0.0005">
   <RecurrentForce recurrent-force-id="gravity" />
   <DisabledPair object1-id="LINKS" object2-id="LINKS"/>
-  <DisabledPair object1-id="BODY0_collision" object2-id="LF_1_collision" />
-  <DisabledPair object1-id="LF_2_collision" object2-id="LF_FOOT_collision" />
-  <DisabledPair object1-id="LF_1_collision" object2-id="LF_2_collision" />
-  <DisabledPair object1-id="BODY0_collision" object2-id="RH_1_collision" />
-<DisabledPair object1-id="RF_2_collision" object2-id="RF_FOOT_collision" />
-<DisabledPair object1-id="RF_1_collision" object2-id="RF_2_collision" />
-<DisabledPair object1-id="BODY0_collision" object2-id="LH_1_collision" />
-<DisabledPair object1-id="LH_2_collision" object2-id="LH_FOOT_collision" />
-<DisabledPair object1-id="LH_1_collision" object2-id="LH_2_collision" />
-<DisabledPair object1-id="BODY0_collision" object2-id="RH_1_collision" />
-<DisabledPair object1-id="RH_2_collision" object2-id="RH_FOOT_collision" />
-<DisabledPair object1-id="RH_1_collision" object2-id="RH_2_collision" />
   <DynamicBody dynamic-body-id="LINKS" />
   <DynamicBody dynamic-body-id="GROUND" />
   <ContactParameters object1-id="LINKS" object2-id="GROUND" mu-coulomb="1" mu-viscous="0" epsilon="0.0" compliant="true" penalty-kv="100" penalty-kp="100000"  alpha="100" />

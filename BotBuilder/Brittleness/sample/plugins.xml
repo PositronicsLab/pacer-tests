@@ -1,25 +1,21 @@
   <XML>
   <plugins type="string vector">
-     gait-planner
-     center-of-mass
-     end-effectors
-     ik-feet
-     joint-PID-controller-accel
-     idyn-controller
-     plugin-scheduler
+    error-check
+    center-of-mass
+    end-effectors
+    gait-planner
+    ik-feet
+    joint-PID-controller-accel
+    idyn-controller
   </plugins>
   
   <!--
-      ik-feet
-      idyn-controller
-      ik-feet
-   joint-PID-controller
-   idyn-controller
+    end-effectors
+    sinusoid-trajectory
+    joint-PID-controller
+    imu-reader
    OTHER PLUGINS:
-      ik-feet
-      eef-PID-controller
    
-      error-check
    joint-PID-controller
    idyn-controller
    stabilization
@@ -30,47 +26,95 @@
    -->
   
   <!-- =================== PLUGIN DESCRIPTIONS ==================== -->
- <plugin-scheduler>
+  <imu-reader>
+    <priority type="double">0</priority>
+    <real-time-factor type="int">1</real-time-factor>
+    <baud-rate type="int">115200</baud-rate>
+    <rate type="int">1000</rate>
+    <pose type="double">0 0 0 0 0 0</pose>
+    <file type="string">imu/libimu-reader.so</file>
+    <port type="string">/dev/tty.usbmodemfd121</port>
+  </imu-reader>
+  <delay-kinematic-command>
+    <file type="string">libdelay.so</file>
+    <real-time-factor type="int">1</real-time-factor>
+    <priority type="double">2</priority>
+    <parameters type="string vector">end-effector</parameters>
+  </delay-kinematic-command>
+  <gait-planner>
+    <file type="string">libgait-planner.so</file>
+    <real-time-factor type="int">1</real-time-factor>
+    <command type="double vector">0 0 0 0 0 -1.2</command>
+    <priority type="double">1</priority>
+    <pose type="double">0.0 0 0 0 0 0</pose>
+    <feet type="string">LF_FOOT           RF_FOOT             LH_FOOT             RH_FOOT</feet>
+    <stance-on-contact type="bool">false</stance-on-contact>
+    <redirect-swing-interval type="double">0</redirect-swing-interval>
+    <holonomic type="bool">false</holonomic>
+    <step-height type="double">0.03</step-height>
+    <gait-duration type="double">0.5</gait-duration>
+    <length type="double">1.2</length>
+    <width type="double">1.4</width>
+    <height type="double">1.05</height>
+    <!--troting gait-->
+<!--    <gait type="double">0.7500         0    0.2500    0.5000</gait>-->
+<!--    <gait type="double">0.7500         0    0.2500    0.5000</gait> -->
+<!--    <gait type="double">0.7500         0    0.2500    0.5000</gait>-->
+<!--    <gait type="double">0.7500         0    0.2500    0.5000</gait>-->
+    <!--walking gait-->
+    <gait type="double">0.7500         0    0.2500    0.5000</gait>
+    <duty-factor type="double">0.75  0.75 0.75  0.75</duty-factor>
+  </gait-planner>
+  <arduino-controller>
+    <file type="string">arduino/libarduino.so</file>
+    <priority type="double">10</priority>
+    <real-time-factor type="int">10</real-time-factor>
+    <baud-rate type="int">115200</baud-rate>
+    <port type="string">/dev/ttyUSB0</port>
+  </arduino-controller>
+  <viz-jump>
+    <priority type="double">0</priority>
+    <real-time-factor type="int">1</real-time-factor>
+    <file type="string">libvisualize-ballistic-moton.so</file>
+  </viz-jump>
+  <exit-on-contact>
+    <file type="string">libexit-contact.so</file>
+    <real-time-factor type="int">1</real-time-factor>
+    <priority type="double">0</priority>
+  </exit-on-contact>
+  <plugin-scheduler>
     <file type="string">libplugin-scheduler.so</file>
     <real-time-factor type="int">1</real-time-factor>
     <priority type="double">0</priority>
     <relative-start-time type="bool">true</relative-start-time>
-    <events type="string vector">record</events>
+    <events type="string vector">walk</events>
     <!--  PERSISTENT    -->
-    <record>
-      <time type="double">0.33</time>
-      <open type="string vector">
-        poseListener
-     goForward
-      </open>
+    <walk>
+      <time type="double">0.5</time>
       <close type="string vector">
+        freeze
         plugin-scheduler
+        joint-PID-controller
       </close>
-    </record>
-</plugin-scheduler>
-  <camera>
-    <file type="string">libcamera.so</file>
-    <real-time-factor type="int">10</real-time-factor>
-    <xyz type="double vector">-0.5 0 0.2</xyz>
-    <rpy type="double vector">0 0 0</rpy>
-    <priority type="double">0</priority>
-  </camera>
+      <open type="string vector">
+        center-of-mass
+        end-effectors
+        gait-planner
+        delay-kinematic-command
+        eef-PID-controller
+      </open>
+    </walk>
+  </plugin-scheduler>
   <error-check>
     <file type="string">liberror-check.so</file>
     <real-time-factor type="int">1</real-time-factor>
     <priority type="double">0</priority>
   </error-check>
-  <error-check-builder>
-    <file type="string">liberror-check-builder.so</file>
-    <real-time-factor type="int">1</real-time-factor>
-    <priority type="double">0</priority>
-  </error-check-builder>
-  <limits>
-    <file type="string">liblimits.so</file>
-    <real-time-factor type="int">1</real-time-factor>
-    <priority type="double">10</priority>
-  </limits>
-  
+  <freeze>
+    <file type="string">libstay.so</file>
+     <real-time-factor type="int">1</real-time-factor>
+     <priority type="double">1</priority>
+  </freeze>
   <center-of-mass>
     <file type="string">libcenter-of-mass.so</file>
     <real-time-factor type="int">1</real-time-factor>
@@ -78,8 +122,7 @@
   </center-of-mass>
   
   <end-effectors>
-<id type="string vector">LF_FOOT RF_FOOT LH_FOOT RH_FOOT</id>   
- <file type="string">libend-effectors.so</file>
+    <file type="string">libend-effectors.so</file>
     <real-time-factor type="int">1</real-time-factor>
     <priority type="double">0</priority>
   </end-effectors>
@@ -135,7 +178,7 @@
   </stabilization>
   
   <gamepad>
-    <file type="string">gamepad/libgamepad.so</file>
+    <file type="string">libgamepad.so</file>
      <real-time-factor type="int">1</real-time-factor>
      <max-forward-speed type="double">0.3</max-forward-speed>
      <max-strafe-speed type="double">0.2</max-strafe-speed>
@@ -146,56 +189,32 @@
 <!--     <type type="string">XBOX</type>-->
  </gamepad>
 
-  <waypoints>
-    <file type="string">libwaypoints.so</file>
-     <real-time-factor type="int">1</real-time-factor>
-     <priority type="double">0</priority>
-     <max-forward-speed type="double">0.25</max-forward-speed>
-     <max-strafe-speed type="double">0</max-strafe-speed>
-     <max-turn-speed type="double">0.1</max-turn-speed>
-     <tolerance type="double">0.1</tolerance>
-     <waypoints type="double vector">
-       100.00000  -0.00000
-     </waypoints>
-  </waypoints>
-  
   <stand-trajectory>
     <file type="string">libstand.so</file>
      <real-time-factor type="int">1</real-time-factor>
      <priority type="double">1</priority>
   </stand-trajectory>
+
+  <sinusoid-trajectory>
+    <file type="string">libsinusoid.so</file>
+     <real-time-factor type="int">1</real-time-factor>
+     <priority type="double">1</priority>
+     <frequency type="double">16</frequency>
+     <amplitude type="double">0.2</amplitude>
+     <realtime type="bool">true</realtime>
+  </sinusoid-trajectory>
   
-  <gait-planner>
-    <file type="string">libgait-planner.so</file>
-    <real-time-factor type="int">1</real-time-factor>
-    <priority type="double">1</priority>
-    <pose type="double">0.0 0 0 0 0 0</pose>
-    <command-smoother type="int">1</command-smoother>
-    <feet type="string">LF_FOOT           RF_FOOT             LH_FOOT             RH_FOOT</feet>
-    <stance-on-contact type="bool">false</stance-on-contact>
-    <redirect-swing-interval type="double">0</redirect-swing-interval>
-    <global-up type="bool">false</global-up>
-    <holonomic type="bool">false</holonomic>
-    <step-height type="double">0.01</step-height>
-    <gait-duration type="double">0.33</gait-duration>
-    <length type="double">2</length>
-    <width type="double">1.1</width>
-    <height type="double">0.75</height>
-    <!--troting gait-->
-    <gait type="double">0.25  0.75  0.75  0.25</gait>
-    <duty-factor type="double">0.6  0.6 0.6  0.6</duty-factor>
-  </gait-planner>
   
   <ik-feet>
     <file type="string">libinverse-kinematics.so</file>
-    <priority type="double">2</priority>
+    <priority type="double">3</priority>
     <real-time-factor type="int">1</real-time-factor>
-    <abs-err-tolerance type="double">1e-3</abs-err-tolerance>
+    <abs-err-tolerance type="double">1.5e-3</abs-err-tolerance>
   </ik-feet>
   
   <joint-PID-controller>
     <file type="string">libjoint-PID-controller.so</file>
-    <priority type="double">9</priority>
+    <priority type="double">4</priority>
     <real-time-factor type="int">1</real-time-factor>
     <acceleration type="bool">false</acceleration>
     <!-- Gains are for the q of joint ids respectively -->
@@ -214,8 +233,8 @@
   <!-- Gains are for the q of joint ids respectively -->
   <gains>
     <kp type="double">5e4 5e4 5e4      5e4 5e4 5e4      5e4 5e4 5e4     5e4 5e4 5e4</kp>
-    <kv type="double">2e2 2e2 2e2      2e2 2e2 2e2      2e2 2e2 2e2     2e2 2e2 2e2 </kv>
-    <ki type="double">0 0 0     0 0 0     0 0 0     0 0 0</ki>
+    <kv type="double">1e2 1e2 1e2 1e2 1e2 1e2 1e2 1e2 1e2 1e2 1e2 1e2 </kv>
+    <ki type="double">1e-2 1e-2 1e-2      1e-2 1e-2 1e-2      1e-2 1e-2 1e-2     1e-2 1e-2 1e-2</ki>
   </gains>
 </joint-PID-controller-accel>
 
@@ -255,33 +274,9 @@
     <alpha type="double">1</alpha>
     <last-cfs type="bool">false</last-cfs>
     <last-cfs-filter type="bool">false</last-cfs-filter>
-    <des-contact type="bool">false</des-contact>
+    <des-contact type="bool">true</des-contact>
     <max-contacts-per-foot type="double">0</max-contacts-per-foot>
-    <type type="string vector">CFQP</type> <!-- CFQP (BEST: Clawar), CFLCP (EXPERIMENTAL: Anitesciu-Potra), NSQP (EXPERIMENTAL: No-slip CLAWAR), NSLCP (BEST: No-slip LCP) -->
+    <type type="string vector">NOCP</type> <!-- CFQP (BEST: Clawar), CFLCP (EXPERIMENTAL: Anitesciu-Potra), NSQP (EXPERIMENTAL: No-slip CLAWAR), NSLCP (BEST: No-slip LCP) -->
 <!--CFQP CFLCP NSQP NSLCP-->
   </idyn-controller>
-
-  <poseListener>
-    <file type="string">libposeListener.so</file>
-    <priority type="double">10</priority>
-    <real-time-factor type="int">1</real-time-factor>
-    <id type="string">LF_FOOT           RF_FOOT             LH_FOOT             RH_FOOT</id>
-    <duration type="double">0.33</duration>
-  </poseListener>
-
-
-  <trajectory-table>
-    <file type="string">libtrajectory-table.so</file>
-    <priority type="double">1</priority>
-    <real-time-factor type="int">1</real-time-factor>
-    <propWindow type="bool">true</propWindow>
-  </trajectory-table>
-
-  <goForward>
-    <file type="string">libgoForward.so</file>
-    <priority type="double">1</priority>
-    <real-time-factor type="int">1</real-time-factor>
-    <duration type="double">0.33</duration>
-  </goForward>
-
 </XML>

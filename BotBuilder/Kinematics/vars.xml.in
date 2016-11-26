@@ -29,6 +29,7 @@
   </init>
 
   <task-file type="file">plugins.xml</task-file>
+   <task-file type="file">../task.xml</task-file>
 <main>
 	<stepsize type="double">0.001</stepsize>
 	<realtime type="bool">false</realtime>
