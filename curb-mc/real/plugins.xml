@@ -4,7 +4,7 @@
       end-effectors
       gait-planner
       ik-feet
-      imu-reader
+      dynamixel
   </plugins>
   
   <!--
@@ -31,8 +31,15 @@
     <rate type="int">1000</rate>
     <pose type="double">0 0 0 0 0 0</pose>
     <file type="string">imu/libimu-reader.so</file>
-    <port type="string">/dev/tty.usbmodemfd121</port>
+    <port type="string">/dev/tty.usbserial-A9YL9ZZV</port>
   </imu-reader>
+  <dynamixel>
+    <priority type="double">10</priority>
+    <real-time-factor type="int">1</real-time-factor>
+    <file type="string">hardware/libdynamixel.so</file>
+    <port type="string">/dev/tty.usbmodemfd121</port>
+    <kinematic-control type="bool">true</kinematic-control>
+  </dynamixel>
   <gait-planner>
     <file type="string">libgait-planner.so</file>
     <real-time-factor type="int">1</real-time-factor>
@@ -117,6 +124,7 @@
   </center-of-mass>
   
   <end-effectors>
+    <id type="string vector">LF_FOOT           RF_FOOT             LH_FOOT             RH_FOOT</id>
     <file type="string">libend-effectors.so</file>
     <real-time-factor type="int">1</real-time-factor>
     <priority type="double">0</priority>

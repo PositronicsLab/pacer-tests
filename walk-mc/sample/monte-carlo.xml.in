@@ -1,0 +1,22 @@
+  <XML>
+  <monte-carlo-@@PWD_NOPATH@@>
+    <file type="string">monte-carlo-simulation/libmonte-carlo-simulation.so</file>
+    <real-time-factor type="int">1</real-time-factor>
+    <priority type="double">0</priority>
+    <duration type="double">13.0</duration>
+    <dt type="double">0.001</dt>
+    <start-at-time type="double">0</start-at-time>
+    <display type="bool">false</display>
+    <visualize-step type="int">10</visualize-step>
+    <output-model type="bool">false</output-model>
+    <get-data-online type="bool">true</get-data-online>
+    <color type="double">0 0 0</color>
+    <max-threads type="int">16</max-threads>
+    <max-samples type="int">16</max-samples>
+    <max-working type="int">16</max-working>
+    <executable type="string">monte-carlo-simulation/sample.bin</executable>
+    <task-directory type="string">@@PWD@@</task-directory>
+    <moby-model type="string">@@PWD@@/../../model/model.xml</moby-model>
+    <standing type="bool">true</standing>
+  </monte-carlo-@@PWD_NOPATH@@>
+</XML>

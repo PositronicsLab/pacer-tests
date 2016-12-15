@@ -1,46 +1,31 @@
   <XML>
-    <plugins type="string vector">
-     freeze
-     joint-PID-controller
-     monte-carlo-simulation
-     plugin-scheduler
-  </plugins>
+  <plugins type="string vector">
+      end-effectors
+      freeze
+      grasp
+      plugin-scheduler
+      ik-end-effector
+      joint-PID-controller
+    </plugins>
   
   <!--
-    end-effectors
-    sinusoid-trajectory
-    joint-PID-controller
-    imu-reader
    OTHER PLUGINS:
-   
+      eef-PID-controller
    joint-PID-controller
    idyn-controller
-   stabilization
-   gamepad
-   waypoints
-   output
-
    -->
   
   <!-- =================== PLUGIN DESCRIPTIONS ==================== -->
+  
   <plugin-scheduler>
     <file type="string">libplugin-scheduler.so</file>
     <real-time-factor type="int">1</real-time-factor>
     <priority type="double">0</priority>
     <relative-start-time type="bool">true</relative-start-time>
-    <events type="string vector">start reach</events>
+    <events type="string vector">reach</events>
     <!--  PERSISTENT    -->
-    <start>
-      <time type="double">0.1</time>
-      <open type="string vector">
-        error-check
-        end-effectors
-        grasp
-        ik-end-effector
-      </open>
-    </start>
     <reach>
-      <time type="double">0.11</time>
+      <time type="double">0.01</time>
       <close type="string vector">
         freeze
       </close>
@@ -49,23 +34,7 @@
       </open>
     </reach>
   </plugin-scheduler>
-  <monte-carlo-simulation>
-    <file type="string">monte-carlo-simulation/libmonte-carlo-simulation.so</file>
-    <real-time-factor type="int">1</real-time-factor>
-    <priority type="double">0</priority>
-    <duration type="double">2.0</duration>
-    <dt type="double">0.001</dt>
-    <start-at-time type="double">0.1</start-at-time>
-    <display type="bool">false</display>
-    <visualize-step type="int">10</visualize-step>
-    <output-model type="bool">false</output-model>
-    <get-data-online type="bool">true</get-data-online>
-    <max-threads type="int">10</max-threads>
-    <max-samples type="int">10</max-samples>
-    <max-working type="int">10</max-working>
-    <executable type="string">monte-carlo-simulation/sample.bin</executable>
-    <task-directory type="string">../sample-indirect/</task-directory>
-  </monte-carlo-simulation>
+  
 <grasp>
   <file type="string">libgrasp.so</file>
   <real-time-factor type="int">1</real-time-factor>
@@ -80,10 +49,9 @@
   <file type="string">libpick.so</file>
   <real-time-factor type="int">1</real-time-factor>
   <priority type="double">1</priority>
-  <ready type="bool">false</ready>
-  <plan type="string">direct</plan>
+  <plan type="string">indirect</plan>
   <goal type="double vector">0.3 0.14 -0.1246</goal>
-  <speed type="double">0.4</speed>
+  <speed type="double">0.6</speed>
   <grasp-point type="double vector"> 0.04 0 0 </grasp-point>
   <!-- plan type="string">indirect</plan -->
 </pick>
@@ -97,7 +65,6 @@
     <file type="string">liberror-check.so</file>
     <real-time-factor type="int">1</real-time-factor>
     <priority type="double">0</priority>
-    <errors type="string vector">explode</errors>
   </error-check>
   
   <end-effectors>
@@ -126,4 +93,57 @@
       <ki type="double">2e-2  2e-2  2e-2   2e-2  2e-2  2e-2  1e-2    0 0 0 0 </ki>
     </gains>
   </joint-PID-controller>
+
+<joint-PID-controller-accel>
+  <file type="string">libjoint-PID-controller.so</file>
+  <priority type="double">3</priority>
+  <real-time-factor type="int">1</real-time-factor>
+  <acceleration type="bool">true</acceleration>
+  <!-- Gains are for the q of joint ids respectively -->
+  <gains>
+    <kp type="double">5e4 5e4 5e4      5e4 5e4 5e4      5e4 </kp>
+    <kv type="double">1e2 1e2 1e2      1e2 1e2 1e2      1e2 </kv>
+    <ki type="double">1e-2 1e-2 1e-2   1e-2 1e-2 1e-2   1e-2</ki>
+  </gains>
+</joint-PID-controller-accel>
+
+  <eef-PID-controller>
+    <file type="string">libeef-PID-controller.so</file>
+    <priority type="double">4</priority>
+    <real-time-factor type="int">1</real-time-factor>
+    <id type="string vector">HAND</id>
+    <gains>
+      <kp type="double">1e4 1e4 1e4</kp>
+      <kv type="double">0     0   0</kv>
+      <ki type="double">0   0   0      </ki>
+    </gains>
+  </eef-PID-controller>
+  
+  <eef-PID-controller-accel>
+    <file type="string">libeef-PID-controller.so</file>
+    <priority type="double">4</priority>
+    <real-time-factor type="int">1</real-time-factor>
+    <acceleration type="bool">true</acceleration>
+    <id type="string vector">HAND</id>
+    <!-- Gains are for the q of joint ids respectively -->
+    <gains>
+      <kp type="double">1e7 1e7 1e7</kp>
+      <kv type="double">5e3 5e3 5e3</kv>
+      <ki type="double">0 0 0      </ki>
+    </gains>
+  </eef-PID-controller-accel>
+
+  <idyn-controller>
+    <file type="string">inverse-dynamics/libinverse-dynamics.so</file>
+    <priority type="double">4</priority>
+    <real-time-factor type="int">1</real-time-factor>
+    <dt type="double">0</dt>
+    <alpha type="double">1</alpha>
+    <last-cfs type="bool">false</last-cfs>
+    <last-cfs-filter type="bool">false</last-cfs-filter>
+    <des-contact type="bool">true</des-contact>
+    <max-contacts-per-foot type="double">0</max-contacts-per-foot>
+    <type type="string vector">NOCP</type> <!-- CFQP (BEST: Clawar), CFLCP (EXPERIMENTAL: Anitesciu-Potra), NSQP (EXPERIMENTAL: No-slip CLAWAR), NSLCP (BEST: No-slip LCP) -->
+<!--CFQP CFLCP NSQP NSLCP-->
+  </idyn-controller>
 </XML>

@@ -1,0 +1,46 @@
+<XML>
+<DRIVER>
+<camera position="2.0 2.0 0.0" target="0 0 0" up="0 0 1" />
+<window location="0 0" size="640 480" />
+</DRIVER>
+<MOBY>
+
+<GravityForce id="gravity" accel="0 0 -9.81" />
+
+<TimeSteppingSimulator min-step-size="0.001" constraint-stabilization-max-iterations="0">
+<RecurrentForce recurrent-force-id="gravity" />
+<DisabledPair object1-id="ARM" object2-id="ARM"/>
+<DynamicBody dynamic-body-id="ARM" />
+<DynamicBody dynamic-body-id="GROUND" />
+<DynamicBody dynamic-body-id="BLOCK" />
+<ContactParameters object1-id="ARM" object2-id="GROUND" mu-coulomb="1"   mu-viscous="0" />
+<ContactParameters object1-id="ARM" object2-id="BLOCK" mu-coulomb="100"    mu-viscous="0" />
+<ContactParameters object1-id="GROUND" object2-id="BLOCK" mu-coulomb="1" mu-viscous="0" />
+<ImplicitConstraint joint-id="fixed-base" />
+</TimeSteppingSimulator>
+
+<FixedJoint id="fixed-base" inboard-link-id="GROUND" outboard-link-id="LINK_0" location="0 0 0" />
+<SDF filename="@@PACER_MODEL_PATH@@/Arm/model.sdf"/>
+<!-- ideal mox size: 0.050710678 -->
+<Box id="block" rpy="0 0.0 0"  xlen="0.05071" ylen="0.05071" zlen="0.05071" density="6000"/>
+<RigidBody id="BLOCK" color="0.6 0.6 0.6 0" enabled="true"
+position="0.31 0 0.0508"
+visualization-id="block"
+compliant="false">
+<InertiaFromPrimitive primitive-id="block" />
+<CollisionGeometry primitive-id="block" />
+</RigidBody>
+
+<!-- setup the platform rigid body; it is not active -->
+<Box id="ground-primitive-viz" rpy="1.5708 0.0 0"  xlen="8" ylen="0.001" zlen="8" />
+<Plane id="ground-primitive" rpy="1.5708 0 0" />
+<!--<Heightmap id="ground-primitive" filename="heightmap.mat" width="1" depth="1" rpy="1.5708 0 0" />-->
+<RigidBody id="GROUND" color="0.6 0.6 0.6 0" enabled="false"
+position="0 0 0"
+visualization-id="ground-primitive-viz"
+compliant="false">
+<CollisionGeometry primitive-id="ground-primitive" />
+</RigidBody>
+
+</MOBY>
+</XML>

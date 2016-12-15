@@ -52,7 +52,7 @@
   
   
   <gait-planner>
-    <command type="double vector">0.1 0 0 0 0 -0.5</command>
+    <command type="double vector">0.2 0 0 0 0 0</command>
     <file type="string">libgait-planner.so</file>
     <real-time-factor type="int">1</real-time-factor>
     <priority type="double">1</priority>
@@ -69,8 +69,8 @@
     <duty-factor type="double">0.75  0.75 0.75  0.75</duty-factor>
     <global-up type="bool">true</global-up>
     <length type="double">1.2</length>
-    <width type="double">1.2</width>
-    <height type="double">0.75</height>
+    <width type="double">2</width>
+    <height type="double">0.9</height>
   </gait-planner>
   
   <joint-PID-controller>
