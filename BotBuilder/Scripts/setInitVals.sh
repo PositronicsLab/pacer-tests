@@ -1,4 +1,6 @@
 #!/bin/bash
+#this file just modifies the current vars.xml to contain the initial values for the next test window
+#this is to ensure that the model begins the test in the same way that the first line it recieves looks, so it doesnt jerk into place
 cd $BUILDER_XML_PATH
 
 sed -i "16s/\(<q type=\"double\">\)\([^<]*\)\(<[^>]*\)/\1"$LF_X_1_q" "$LF_Y_2_q" "$LF_Y_3_q"  "$RF_X_1_q" "$RF_Y_2_q" "$RF_Y_3_q"  "$LH_X_1_q" "$LH_Y_2_q" "$LH_Y_3_q"  "$RH_X_1_q" "$RH_Y_2_q" "$RH_Y_3_q"\3/" vars.xml

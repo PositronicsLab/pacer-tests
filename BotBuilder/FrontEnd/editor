@@ -10,7 +10,7 @@ from PyQt4.QtCore import *
 from decimal import *
 import numpy
 
-
+#if a slider moves, update the value
 def sliderMoved(slider,index):
 	print index
 	params[index]=params[index]._replace(value="{:.3f}".format((float(os.environ[params[index].name])+(float(slider.value())*float(params[index].unit_amount)))))
@@ -18,7 +18,7 @@ def sliderMoved(slider,index):
 	names[index].show()
 
 
-
+#when hitting next, set all the environment variables to their corresponding stored value
 def handleNext(self):
 	for i in range(0,NUM_PARAMS):
 		os.environ[params[i].name]=str(params[i].value)
@@ -27,6 +27,7 @@ def handleNext(self):
 	subprocess.call(name, shell=True)
 	sys.exit()
 
+#quit
 def handleExit(self):
 	sys.exit()
 
@@ -109,17 +110,17 @@ names = list()
 sliders = list()
 vel_lim = list()
 tor_lim = list()
-
+#two types of limits
 limit_names = list()
 limit_names.append("vel")
 limit_names.append("tor")
-
+#4 types of limb
 limb_names= list()
 limb_names.append("LF")
 limb_names.append("RF")
 limb_names.append("LH")
 limb_names.append("RH")
-
+#sam had me turn off hip joints for now, as their changes and values are likely not very useful
 joint_names= list()
 #joint_names.append("X_1")
 joint_names.append("Y_2")
@@ -130,9 +131,12 @@ N_LIMBS = len(limb_names)
 N_JOINTS = len(joint_names)
 
 x=list()
+#matrix is number of parameters by joints*limits*limbs
 J=Matrix = [[0 for r in range(NUM_PARAMS)] for y in range(N_JOINTS*N_LIMBS*N_LIMITS)] 
 j=0
 count=0
+#fill the mtrix with all the limits, and put all of the >0 ones in the variable x that goes into the respective limit variable
+#this ensures the user will only see the limits they need to fix, otherwise the values are so large it will leave the window
 for i in range(0,NUM_PARAMS):
 	j=0
 	for limit in range(0,len(limit_names)):
@@ -152,11 +156,12 @@ for i in range(0,NUM_PARAMS):
       		else:
 	 	        tor_lim.append(x)
 			x=list()
+#take the pseudo-inverse of the original matrix
 J_inv = numpy.linalg.pinv(numpy.matrix(J))
       
 tor_lab=list()
 vel_lab=list()
-
+#make all the sliders meed
 for i in range(0,NUM_PARAMS):
 	sliders.append(QSlider(Qt.Horizontal, win))
 	sliders[i].setMinimum(-100)
@@ -164,6 +169,7 @@ for i in range(0,NUM_PARAMS):
 	sliders[i].setValue(0)
 	sliders[i].setTickPosition(QSlider.TicksBelow)
 	sliders[i].setTickInterval(1)
+#connect each slider to its own, seperate slider moved instance
 sliders[0].valueChanged.connect(lambda: sliderMoved(sliders[0],0))
 sliders[1].valueChanged.connect(lambda: sliderMoved(sliders[1],1))
 sliders[2].valueChanged.connect(lambda: sliderMoved(sliders[2],2))
@@ -176,6 +182,7 @@ sliders[8].valueChanged.connect(lambda: sliderMoved(sliders[8],8))
 sliders[9].valueChanged.connect(lambda: sliderMoved(sliders[9],9))
 sliders[10].valueChanged.connect(lambda: sliderMoved(sliders[10],10))
 
+#place all the limit labels and their values
 for i in range(0,NUM_PARAMS):
 	height += 40
 	names.append(QLabel(params[i].name+": "+params[i].value,win))
@@ -212,6 +219,7 @@ temp_list=list()
 q=list()
 curr=0
 k=0
+#get the jacobian values
 for limit in range(0,len(limit_names)):
     	for limb in range(0,len(limb_names)):
         	for joint in range(0,len(joint_names)): 
@@ -228,13 +236,14 @@ for limit in range(0,len(limit_names)):
       	else:
 	 	tor_main=temp_list
 
-
+#negate the matrix
 J_inv=numpy.negative(J_inv)
 step= numpy.dot(J_inv,q)
 update=list()
 for i in range(0,NUM_PARAMS):
 	update.append(step.item(0,i)*(float(params[i].unit_amount)))
 
+#if anything is small enough to update it, then change the slider value to it
 for i in range(0,NUM_PARAMS):
 	print "update: "+str(update[i])
 	if(update[i] <100 and update[i]>=-100):

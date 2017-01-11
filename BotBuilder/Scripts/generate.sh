@@ -1,6 +1,9 @@
 #!/bin/bash
 #generate a model with the Monte-Carlo simulation with the provided initial x/xd/xdd values
 #as only the xml file is needed, the duration is set to zero and Moby control is off
+#after the model is generated, the proper camera position is inserted into the XML files
+#and disabled pairs added for all adjacent links so that the simulation doesn't immediately crash, 
+#the next step takes place in the run.sh file in the Kinematics directory
 cd $BUILDER_SCRIPT_PATH
 ./clean-dir.sh
 cd $BUILDER_XML_PATH

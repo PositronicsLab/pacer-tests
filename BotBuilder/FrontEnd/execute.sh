@@ -1,3 +1,9 @@
+#!/bin/bash
+#begins the simulations
+#can be ran from anywhere
+#the environment variables exported here can be changed except for curr_line and curr_iter
+#unit_ values are the values by which each variable can be incremented by
+#the velocity values affect the speed of the tests
 export modelNo=1
 export max_vel=0.4
 export delta_v=0.4

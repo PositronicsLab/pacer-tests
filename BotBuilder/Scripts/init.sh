@@ -1,4 +1,8 @@
 #!/bin/bash
+#this is file is where the user can edit the initial model parameters
+#all the exported environment variables correspond to their names value
+#and the setup-tests.sh calls turn the .in files provided in the directories into their
+#normal .xml versions
 source ${PACER_BINARY_PATH}/setup.sh
 cd $BUILDER_XML_PATH
 $BUILDER_SCRIPT_PATH/clean-dir.sh
