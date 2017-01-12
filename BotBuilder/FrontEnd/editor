@@ -259,7 +259,7 @@ tor_text = QLabel("Torque Limits: ",win)
 tor_text.move(540,5)
 
 
-
+#create the main velocity and torque limit labels and display them
 z=" ".join(map(str, vel_main))
 vel_mLab=QLabel(z,win)
 vel_mLab.move(40,20)
