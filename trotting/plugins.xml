@@ -141,7 +141,7 @@
   </stand-trajectory>
   
   <gait-planner>
-    <command type="double">0.25 0 0 0 0 0</command>
+    <command type="double">0.25 0 0 0 0 1.0</command>
     <file type="string">libgait-planner.so</file>
     <real-time-factor type="int">1</real-time-factor>
     <priority type="double">1</priority>
@@ -153,13 +153,13 @@
     <global-up type="bool">true</global-up>
     <holonomic type="bool">false</holonomic>
     <step-height type="double">0.02</step-height>
-    <gait-duration type="double">0.5</gait-duration>
+    <gait-duration type="double">0.3</gait-duration>
     <length type="double">1.2</length>
     <width type="double">1.2</width>
     <height type="double">0.75</height>
     <!--troting gait-->
     <gait type="double">0.25  0.75  0.75  0.25</gait>
-    <duty-factor type="double">0.45  0.45 0.45  0.45</duty-factor>
+    <duty-factor type="double">0.75  0.75 0.75  0.75</duty-factor>
   </gait-planner>
   
   <ik-feet>

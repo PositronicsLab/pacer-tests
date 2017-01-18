@@ -37,7 +37,7 @@
     <priority type="double">10</priority>
     <real-time-factor type="int">1</real-time-factor>
     <file type="string">hardware/libdynamixel.so</file>
-    <port type="string">/dev/tty.usbserial-A9YL9ZZV</port>
+    <port type="string">/dev/tty.usbserial-AL01QFAX</port>
     <kinematic-control type="bool">true</kinematic-control>
   </dynamixel>
   <gait-planner>

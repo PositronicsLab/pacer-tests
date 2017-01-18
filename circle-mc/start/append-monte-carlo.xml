@@ -1,0 +1,1 @@
+sed -i.bak '$i<task-file type="file">monte-carlo-name.xml</task-file>' plugins.xml
