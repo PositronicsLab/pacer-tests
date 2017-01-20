@@ -245,7 +245,7 @@
     <priority type="double">10</priority>
     <real-time-factor type="int">1</real-time-factor>
     <id type="string">LF_FOOT           RF_FOOT             LH_FOOT             RH_FOOT</id>
-    <duration type="double">0.33</duration>
+    <duration type="double">0.3</duration>
   </poseListener>
 
 
@@ -260,7 +260,7 @@
     <file type="string">libgoForward.so</file>
     <priority type="double">1</priority>
     <real-time-factor type="int">1</real-time-factor>
-    <duration type="double">0.33</duration>
+    <duration type="double">0.3</duration>
   </goForward>
 
 </XML>

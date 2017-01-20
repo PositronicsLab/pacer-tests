@@ -26,22 +26,22 @@ ${PACER_COMPONENT_PATH}/monte-carlo-simulation/sample.bin --no-pipe --duration 0
 
 sed -i '2i<DRIVER>\n<camera position="0.35 -0.55 0.5" target="0 0 0" up="0 0 1" />\n<window location="0 0" size="640 480" />\n</DRIVER>' ./model-1.xml
 
-sed -i '143i<DisabledPair object1-id="BODY0_collision" object2-id="LF_1_collision" />' ./model-1.xml
-sed -i '144i    <DisabledPair object1-id="LF_3_collision" object2-id="LF_FOOT_collision" />' ./model-1.xml
-sed -i '145i   <DisabledPair object1-id="LF_2_collision" object2-id="LF_3_collision" />' ./model-1.xml
-sed -i '146i   <DisabledPair object1-id="LF_1_collision" object2-id="LF_2_collision" />' ./model-1.xml
-sed -i '147i    <DisabledPair object1-id="BODY0_collision" object2-id="RH_1_collision" />' ./model-1.xml
-sed -i '148i    <DisabledPair object1-id="RF_3_collision" object2-id="RF_FOOT_collision" />' ./model-1.xml
-sed -i '149i   <DisabledPair object1-id="RF_2_collision" object2-id="RF_3_collision" />' ./model-1.xml
-sed -i '150i    <DisabledPair object1-id="RF_1_collision" object2-id="RF_2_collision" />' ./model-1.xml
-sed -i '151i    <DisabledPair object1-id="BODY0_collision" object2-id="LH_1_collision" />' ./model-1.xml
-sed -i '152i    <DisabledPair object1-id="LH_3_collision" object2-id="LH_FOOT_collision" />' ./model-1.xml
-sed -i '153i   <DisabledPair object1-id="LH_2_collision" object2-id="LH_3_collision" />' ./model-1.xml
-sed -i '154i    <DisabledPair object1-id="LH_1_collision" object2-id="LH_2_collision" />' ./model-1.xml
-sed -i '155i    <DisabledPair object1-id="BODY0_collision" object2-id="RH_1_collision" />' ./model-1.xml
-sed -i '156i    <DisabledPair object1-id="RH_3_collision" object2-id="RH_FOOT_collision" />' ./model-1.xml
-sed -i '157i   <DisabledPair object1-id="RH_2_collision" object2-id="RH_3_collision" />' ./model-1.xml
-sed -i '158i    <DisabledPair object1-id="RH_1_collision" object2-id="RH_2_collision" />' ./model-1.xml
+sed -i '20i<DisabledPair object1-id="BODY0_collision" object2-id="LF_1_collision" />' ./model-1.xml
+sed -i '21i    <DisabledPair object1-id="LF_3_collision" object2-id="LF_FOOT_collision" />' ./model-1.xml
+sed -i '22i   <DisabledPair object1-id="LF_2_collision" object2-id="LF_3_collision" />' ./model-1.xml
+sed -i '23i   <DisabledPair object1-id="LF_1_collision" object2-id="LF_2_collision" />' ./model-1.xml
+sed -i '24i    <DisabledPair object1-id="BODY0_collision" object2-id="RH_1_collision" />' ./model-1.xml
+sed -i '25i    <DisabledPair object1-id="RF_3_collision" object2-id="RF_FOOT_collision" />' ./model-1.xml
+sed -i '26i   <DisabledPair object1-id="RF_2_collision" object2-id="RF_3_collision" />' ./model-1.xml
+sed -i '27i    <DisabledPair object1-id="RF_1_collision" object2-id="RF_2_collision" />' ./model-1.xml
+sed -i '28i    <DisabledPair object1-id="BODY0_collision" object2-id="LH_1_collision" />' ./model-1.xml
+sed -i '29i    <DisabledPair object1-id="LH_3_collision" object2-id="LH_FOOT_collision" />' ./model-1.xml
+sed -i '30i   <DisabledPair object1-id="LH_2_collision" object2-id="LH_3_collision" />' ./model-1.xml
+sed -i '31i    <DisabledPair object1-id="LH_1_collision" object2-id="LH_2_collision" />' ./model-1.xml
+sed -i '32i    <DisabledPair object1-id="BODY0_collision" object2-id="RH_1_collision" />' ./model-1.xml
+sed -i '33i    <DisabledPair object1-id="RH_3_collision" object2-id="RH_FOOT_collision" />' ./model-1.xml
+sed -i '34i   <DisabledPair object1-id="RH_2_collision" object2-id="RH_3_collision" />' ./model-1.xml
+sed -i '35i    <DisabledPair object1-id="RH_1_collision" object2-id="RH_2_collision" />' ./model-1.xml
 
 
 export curr_vel=0
