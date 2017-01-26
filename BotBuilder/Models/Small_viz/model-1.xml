@@ -4,7 +4,7 @@
 <window location="0 0" size="640 480" />
 </DRIVER>
 <Moby >
-<TimeSteppingSimulator bilateral-stabilization-tol="1e-06" constraint-stabilization-max-iterations="4294967295" current-time="0" id="0xb65ca0" min-step-size="0.0005" unilateral-stabilization-tol="1.49012e-08" >
+<TimeSteppingSimulator bilateral-stabilization-tol="1e-06" constraint-stabilization-max-iterations="4294967295" current-time="0" id="0xf85ca0" min-step-size="0.0005" unilateral-stabilization-tol="1.49012e-08" >
 <DynamicBody dynamic-body-id="LINKS" />
 <DynamicBody dynamic-body-id="GROUND" />
 <ContactParameters damping="0" epsilon="0" friction-cone-edges="4" mu-coulomb="1" mu-viscous="0" object1-id="GROUND" object2-id="LINKS" penalty-kp="100000" penalty-kv="100" stiffness="0" />
@@ -157,113 +157,113 @@
 <DisabledPair object1-id="BODY0_collision" object2-id="LF_3_collision" />
 <DisabledPair object1-id="BODY0_collision" object2-id="LF_1_collision" />
 </TimeSteppingSimulator>
-<RCArticulatedBody fdyn-algorithm="crb" fdyn-algorithm-frame="linkcom" floating-base="true" id="LINKS" visualization-id="0xb66ca0" >
+<RCArticulatedBody fdyn-algorithm="crb" fdyn-algorithm-frame="linkcom" floating-base="true" id="LINKS" visualization-id="0xf86ca0" >
 <RecurrentForce recurrent-force-id="gravity" />
-<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="BODY0" inertia="3.49462e-05 0 0; 0 0.0002542 0; 0 0 0.000240759;" inertial-relative-com="0 0 0.19" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.05" position="0 0 0.19" quat="1 0 0 0" visualization-id="0xb61fb0" >
-<CollisionGeometry compliant-layer-depth="0" id="BODY0_collision" primitive-id="0xbbd598" relative-origin="0 0 0" relative-quat="1 0 0 0" />
+<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="BODY0" inertia="4.52687e-05 0 0; 0 3.49462e-05 0; 0 0 3.18279e-05;" inertial-relative-com="0 0 0.19" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.05" position="0 0 0.19" quat="1 0 0 0" visualization-id="0xf81fb0" >
+<CollisionGeometry compliant-layer-depth="0" id="BODY0_collision" primitive-id="0xfdd598" relative-origin="0 0 0" relative-quat="1 0 0 0" />
 </RigidBody>
-<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="LF_LEG_1" inertia="2.41935e-06 0 0; 0 9.37498e-06 0; 0 0 9.37498e-06;" inertial-relative-com="0.025 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.03" position="0.142475 0.0254 0.1519" quat="1 0 0 0" visualization-id="0xbba930" >
-<CollisionGeometry compliant-layer-depth="0" id="LF_1_collision" primitive-id="0xbbb808" relative-origin="0 0 0" relative-quat="0.7042 0 0.710001 0" />
+<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="LF_LEG_1" inertia="2.41935e-06 0 0; 0 1.20967e-06 0; 0 0 1.20967e-06;" inertial-relative-com="0.025 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.03" position="0.0504 0.03556 0.1519" quat="1 0 0 0" visualization-id="0xfda930" >
+<CollisionGeometry compliant-layer-depth="0" id="LF_1_collision" primitive-id="0xfdb808" relative-origin="0 0 0" relative-quat="0.7042 0 0.710001 0" />
 </RigidBody>
-<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="LF_LEG_2" inertia="2.41935e-06 0 0; 0 9.37498e-06 0; 0 0 9.37498e-06;" inertial-relative-com="0.0385 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.03" position="0.212015 0.0254 0.140692" quat="1 0 0 0" visualization-id="0xbbbb60" >
-<CollisionGeometry compliant-layer-depth="0" id="LF_2_collision" primitive-id="0xbbb9b8" relative-origin="0 0 0" relative-quat="0.7042 0 0.710001 0" />
+<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="LF_LEG_2" inertia="2.41935e-06 0 0; 0 9.37498e-06 0; 0 0 9.37498e-06;" inertial-relative-com="0.0385 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.03" position="0.0639 0.03556 0.1519" quat="1 0 0 0" visualization-id="0xfdbb60" >
+<CollisionGeometry compliant-layer-depth="0" id="LF_2_collision" primitive-id="0xfdb9b8" relative-origin="0 0 0" relative-quat="0.7042 0 0.710001 0" />
 </RigidBody>
-<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="LF_FOOT" inertia="2.41399e-06 0 0; 0 1.53093e-06 0; 0 0 1.53093e-06;" inertial-relative-com="0.18857 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.0299665" position="0.419235 0.0254 0.140692" quat="1 0 0 0" visualization-id="0xbb9ac0" >
-<CollisionGeometry compliant-layer-depth="0" id="LF_3_collision" primitive-id="0xb70f98" relative-origin="-0.05 0 0" relative-quat="0.7042 0 0.710001 0" />
-<CollisionGeometry compliant-layer-depth="0" id="LF_FOOT_collision" primitive-id="0xb71140" relative-origin="0 0 0" relative-quat="1 0 0 0" />
+<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="LF_FOOT" inertia="2.41399e-06 0 0; 0 9.36962e-06 0; 0 0 9.36962e-06;" inertial-relative-com="0.14285 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.0299665" position="0.2254 0.03556 0.1519" quat="1 0 0 0" visualization-id="0xfd9ac0" >
+<CollisionGeometry compliant-layer-depth="0" id="LF_3_collision" primitive-id="0xf90f98" relative-origin="-0.05 0 0" relative-quat="0.7042 0 0.710001 0" />
+<CollisionGeometry compliant-layer-depth="0" id="LF_FOOT_collision" primitive-id="0xf91140" relative-origin="0 0 0" relative-quat="1 0 0 0" />
 </RigidBody>
-<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="RF_LEG_1" inertia="2.41935e-06 0 0; 0 9.37498e-06 0; 0 0 9.37498e-06;" inertial-relative-com="0.025 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.03" position="0.142475 -0.0254 0.1519" quat="1 0 0 0" visualization-id="0xbba210" >
-<CollisionGeometry compliant-layer-depth="0" id="RF_1_collision" primitive-id="0xb72f18" relative-origin="0 0 0" relative-quat="0.7042 0 0.710001 0" />
+<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="RF_LEG_1" inertia="2.41935e-06 0 0; 0 1.20967e-06 0; 0 0 1.20967e-06;" inertial-relative-com="0.025 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.03" position="0.0504 -0.03556 0.1519" quat="1 0 0 0" visualization-id="0xfda210" >
+<CollisionGeometry compliant-layer-depth="0" id="RF_1_collision" primitive-id="0xf92f18" relative-origin="0 0 0" relative-quat="0.7042 0 0.710001 0" />
 </RigidBody>
-<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="RF_LEG_2" inertia="2.41935e-06 0 0; 0 9.37498e-06 0; 0 0 9.37498e-06;" inertial-relative-com="0.0385 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.03" position="0.212015 -0.0254 0.140692" quat="1 0 0 0" visualization-id="0xb71ca0" >
-<CollisionGeometry compliant-layer-depth="0" id="RF_2_collision" primitive-id="0xb75048" relative-origin="0 0 0" relative-quat="0.7042 0 0.710001 0" />
+<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="RF_LEG_2" inertia="2.41935e-06 0 0; 0 9.37498e-06 0; 0 0 9.37498e-06;" inertial-relative-com="0.0385 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.03" position="0.0639 -0.03556 0.1519" quat="1 0 0 0" visualization-id="0xf91ca0" >
+<CollisionGeometry compliant-layer-depth="0" id="RF_2_collision" primitive-id="0xf95048" relative-origin="0 0 0" relative-quat="0.7042 0 0.710001 0" />
 </RigidBody>
-<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="RF_FOOT" inertia="2.41399e-06 0 0; 0 1.53093e-06 0; 0 0 1.53093e-06;" inertial-relative-com="0.18857 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.0299665" position="0.419235 -0.0254 0.140692" quat="1 0 0 0" visualization-id="0xb758c0" >
-<CollisionGeometry compliant-layer-depth="0" id="RF_3_collision" primitive-id="0xb780b8" relative-origin="-0.05 0 0" relative-quat="0.7042 0 0.710001 0" />
-<CollisionGeometry compliant-layer-depth="0" id="RF_FOOT_collision" primitive-id="0xb78750" relative-origin="0 0 0" relative-quat="1 0 0 0" />
+<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="RF_FOOT" inertia="2.41399e-06 0 0; 0 9.36962e-06 0; 0 0 9.36962e-06;" inertial-relative-com="0.14285 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.0299665" position="0.2254 -0.03556 0.1519" quat="1 0 0 0" visualization-id="0xf958c0" >
+<CollisionGeometry compliant-layer-depth="0" id="RF_3_collision" primitive-id="0xf980b8" relative-origin="-0.05 0 0" relative-quat="0.7042 0 0.710001 0" />
+<CollisionGeometry compliant-layer-depth="0" id="RF_FOOT_collision" primitive-id="0xf98750" relative-origin="0 0 0" relative-quat="1 0 0 0" />
 </RigidBody>
-<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="LH_LEG_1" inertia="2.41935e-06 0 0; 0 9.37498e-06 0; 0 0 9.37498e-06;" inertial-relative-com="-0.025 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.03" position="-0.142475 0.0254 0.1519" quat="1 0 0 0" visualization-id="0xb785b0" >
-<CollisionGeometry compliant-layer-depth="0" id="LH_1_collision" primitive-id="0xb7a6c8" relative-origin="0 0 0" relative-quat="0.7042 0 0.710001 0" />
+<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="LH_LEG_1" inertia="2.41935e-06 0 0; 0 1.20967e-06 0; 0 0 1.20967e-06;" inertial-relative-com="-0.025 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.03" position="-0.0504 0.03556 0.1519" quat="1 0 0 0" visualization-id="0xf985b0" >
+<CollisionGeometry compliant-layer-depth="0" id="LH_1_collision" primitive-id="0xf9a6c8" relative-origin="0 0 0" relative-quat="0.7042 0 0.710001 0" />
 </RigidBody>
-<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="LH_LEG_2" inertia="2.41935e-06 0 0; 0 9.37498e-06 0; 0 0 9.37498e-06;" inertial-relative-com="-0.0385 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.03" position="-0.211286 0.0254 0.137519" quat="1 0 0 0" visualization-id="0xb7af40" >
-<CollisionGeometry compliant-layer-depth="0" id="LH_2_collision" primitive-id="0xb7c7b8" relative-origin="0 0 0" relative-quat="0.7042 0 0.710001 0" />
+<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="LH_LEG_2" inertia="2.41935e-06 0 0; 0 9.37498e-06 0; 0 0 9.37498e-06;" inertial-relative-com="-0.0385 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.03" position="-0.0639 0.03556 0.1519" quat="1 0 0 0" visualization-id="0xf9af40" >
+<CollisionGeometry compliant-layer-depth="0" id="LH_2_collision" primitive-id="0xf9c7b8" relative-origin="0 0 0" relative-quat="0.7042 0 0.710001 0" />
 </RigidBody>
-<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="LH_FOOT" inertia="2.41399e-06 0 0; 0 1.53093e-06 0; 0 0 1.53093e-06;" inertial-relative-com="-0.18857 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.0299665" position="-0.418506 0.0254 0.137519" quat="1 0 0 0" visualization-id="0xb73090" >
-<CollisionGeometry compliant-layer-depth="0" id="LH_3_collision" primitive-id="0xb7f9c8" relative-origin="0.05 0 0" relative-quat="0.7042 0 0.710001 0" />
-<CollisionGeometry compliant-layer-depth="0" id="LH_FOOT_collision" primitive-id="0xb80060" relative-origin="0 0 0" relative-quat="1 0 0 0" />
+<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="LH_FOOT" inertia="2.41399e-06 0 0; 0 9.36962e-06 0; 0 0 9.36962e-06;" inertial-relative-com="-0.14285 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.0299665" position="-0.2254 0.03556 0.1519" quat="1 0 0 0" visualization-id="0xf93090" >
+<CollisionGeometry compliant-layer-depth="0" id="LH_3_collision" primitive-id="0xf9f9c8" relative-origin="0.05 0 0" relative-quat="0.7042 0 0.710001 0" />
+<CollisionGeometry compliant-layer-depth="0" id="LH_FOOT_collision" primitive-id="0xfa0060" relative-origin="0 0 0" relative-quat="1 0 0 0" />
 </RigidBody>
-<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="RH_LEG_1" inertia="2.41935e-06 0 0; 0 9.37498e-06 0; 0 0 9.37498e-06;" inertial-relative-com="-0.025 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.03" position="-0.142475 -0.0254 0.1519" quat="1 0 0 0" visualization-id="0xb7fec0" >
-<CollisionGeometry compliant-layer-depth="0" id="RH_1_collision" primitive-id="0xb81fd8" relative-origin="0 0 0" relative-quat="0.7042 0 0.710001 0" />
+<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="RH_LEG_1" inertia="2.41935e-06 0 0; 0 1.20967e-06 0; 0 0 1.20967e-06;" inertial-relative-com="-0.025 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.03" position="-0.0504 -0.03556 0.1519" quat="1 0 0 0" visualization-id="0xf9fec0" >
+<CollisionGeometry compliant-layer-depth="0" id="RH_1_collision" primitive-id="0xfa1fd8" relative-origin="0 0 0" relative-quat="0.7042 0 0.710001 0" />
 </RigidBody>
-<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="RH_LEG_2" inertia="2.41935e-06 0 0; 0 9.37498e-06 0; 0 0 9.37498e-06;" inertial-relative-com="-0.0385 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.03" position="-0.211286 -0.0254 0.137519" quat="1 0 0 0" visualization-id="0xb82850" >
-<CollisionGeometry compliant-layer-depth="0" id="RH_2_collision" primitive-id="0xb840d8" relative-origin="0 0 0" relative-quat="0.7042 0 0.710001 0" />
+<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="RH_LEG_2" inertia="2.41935e-06 0 0; 0 9.37498e-06 0; 0 0 9.37498e-06;" inertial-relative-com="-0.0385 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.03" position="-0.0639 -0.03556 0.1519" quat="1 0 0 0" visualization-id="0xfa2850" >
+<CollisionGeometry compliant-layer-depth="0" id="RH_2_collision" primitive-id="0xfa40d8" relative-origin="0 0 0" relative-quat="0.7042 0 0.710001 0" />
 </RigidBody>
-<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="RH_FOOT" inertia="2.41399e-06 0 0; 0 1.53093e-06 0; 0 0 1.53093e-06;" inertial-relative-com="-0.18857 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.0299665" position="-0.418506 -0.0254 0.137519" quat="1 0 0 0" visualization-id="0xb84930" >
-<CollisionGeometry compliant-layer-depth="0" id="RH_3_collision" primitive-id="0xb87168" relative-origin="0.05 0 0" relative-quat="0.7042 0 0.710001 0" />
-<CollisionGeometry compliant-layer-depth="0" id="RH_FOOT_collision" primitive-id="0xb87800" relative-origin="0 0 0" relative-quat="1 0 0 0" />
+<RigidBody angular-velocity="0 0 0" articulated-body-id="LINKS" compliant="false" enabled="true" id="RH_FOOT" inertia="2.41399e-06 0 0; 0 9.36962e-06 0; 0 0 9.36962e-06;" inertial-relative-com="-0.14285 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0.0299665" position="-0.2254 -0.03556 0.1519" quat="1 0 0 0" visualization-id="0xfa4930" >
+<CollisionGeometry compliant-layer-depth="0" id="RH_3_collision" primitive-id="0xfa7168" relative-origin="0.05 0 0" relative-quat="0.7042 0 0.710001 0" />
+<CollisionGeometry compliant-layer-depth="0" id="RH_FOOT_collision" primitive-id="0xfa7800" relative-origin="0 0 0" relative-quat="1 0 0 0" />
 </RigidBody>
-<RevoluteJoint axis="1 0 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="LF_X_1" inboard-link-id="BODY0" location="0.117475 0.0254 0.1519" lower-limits="-1e+06" outboard-link-id="LF_LEG_1" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xb87660" />
-<RevoluteJoint axis="0 1 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="LF_Y_2" inboard-link-id="LF_LEG_1" location="0.173515 0.0254 0.140692" lower-limits="-1e+06" outboard-link-id="LF_LEG_2" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xb886f0" />
-<RevoluteJoint axis="0 1 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="LF_Y_3" inboard-link-id="LF_LEG_2" location="0.230665 0.0254 0.140692" lower-limits="-1e+06" outboard-link-id="LF_FOOT" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xb89520" />
-<RevoluteJoint axis="1 0 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="RF_X_1" inboard-link-id="BODY0" location="0.117475 -0.0254 0.1519" lower-limits="-1e+06" outboard-link-id="RF_LEG_1" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xb8a640" />
-<RevoluteJoint axis="0 -1 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="RF_Y_2" inboard-link-id="RF_LEG_1" location="0.173515 -0.0254 0.140692" lower-limits="-1e+06" outboard-link-id="RF_LEG_2" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xb8b2f0" />
-<RevoluteJoint axis="0 -1 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="RF_Y_3" inboard-link-id="RF_LEG_2" location="0.230665 -0.0254 0.140692" lower-limits="-1e+06" outboard-link-id="RF_FOOT" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xb8a250" />
-<RevoluteJoint axis="-1 0 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="LH_X_1" inboard-link-id="BODY0" location="-0.117475 0.0254 0.1519" lower-limits="-1e+06" outboard-link-id="LH_LEG_1" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xb8ccf0" />
-<RevoluteJoint axis="0 1 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="LH_Y_2" inboard-link-id="LH_LEG_1" location="-0.172786 0.0254 0.137519" lower-limits="-1e+06" outboard-link-id="LH_LEG_2" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xb8d9d0" />
-<RevoluteJoint axis="0 1 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="LH_Y_3" inboard-link-id="LH_LEG_2" location="-0.229936 0.0254 0.137519" lower-limits="-1e+06" outboard-link-id="LH_FOOT" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xb8e6b0" />
-<RevoluteJoint axis="-1 0 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="RH_X_1" inboard-link-id="BODY0" location="-0.117475 -0.0254 0.1519" lower-limits="-1e+06" outboard-link-id="RH_LEG_1" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xb8ef70" />
-<RevoluteJoint axis="0 -1 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="RH_Y_2" inboard-link-id="RH_LEG_1" location="-0.172786 -0.0254 0.137519" lower-limits="-1e+06" outboard-link-id="RH_LEG_2" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xb90100" />
-<RevoluteJoint axis="0 -1 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="RH_Y_3" inboard-link-id="RH_LEG_2" location="-0.229936 -0.0254 0.137519" lower-limits="-1e+06" outboard-link-id="RH_FOOT" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xb90de0" />
+<RevoluteJoint axis="1 0 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="LF_X_1" inboard-link-id="BODY0" location="0.0254 0.03556 0.1519" lower-limits="-1e+06" outboard-link-id="LF_LEG_1" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xfa7660" />
+<RevoluteJoint axis="0 1 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="LF_Y_2" inboard-link-id="LF_LEG_1" location="0.0254 0.03556 0.1519" lower-limits="-1e+06" outboard-link-id="LF_LEG_2" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xfa86f0" />
+<RevoluteJoint axis="0 1 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="LF_Y_3" inboard-link-id="LF_LEG_2" location="0.08255 0.03556 0.1519" lower-limits="-1e+06" outboard-link-id="LF_FOOT" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xfa9520" />
+<RevoluteJoint axis="1 0 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="RF_X_1" inboard-link-id="BODY0" location="0.0254 -0.03556 0.1519" lower-limits="-1e+06" outboard-link-id="RF_LEG_1" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xfaa640" />
+<RevoluteJoint axis="0 -1 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="RF_Y_2" inboard-link-id="RF_LEG_1" location="0.0254 -0.03556 0.1519" lower-limits="-1e+06" outboard-link-id="RF_LEG_2" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xfab2f0" />
+<RevoluteJoint axis="0 -1 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="RF_Y_3" inboard-link-id="RF_LEG_2" location="0.08255 -0.03556 0.1519" lower-limits="-1e+06" outboard-link-id="RF_FOOT" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xfaa250" />
+<RevoluteJoint axis="-1 0 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="LH_X_1" inboard-link-id="BODY0" location="-0.0254 0.03556 0.1519" lower-limits="-1e+06" outboard-link-id="LH_LEG_1" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xfaccf0" />
+<RevoluteJoint axis="0 1 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="LH_Y_2" inboard-link-id="LH_LEG_1" location="-0.0254 0.03556 0.1519" lower-limits="-1e+06" outboard-link-id="LH_LEG_2" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xfad9d0" />
+<RevoluteJoint axis="0 1 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="LH_Y_3" inboard-link-id="LH_LEG_2" location="-0.08255 0.03556 0.1519" lower-limits="-1e+06" outboard-link-id="LH_FOOT" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xfae6b0" />
+<RevoluteJoint axis="-1 0 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="RH_X_1" inboard-link-id="BODY0" location="-0.0254 -0.03556 0.1519" lower-limits="-1e+06" outboard-link-id="RH_LEG_1" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xfaef70" />
+<RevoluteJoint axis="0 -1 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="RH_Y_2" inboard-link-id="RH_LEG_1" location="-0.0254 -0.03556 0.1519" lower-limits="-1e+06" outboard-link-id="RH_LEG_2" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xfb0100" />
+<RevoluteJoint axis="0 -1 0" compliant-layer-depth="0" coulomb-friction-coeff="0" id="RH_Y_3" inboard-link-id="RH_LEG_2" location="-0.08255 -0.03556 0.1519" lower-limits="-1e+06" outboard-link-id="RH_FOOT" q="0" q-tare="0" qd="0" restitution-coeff="0" upper-limits="1e+06" viscous-friction-coeff="0" visualization-id="0xfb0de0" />
 </RCArticulatedBody>
-<RigidBody angular-velocity="0 0 0" compliant="false" enabled="false" id="GROUND" inertia="0 0 0; 0 0 0; 0 0 0;" inertial-relative-com="0 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0" position="0 0 0" quat="1 0 0 0" visualization-id="0xb61c10" >
+<RigidBody angular-velocity="0 0 0" compliant="false" enabled="false" id="GROUND" inertia="0 0 0; 0 0 0; 0 0 0;" inertial-relative-com="0 0 0" inertial-relative-quat="1 0 0 0" linear-velocity="0 0 0" mass="0" position="0 0 0" quat="1 0 0 0" visualization-id="0xf81c10" >
 <RecurrentForce recurrent-force-id="gravity" />
-<CollisionGeometry compliant-layer-depth="0" id="0xb66240" primitive-id="ground-primitive" relative-origin="0 0 0" relative-quat="1 0 0 0" />
+<CollisionGeometry compliant-layer-depth="0" id="0xf86240" primitive-id="ground-primitive" relative-origin="0 0 0" relative-quat="1 0 0 0" />
 </RigidBody>
-<OSGGroup filename="vizdata_0xb66ca0.osg" id="0xb66ca0" />
+<OSGGroup filename="vizdata_0xf86ca0.osg" id="0xf86ca0" />
 <GravityForce accel="0 0 -9.81" id="gravity" />
-<OSGGroup filename="vizdata_0xb61fb0.osg" id="0xb61fb0" />
-<Box edge-sample-length="1.79769e+308" id="0xbbd598" mass="0" position="0 0 0" quat="1 0 0 0" xlen="0.23495" ylen="0.0508" zlen="0.0762" />
-<OSGGroup filename="vizdata_0xbba930.osg" id="0xbba930" />
-<Cylinder height="0.05" id="0xbbb808" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.02" />
-<OSGGroup filename="vizdata_0xbbbb60.osg" id="0xbbbb60" />
-<Cylinder height="0.1" id="0xbbb9b8" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.01" />
-<OSGGroup filename="vizdata_0xbb9ac0.osg" id="0xbb9ac0" />
-<Cylinder height="0.1" id="0xb70f98" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.005" />
-<Sphere id="0xb71140" mass="0" num-points="100" position="0 0 0" quat="1 0 0 0" radius="0.02" />
-<OSGGroup filename="vizdata_0xbba210.osg" id="0xbba210" />
-<Cylinder height="0.05" id="0xb72f18" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.02" />
-<OSGGroup filename="vizdata_0xb71ca0.osg" id="0xb71ca0" />
-<Cylinder height="0.1" id="0xb75048" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.01" />
-<OSGGroup filename="vizdata_0xb758c0.osg" id="0xb758c0" />
-<Cylinder height="0.1" id="0xb780b8" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.005" />
-<Sphere id="0xb78750" mass="0" num-points="100" position="0 0 0" quat="1 0 0 0" radius="0.02" />
-<OSGGroup filename="vizdata_0xb785b0.osg" id="0xb785b0" />
-<Cylinder height="0.05" id="0xb7a6c8" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.02" />
-<OSGGroup filename="vizdata_0xb7af40.osg" id="0xb7af40" />
-<Cylinder height="0.1" id="0xb7c7b8" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.005" />
-<OSGGroup filename="vizdata_0xb73090.osg" id="0xb73090" />
-<Cylinder height="0.1" id="0xb7f9c8" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.005" />
-<Sphere id="0xb80060" mass="0" num-points="100" position="0 0 0" quat="1 0 0 0" radius="0.02" />
-<OSGGroup filename="vizdata_0xb7fec0.osg" id="0xb7fec0" />
-<Cylinder height="0.05" id="0xb81fd8" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.02" />
-<OSGGroup filename="vizdata_0xb82850.osg" id="0xb82850" />
-<Cylinder height="0.1" id="0xb840d8" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.01" />
-<OSGGroup filename="vizdata_0xb84930.osg" id="0xb84930" />
-<Cylinder height="0.1" id="0xb87168" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.005" />
-<Sphere id="0xb87800" mass="0" num-points="100" position="0 0 0" quat="1 0 0 0" radius="0.02" />
-<OSGGroup filename="vizdata_0xb87660.osg" id="0xb87660" />
-<OSGGroup filename="vizdata_0xb886f0.osg" id="0xb886f0" />
-<OSGGroup filename="vizdata_0xb89520.osg" id="0xb89520" />
-<OSGGroup filename="vizdata_0xb8a640.osg" id="0xb8a640" />
-<OSGGroup filename="vizdata_0xb8b2f0.osg" id="0xb8b2f0" />
-<OSGGroup filename="vizdata_0xb8a250.osg" id="0xb8a250" />
-<OSGGroup filename="vizdata_0xb8ccf0.osg" id="0xb8ccf0" />
-<OSGGroup filename="vizdata_0xb8d9d0.osg" id="0xb8d9d0" />
-<OSGGroup filename="vizdata_0xb8e6b0.osg" id="0xb8e6b0" />
-<OSGGroup filename="vizdata_0xb8ef70.osg" id="0xb8ef70" />
-<OSGGroup filename="vizdata_0xb90100.osg" id="0xb90100" />
-<OSGGroup filename="vizdata_0xb90de0.osg" id="0xb90de0" />
-<OSGGroup filename="vizdata_0xb61c10.osg" id="0xb61c10" />
+<OSGGroup filename="vizdata_0xf81fb0.osg" id="0xf81fb0" />
+<Box edge-sample-length="1.79769e+308" id="0xfdd598" mass="0" position="0 0 0" quat="1 0 0 0" xlen="0.0508" ylen="0.07112" zlen="0.0762" />
+<OSGGroup filename="vizdata_0xfda930.osg" id="0xfda930" />
+<Cylinder height="0.05" id="0xfdb808" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.02" />
+<OSGGroup filename="vizdata_0xfdbb60.osg" id="0xfdbb60" />
+<Cylinder height="0.1" id="0xfdb9b8" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.01" />
+<OSGGroup filename="vizdata_0xfd9ac0.osg" id="0xfd9ac0" />
+<Cylinder height="0.1" id="0xf90f98" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.005" />
+<Sphere id="0xf91140" mass="0" num-points="100" position="0 0 0" quat="1 0 0 0" radius="0.02" />
+<OSGGroup filename="vizdata_0xfda210.osg" id="0xfda210" />
+<Cylinder height="0.05" id="0xf92f18" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.02" />
+<OSGGroup filename="vizdata_0xf91ca0.osg" id="0xf91ca0" />
+<Cylinder height="0.1" id="0xf95048" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.01" />
+<OSGGroup filename="vizdata_0xf958c0.osg" id="0xf958c0" />
+<Cylinder height="0.1" id="0xf980b8" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.005" />
+<Sphere id="0xf98750" mass="0" num-points="100" position="0 0 0" quat="1 0 0 0" radius="0.02" />
+<OSGGroup filename="vizdata_0xf985b0.osg" id="0xf985b0" />
+<Cylinder height="0.05" id="0xf9a6c8" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.02" />
+<OSGGroup filename="vizdata_0xf9af40.osg" id="0xf9af40" />
+<Cylinder height="0.1" id="0xf9c7b8" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.01" />
+<OSGGroup filename="vizdata_0xf93090.osg" id="0xf93090" />
+<Cylinder height="0.1" id="0xf9f9c8" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.005" />
+<Sphere id="0xfa0060" mass="0" num-points="100" position="0 0 0" quat="1 0 0 0" radius="0.02" />
+<OSGGroup filename="vizdata_0xf9fec0.osg" id="0xf9fec0" />
+<Cylinder height="0.05" id="0xfa1fd8" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.02" />
+<OSGGroup filename="vizdata_0xfa2850.osg" id="0xfa2850" />
+<Cylinder height="0.1" id="0xfa40d8" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.01" />
+<OSGGroup filename="vizdata_0xfa4930.osg" id="0xfa4930" />
+<Cylinder height="0.1" id="0xfa7168" mass="0" num-circle-points="10" num-rings="2" position="0 0 0" quat="0.707107 0.707107 0 0" radius="0.005" />
+<Sphere id="0xfa7800" mass="0" num-points="100" position="0 0 0" quat="1 0 0 0" radius="0.02" />
+<OSGGroup filename="vizdata_0xfa7660.osg" id="0xfa7660" />
+<OSGGroup filename="vizdata_0xfa86f0.osg" id="0xfa86f0" />
+<OSGGroup filename="vizdata_0xfa9520.osg" id="0xfa9520" />
+<OSGGroup filename="vizdata_0xfaa640.osg" id="0xfaa640" />
+<OSGGroup filename="vizdata_0xfab2f0.osg" id="0xfab2f0" />
+<OSGGroup filename="vizdata_0xfaa250.osg" id="0xfaa250" />
+<OSGGroup filename="vizdata_0xfaccf0.osg" id="0xfaccf0" />
+<OSGGroup filename="vizdata_0xfad9d0.osg" id="0xfad9d0" />
+<OSGGroup filename="vizdata_0xfae6b0.osg" id="0xfae6b0" />
+<OSGGroup filename="vizdata_0xfaef70.osg" id="0xfaef70" />
+<OSGGroup filename="vizdata_0xfb0100.osg" id="0xfb0100" />
+<OSGGroup filename="vizdata_0xfb0de0.osg" id="0xfb0de0" />
+<OSGGroup filename="vizdata_0xf81c10.osg" id="0xf81c10" />
 <Plane id="ground-primitive" mass="0" position="0 0 0" quat="0.707105 0.707108 0 0" />
 </Moby>
 </XML>

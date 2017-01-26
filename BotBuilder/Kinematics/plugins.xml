@@ -41,7 +41,7 @@
       <time type="double">0.3</time>
       <open type="string vector">
         poseListener
-     goForward
+	goForward
       </open>
       <close type="string vector">
         plugin-scheduler
@@ -262,5 +262,11 @@
     <real-time-factor type="int">1</real-time-factor>
     <duration type="double">0.3</duration>
   </goForward>
+
+  <stand>
+    <file type="string">libstand.so</file>
+     <real-time-factor type="int">1</real-time-factor>
+     <priority type="double">1</priority>
+  </stand>
 
 </XML>
