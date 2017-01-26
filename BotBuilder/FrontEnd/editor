@@ -12,7 +12,6 @@ import numpy
 
 #if a slider moves, update the value
 def sliderMoved(slider,index):
-	print index
 	params[index]=params[index]._replace(value="{:.3f}".format((float(os.environ[params[index].name])+(float(slider.value())*float(params[index].unit_amount)))))
 	names[index].setText(params[index].name+": "+params[index].value)
 	names[index].show()
@@ -51,21 +50,17 @@ def handleApply(self):
 #generating Parameters - this will need to be manually edited to add/remove Parameters
 Param = collections.namedtuple('Param', 'name tooltip unit_amount number kinematic value unit')
 
-NUM_PARAMS = 11
+NUM_PARAMS = 6
 global params 
 params= list()
 
-params.append(Param(name='lenF1', tooltip='length of first front leg segment', unit_amount=None, value=None, number='1', kinematic='1', unit='length'))
-params.append(Param(name='lenF2', tooltip='length of second front leg segment', unit_amount=None, value=None, number='2', kinematic='1', unit='length'))
-params.append(Param(name='FfootLen', tooltip='length of front foot segment', unit_amount=None, value=None, number='3', kinematic='1', unit='length'))
-params.append(Param(name='lenH1', tooltip='length of first back leg segment', unit_amount=None, value=None, number='4', kinematic='1', unit='length'))
-params.append(Param(name='lenH2', tooltip='length of second back leg segment', unit_amount=None, value=None, number='5', kinematic='1', unit='length'))
-params.append(Param(name='HfootLen', tooltip='length of back foot segment', unit_amount=None, value=None, number='6', kinematic='1', unit='length'))
-params.append(Param(name='base_size_length', tooltip='length of base', unit_amount=None, value=None, number='7', kinematic='1', unit='length'))
-params.append(Param(name='base_size_width', tooltip='width of base', unit_amount=None, value=None, number='8', kinematic='1', unit='length'))
-params.append(Param(name='base_size_height', tooltip='height of base', unit_amount=None, value=None, number='9', kinematic='1', unit='length'))
-params.append(Param(name='FfootRad', tooltip='length of back foot segment', unit_amount=None, value=None, number='10', kinematic='0', unit='radius'))
-params.append(Param(name='HfootRad', tooltip='length of back foot segment', unit_amount=None, value=None, number='11', kinematic='0', unit='radius'))
+params.append(Param(name='lenF2', tooltip='length of second front leg segment', unit_amount=None, value=None, number='1', kinematic='1', unit='length'))
+params.append(Param(name='FfootLen', tooltip='length of front foot segment', unit_amount=None, value=None, number='2', kinematic='1', unit='length'))
+params.append(Param(name='lenH2', tooltip='length of second back leg segment', unit_amount=None, value=None, number='3', kinematic='1', unit='length'))
+params.append(Param(name='HfootLen', tooltip='length of back foot segment', unit_amount=None, value=None, number='4', kinematic='1', unit='length'))
+params.append(Param(name='base_size_length', tooltip='length of base', unit_amount=None, value=None, number='5', kinematic='1', unit='length'))
+params.append(Param(name='base_size_width', tooltip='width of base', unit_amount=None, value=None, number='6', kinematic='1', unit='length'))
+
 
 for i in range(0,NUM_PARAMS):
 	params[i]=params[i]._replace(value="{:.3f}".format(float(os.environ[params[i].name])))
@@ -120,7 +115,7 @@ limb_names.append("LF")
 limb_names.append("RF")
 limb_names.append("LH")
 limb_names.append("RH")
-#sam had me turn off hip joints for now, as their changes and values are likely not very useful
+
 joint_names= list()
 #joint_names.append("X_1")
 joint_names.append("Y_2")
@@ -131,8 +126,40 @@ N_LIMBS = len(limb_names)
 N_JOINTS = len(joint_names)
 
 x=list()
+vel_main=list()
+tor_main=list()
+temp_list=list()
+nums=list()
+q=numpy.zeros(shape=N_JOINTS*N_LIMBS*N_LIMITS)
+curr=0
+k=0
+#get the jacobian values
+for limit in range(0,len(limit_names)):
+	k=0
+    	for limb in range(0,len(limb_names)):
+        	for joint in range(0,len(joint_names)): 
+          		curr=float(os.environ[limb_names[limb]+"_"+joint_names[joint]+"_"+limit_names[limit]])
+          		if curr < 0:
+				nums.append(k)
+				hold=str(k)+": "+str(curr)
+				temp_list.append(hold)
+			q[k]=curr
+			k=k+1
+					
+      	if limit==0:
+	  	vel_main=temp_list
+		temp_list=list()
+      	else:
+	 	tor_main=temp_list
+
+
+
+
+
+
+
 #matrix is number of parameters by joints*limits*limbs
-J=Matrix = [[0 for r in range(NUM_PARAMS)] for y in range(N_JOINTS*N_LIMBS*N_LIMITS)] 
+J=numpy.zeros(shape=(N_JOINTS*N_LIMBS*N_LIMITS,NUM_PARAMS)) #= [[0 for r in range(NUM_PARAMS)] for y in range(N_JOINTS*N_LIMBS*N_LIMITS)] 
 j=0
 count=0
 #fill the mtrix with all the limits, and put all of the >0 ones in the variable x that goes into the respective limit variable
@@ -143,11 +170,12 @@ for i in range(0,NUM_PARAMS):
 		count=0
     		for limb in range(0,len(limb_names)):
         		for joint in range(0,len(joint_names)): 
+				print j
           			J[j][i]=float(os.environ[params[i].number + "_"+limb_names[limb]+"_"+joint_names[joint]+"_"+limit_names[limit]])
-          			if J[j][i]>0:
+          			if count in nums:
 					hold=str(count)+": "+str(J[j][i])
 					x.append(hold)
-					count=count+1
+				count=count+1
 			j=j+1
 					
       		if(limit==0):
@@ -176,11 +204,6 @@ sliders[2].valueChanged.connect(lambda: sliderMoved(sliders[2],2))
 sliders[3].valueChanged.connect(lambda: sliderMoved(sliders[3],3))
 sliders[4].valueChanged.connect(lambda: sliderMoved(sliders[4],4))
 sliders[5].valueChanged.connect(lambda: sliderMoved(sliders[5],5))
-sliders[6].valueChanged.connect(lambda: sliderMoved(sliders[6],6))
-sliders[7].valueChanged.connect(lambda: sliderMoved(sliders[7],7))
-sliders[8].valueChanged.connect(lambda: sliderMoved(sliders[8],8))
-sliders[9].valueChanged.connect(lambda: sliderMoved(sliders[9],9))
-sliders[10].valueChanged.connect(lambda: sliderMoved(sliders[10],10))
 
 #place all the limit labels and their values
 for i in range(0,NUM_PARAMS):
@@ -213,42 +236,23 @@ label.move(1000,100)
 model = QLabel("Current Model:",win)
 model.move(1000,80)
 
-vel_main=list()
-tor_main=list()
-temp_list=list()
-q=list()
-curr=0
-k=0
-#get the jacobian values
-for limit in range(0,len(limit_names)):
-    	for limb in range(0,len(limb_names)):
-        	for joint in range(0,len(joint_names)): 
-          		curr=float(os.environ[params[i].number + "_"+limb_names[limb]+"_"+joint_names[joint]+"_"+limit_names[limit]])
-          		if curr < 0:
-				hold=str(k)+": "+str(curr)
-				temp_list.append(hold)
-			q.append(curr)
-			k=k+1
-					
-      	if limit==0:
-	  	vel_main=temp_list
-		temp_list=list()
-      	else:
-	 	tor_main=temp_list
+
 
 #negate the matrix
-J_inv=numpy.negative(J_inv)
+for i in range(0,len(q)):
+	if(q[k]>0):
+		q=0
 step= numpy.dot(J_inv,q)
+numpy.negative(step)
 update=list()
+print step
 for i in range(0,NUM_PARAMS):
-	update.append(step.item(0,i)*(float(params[i].unit_amount)))
+	update.append(step.item(0,i))
+	
 
 #if anything is small enough to update it, then change the slider value to it
 for i in range(0,NUM_PARAMS):
-	print "update: "+str(update[i])
-	if(update[i] <100 and update[i]>=-100):
 		sliders[i].setValue(update[i])
-		print "update: "+str(update[i])
 		params[i]=params[i]._replace(value="{:.3f}".format((float(os.environ[params[i].name])+(float(sliders[i].value())*float(params[i].unit_amount)))))
 		names[i].setText(params[i].name+": "+params[i].value)
 		names[i].show()

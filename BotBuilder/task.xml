@@ -4,7 +4,7 @@
     <real-time-factor type="int">1</real-time-factor>
     <priority type="double">1</priority>
     <pose type="double">0.0 0 0 0 0 0</pose>
-    <command-smoother type="int">1</command-smoother>
+    <command-smoother type="int">10</command-smoother>
     <feet type="string">LF_FOOT           RF_FOOT             LH_FOOT             RH_FOOT</feet>
     <stance-on-contact type="bool">false</stance-on-contact>
     <redirect-swing-interval type="double">0</redirect-swing-interval>
@@ -12,8 +12,8 @@
     <holonomic type="bool">false</holonomic>
     <step-height type="double">0.02</step-height>
     <gait-duration type="double">0.4</gait-duration>
-    <length type="double">1.5</length>
-    <width type="double">1</width>
+    <length type="double">2</length>
+    <width type="double">1.2</width>
     <height type="double">1</height>
     <!--troting gait-->
     <gait type="double">0.25  0.75  0.75  0.25</gait>

@@ -16,17 +16,17 @@ $PACER_SCRIPT_PATH/setup-tests.sh $BUILDER_BIF_PATH/Start/*.in
 #then uncomment all of the export lines below "intentionally broken model below"
 
 #working model
-export lenF1=0.015
-export lenF2=0.175
-export FfootLen=0.015
+export lenF1=0.03
+export lenF2=0.09
+export FfootLen=0.03
 
-export lenH1=0.015
-export lenH2=0.175
-export HfootLen=0.015
+export lenH1=0.03
+export lenH2=0.09
+export HfootLen=0.03
 
-export base_size_length=0.04
-export base_size_width=0.025
-export base_size_height=0.05
+export base_size_length=0.06
+export base_size_width=0.06
+export base_size_height=0.03
 
 export FlinkRad=0.025
 export HlinkRad=0.025
@@ -41,37 +41,9 @@ export massH3=0.03
 
 export massBase=0.05
 
-export FfootRad=0.025
-export HfootRad=0.025
+export FfootRad=0.02
+export HfootRad=0.02
 
-#intentionally broken model below
-#export lenF1=0.5
-#export lenF2=0.175
-#export FfootLen=0.015
-
-#export lenH1=0.5
-#export lenH2=0.175
-#export HfootLen=0.015
-
-#export base_size_length=0.04
-#export base_size_width=0.025
-#export base_size_height=0.05
-
-#export FlinkRad=0.025
-#export HlinkRad=0.025
-
-#export massF1=0.03
-#export massF2=0.03
-#export massF3=0.03
-
-#export massH1=0.03
-#export massH2=0.03
-#export massH3=0.03
-
-#export massBase=0.05
-
-#export FfootRad=0.025
-#export HfootRad=0.025
 
 export KINEMATIC="true"
 

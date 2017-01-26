@@ -5,8 +5,8 @@
 #unit_ values are the values by which each variable can be incremented by
 #the velocity values affect the speed of the tests
 export modelNo=1
-export max_vel=0.4
-export delta_v=0.1
+export max_vel=0
+export delta_v=0
 export curr_vel=0
 export unit_len=0.001
 export unit_den=0.001
