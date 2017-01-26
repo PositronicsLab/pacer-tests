@@ -154,9 +154,10 @@
     <holonomic type="bool">false</holonomic>
     <step-height type="double">0.02</step-height>
     <gait-duration type="double">0.3</gait-duration>
-    <length type="double">1.2</length>
-    <width type="double">1.2</width>
-    <height type="double">0.75</height>
+    <relative-stance type="bool">false</relative-stance>
+    <length type="double">0.3</length>
+    <width type="double">0.2</width>
+    <height type="double">0.15</height>
     <!--troting gait-->
     <gait type="double">0.25  0.75  0.75  0.25</gait>
     <duty-factor type="double">0.75  0.75 0.75  0.75</duty-factor>
