@@ -120,7 +120,7 @@ vel_lim = list()
 tor_lim = list()
 #two types of limits
 limit_names = list()
-limit_names.append("vel")
+#limit_names.append("vel")
 limit_names.append("tor")
 #4 types of limb
 limb_names= list()
@@ -130,7 +130,7 @@ limb_names.append("LH")
 limb_names.append("RH")
 
 joint_names= list()
-#joint_names.append("X_1")
+joint_names.append("X_1")
 joint_names.append("Y_2")
 joint_names.append("Y_3")
 
@@ -162,11 +162,8 @@ for limit in range(0,len(limit_names)):
 			q[k]=curr
 			k=k+1
 					
-      	if limit==0:
-	  	vel_main=temp_list
-		temp_list=list()
-      	else:
-	 	tor_main=temp_list
+      	
+	 tor_main=temp_list
 
 
 
@@ -191,12 +188,8 @@ for i in range(0,NUM_PARAMS):
 				count=count+1
 				j=j+1
 					
-      		if(limit==0):
-	  		vel_lim.append(x)
-			x=list()
-      		else:
-	 	        tor_lim.append(x)
-			x=list()
+      		tor_lim.append(x)
+		x=list()
 #take the pseudo-inverse of the original matrix
 f.write("\n\nJacobian Matrix:\n\n")
 f.write('[')

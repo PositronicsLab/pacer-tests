@@ -1,6 +1,6 @@
   <XML>
   <plugins type="string vector">
-     gait-planner
+     stand
      center-of-mass
      end-effectors
      ik-feet

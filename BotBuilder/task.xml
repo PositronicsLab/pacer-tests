@@ -1,22 +1,24 @@
 <XML>
  <gait-planner>
+    <command type="double">0.25 0 0 0 0 1.0</command>
     <file type="string">libgait-planner.so</file>
     <real-time-factor type="int">1</real-time-factor>
     <priority type="double">1</priority>
-    <pose type="double">0.0 0 0 0 0 0</pose>
-    <command-smoother type="int">10</command-smoother>
+    <pose type="double">0 0 0 0 0 0</pose>
+    <command-smoother type="int">1</command-smoother>
     <feet type="string">LF_FOOT           RF_FOOT             LH_FOOT             RH_FOOT</feet>
     <stance-on-contact type="bool">false</stance-on-contact>
     <redirect-swing-interval type="double">0</redirect-swing-interval>
     <global-up type="bool">true</global-up>
     <holonomic type="bool">false</holonomic>
     <step-height type="double">0.02</step-height>
-    <gait-duration type="double">0.4</gait-duration>
-    <length type="double">2</length>
-    <width type="double">1.2</width>
-    <height type="double">1</height>
+    <gait-duration type="double">0.3</gait-duration>
+    <relative-stance type="bool">false</relative-stance>
+    <length type="double">0.3</length>
+    <width type="double">0.2</width>
+    <height type="double">0.15</height>
     <!--troting gait-->
     <gait type="double">0.25  0.75  0.75  0.25</gait>
-    <duty-factor type="double">0.6  0.6 0.6  0.6</duty-factor>
-  </gait-planner>
+    <duty-factor type="double">0.75  0.75 0.75  0.75</duty-factor>
+</gait-planner>
 </XML>

@@ -16,20 +16,20 @@ $PACER_SCRIPT_PATH/setup-tests.sh $BUILDER_BIF_PATH/Start/*.in
 #then uncomment all of the export lines below "intentionally broken model below"
 
 #working model
-export lenF1=0.03
-export lenF2=0.09
-export FfootLen=0.03
+export lenF1=0.0
+export lenF2=0.1
+export FfootLen=0.1
 
-export lenH1=0.03
-export lenH2=0.09
-export HfootLen=0.03
+export lenH1=0.00
+export lenH2=0.1
+export HfootLen=0.1
 
-export base_size_length=0.06
-export base_size_width=0.06
-export base_size_height=0.03
+export base_size_length=0.30734
+export base_size_width=0.23495
+export base_size_height=0.0762
 
-export FlinkRad=0.025
-export HlinkRad=0.025
+export FlinkRad=0.0127
+export HlinkRad=0.0127
 
 export massF1=0.03
 export massF2=0.03
