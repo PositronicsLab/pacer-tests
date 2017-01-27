@@ -55,23 +55,33 @@ NUM_PARAMS = 6
 global params 
 params= list()
 
+
 params.append(Param(name='lenF2', tooltip='length of second front leg segment', unit_amount=None, value=None, number='1', kinematic='1', unit='length'))
 params.append(Param(name='FfootLen', tooltip='length of front foot segment', unit_amount=None, value=None, number='2', kinematic='1', unit='length'))
 params.append(Param(name='lenH2', tooltip='length of second back leg segment', unit_amount=None, value=None, number='3', kinematic='1', unit='length'))
 params.append(Param(name='HfootLen', tooltip='length of back foot segment', unit_amount=None, value=None, number='4', kinematic='1', unit='length'))
 params.append(Param(name='base_size_length', tooltip='length of base', unit_amount=None, value=None, number='5', kinematic='1', unit='length'))
 params.append(Param(name='base_size_width', tooltip='width of base', unit_amount=None, value=None, number='6', kinematic='1', unit='length'))
-z=list()
-f.write("initial parameters:\n")
+f.write("function limit order: LF_Y_2 LF_Y_3 RF_Y_2 RF_Y_3 LH_Y_2 LH_Y_3 RH_Y_2 RH_Y_3\n\n")
+f.write("\n\nParameter order: Upper_front_legs Lower_front_legs Upper_hind_legs Lower_hind_legs Body_length Body_width\n\n")
+f.write("\n\ninitial parameters:\n\n")
 for i in range(0,NUM_PARAMS):
-	params[i]=params[i]._replace(value="{:.3f}".format(float(os.environ[params[i].name])))
-	f.write(str(params[i].value))
+	f.write(str(float(os.environ[params[i].name])))
+	print float(os.environ[params[i].name])
 	f.write(' ')
+f.write('\n')
+f.close()
+f=open("/home/brad/Desktop/pacer-tests/BotBuilder/FrontEnd/debug.txt","a+",0)
+z=list()
+
+for i in range(0,NUM_PARAMS):
+	params[i]=params[i]._replace(value="{:.5f}".format(float(os.environ[params[i].name])))
 	if(params[i].unit=='length'):
 		params[i]=params[i]._replace(unit_amount=os.environ["unit_len"])
 	if(params[i].unit=='radius'):
 		params[i]=params[i]._replace(unit_amount=os.environ["unit_rad"])
- 
+
+
 # Create an PyQT4 application object.
 global app 
 app= QApplication(sys.argv)
@@ -189,12 +199,25 @@ for i in range(0,NUM_PARAMS):
 			x=list()
 #take the pseudo-inverse of the original matrix
 f.write("\n\nJacobian Matrix:\n\n")
-
-f.write(str(J))
-
-J_inv = numpy.linalg.pinv(numpy.matrix(J))
+f.write('[')
+for i in range(0,N_JOINTS*N_LIMBS*N_LIMITS):
+	for j in range(0,NUM_PARAMS):
+		f.write(str(J[i][j]))
+		f.write(' ')
+	f.write(';')
+f.write(']')
+f.write('\n')
+J_inv = numpy.linalg.pinv(J)
 f.write("\n\nJacobian matrix pseudo-inverse:\n\n")
-f.write(str(J_inv))
+f.write('[')
+for i in range(0,NUM_PARAMS):
+	for j in range(0,N_JOINTS*N_LIMBS*N_LIMITS):
+		f.write(str(J_inv[i][j]))
+		f.write(' ')
+	f.write(';')
+f.write(']')
+f.write('\n')
+
 tor_lab=list()
 vel_lab=list()
 #make all the sliders meed
@@ -257,15 +280,16 @@ f.write(str(q))
 step= numpy.dot(J_inv,q)
 numpy.negative(step)
 update=list()
-
+f.write("\n\nparameter update vector:\n\n")
 for i in range(0,NUM_PARAMS):
-	update.append(step.item(0,i))
-	
-f.write("\nupdated parameters:\n")
+	update.append(step.item(i))
+	f.write(str(step.item(i)))
+	f.write(' ')
+f.write("\n\nupdated parameters:\n\n")
 #if anything is small enough to update it, then change the slider value to it
 for i in range(0,NUM_PARAMS):
 		sliders[i].setValue(update[i])
-		params[i]=params[i]._replace(value="{:.3f}".format((float(os.environ[params[i].name])+(float(sliders[i].value())*float(params[i].unit_amount)))))
+		params[i]=params[i]._replace(value="{:.5f}".format((float(os.environ[params[i].name])+(float(sliders[i].value())*float(params[i].unit_amount)))))
 		names[i].setText(params[i].name+": "+params[i].value)
 		names[i].show()
                 f.write(str(float(params[i].value)))
