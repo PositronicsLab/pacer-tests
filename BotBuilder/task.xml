@@ -1,6 +1,6 @@
 <XML>
- <gait-planner>
-    <command type="double">0.25 0 0 0 0 1.0</command>
+  <task>
+    <command type="double">1 0 0 0 0 0</command>
     <file type="string">libgait-planner.so</file>
     <real-time-factor type="int">1</real-time-factor>
     <priority type="double">1</priority>
@@ -14,11 +14,16 @@
     <step-height type="double">0.02</step-height>
     <gait-duration type="double">0.3</gait-duration>
     <relative-stance type="bool">false</relative-stance>
-    <length type="double">0.3</length>
-    <width type="double">0.2</width>
-    <height type="double">0.15</height>
+    <length type="double">0.25</length>
+    <width type="double">0.15</width>
+    <height type="double">0.18</height>
     <!--troting gait-->
     <gait type="double">0.25  0.75  0.75  0.25</gait>
-    <duty-factor type="double">0.75  0.75 0.75  0.75</duty-factor>
-</gait-planner>
+    <duty-factor type="double">0.6  0.6 0.6  0.6</duty-factor>
+  </task>
+  <stand>
+    <file type="string">libstand.so</file>
+     <real-time-factor type="int">1</real-time-factor>
+     <priority type="double">1</priority>
+  </stand>
 </XML>

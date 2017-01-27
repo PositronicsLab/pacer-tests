@@ -1,15 +1,16 @@
   <XML>
-  <plugins type="string vector">
-     stand
+   <task-file type="file">../task.xml</task-file>
+   
+   <plugins type="string vector">
+     task
      center-of-mass
      end-effectors
      ik-feet
-     joint-PID-controller-accel
-     idyn-controller
      plugin-scheduler
   </plugins>
   
   <!--
+     joint-PID-controller-accel
       ik-feet
       idyn-controller
       ik-feet
@@ -263,10 +264,5 @@
     <duration type="double">0.3</duration>
   </goForward>
 
-  <stand>
-    <file type="string">libstand.so</file>
-     <real-time-factor type="int">1</real-time-factor>
-     <priority type="double">1</priority>
-  </stand>
 
 </XML>

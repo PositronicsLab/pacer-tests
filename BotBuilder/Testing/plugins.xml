@@ -1,7 +1,7 @@
   <XML>
   <plugins type="string vector">
-      error-check-builder
-trajectory-table
+   error-check-builder
+   trajectory-table
    joint-PID-controller-accel
    idyn-controller
   </plugins>
